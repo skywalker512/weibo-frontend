@@ -2,7 +2,7 @@
   "name": "weibo-frontend",
   "version": "1.0.0",
   "description": "使用原生 js，开发一个类似于微博的网站的前端部分",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
