@@ -1,6 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     mode: 'development',
@@ -37,5 +38,8 @@ module.exports = {
             chunkFilename: "[id].css"
         }),
         new webpack.HashedModuleIdsPlugin(),
+        new HtmlWebpackPlugin({
+            title: 'Weibo'
+        }),
     ],
 };
