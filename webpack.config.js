@@ -1,5 +1,6 @@
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const webpack = require('webpack');
 
 module.exports = {
     mode: 'development',
@@ -7,7 +8,8 @@ module.exports = {
         index: './src/index.js',
     },
     output: {
-        filename: 'bundle.js',
+        filename: '[name].[chunkhash].bundle.js',
+        chunkFilename: '[name].[chunkhash].bundle.js',
         path: path.resolve(__dirname, 'dist')
     },
     module: {
@@ -31,8 +33,9 @@ module.exports = {
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // both options are optional
-            filename: "[name].css",
+            filename: "[name].[chunkhash].css",
             chunkFilename: "[id].css"
         }),
+        new webpack.HashedModuleIdsPlugin(),
     ],
 };
