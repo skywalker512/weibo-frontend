@@ -35,7 +35,7 @@ export default function headerEleCom() {
         <div class="left">
             <div class="logo">
                 <a href="#">
-                    <span class="logo-img"></span>
+                    <span class="icon icon-font-weibo"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></span>
                 </a>
             </div>
             <div class="search"></div>
