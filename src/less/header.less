@@ -13,17 +13,37 @@
     .content {
         width: 1280px;
         .max-hight;
+        // 居中对齐
+        margin: 0 auto;
         display: flex;
-        justify-content: space-around;
-    }
+        justify-content: space-between;
 
-    .search {
-        height: 30px;
-        width: 470px;
-    }
-    
-    .logo {
-        width: 140px;
-        .max-hight;
+        .left {
+            display: flex;
+
+            .search {
+                box-sizing: border-box;
+                margin-top: 9px;
+                height: 30px;
+                width: 470px;
+                background-color: #f2f2f5;
+                border: 1px solid #ccc;
+            }
+            
+            .logo {
+                width: 140px;
+                a {
+                    color: #000000;
+                    text-decoration: none;
+                    .logo-img {
+                        &::before{
+                            content: '';
+                            width: 48px;
+                            height: 48px;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
