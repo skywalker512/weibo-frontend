@@ -5,25 +5,29 @@ import compile from '../js/compile'
 
 
 var setting = [{
-        id: 1,
-        name: '首页',
-        src: 'http://baidu.com'
-    },
-    {
-        id: 2,
-        name: '视频',
-        src: 'http://youku.com'
-    },
-    {
-        id: 3,
-        name: '发现',
-        src: '#',
-    },
-    {
-        id: 4,
-        name: '游戏',
-        src: '#',
-    }
+    id: 1,
+    name: '首页',
+    src: 'http://baidu.com',
+    icon: 'nav-home',
+},
+{
+    id: 2,
+    name: '视频',
+    src: 'http://youku.com',
+    icon: 'nav-video',
+},
+{
+    id: 3,
+    name: '发现',
+    src: '#',
+    icon: 'nav-explore',
+},
+{
+    id: 4,
+    name: '游戏',
+    src: '#',
+    icon: 'nav-game',
+}
 ]
 
 export default function headerEleCom() {
@@ -36,9 +40,12 @@ export default function headerEleCom() {
             <div class="logo">
                 <a href="#">
                     <span class="icon icon-font-weibo"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></span>
+                    <span class="logo-text">微博</span>
                 </a>
             </div>
-            <div class="search"></div>
+            <div class="search">
+                <input type="text" node-type="searchInput" autocomplete="off" value="" class="input">
+            </div>
         </div>
         <div class="right">
             <div class="nav">
@@ -46,7 +53,10 @@ export default function headerEleCom() {
                     ${compile(`
                     {% for(var i=0; i < data.length; i++) { %} 
                         <li>
-                            <a href={%=data[i].src %}>{%= data[i].name %}</a>
+                            <a href={%=data[i].src%}>
+                                <span class="icon icon-{%=data[i].icon%}"></span>
+                                <span clsaa="text">{%= data[i].name %}</span>
+                            </a>
                         </li>
                     {% } %}
                 </ul>`, setting)}
@@ -59,8 +69,7 @@ export default function headerEleCom() {
                 </ul>
             </div>
         </div>
-    </div>
-    `)
+    </div>`);
 
     return mainEle;
 }

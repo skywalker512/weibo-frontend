@@ -14,4 +14,18 @@ html,body {
 .max-width {
     width: 100%;
 }
+.none-ul(@margin-width) {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    li {
+        margin-left: @margin-width;
+    }
+}
+.a-text(@color) {
+    a{
+        color: @color;
+        text-decoration: none;
+    }
+}
 

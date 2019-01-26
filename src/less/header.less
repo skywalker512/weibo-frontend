@@ -10,6 +10,7 @@
     border-top: 2px solid @mian-color;
     box-shadow: 0 0 1px 0px rgba(0,0,0,0.15);
     background: #fff;
+
     .content {
         width: 1280px;
         .max-hight;
@@ -20,21 +21,95 @@
 
         .left {
             display: flex;
+            align-items: center;
 
             .search {
+                // 用于定位 input 框
+                position: relative;
                 box-sizing: border-box;
-                margin-top: 9px;
                 height: 30px;
                 width: 470px;
                 background-color: #f2f2f5;
                 border: 1px solid #ccc;
+                input {
+                    box-sizing: border-box;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 470px;
+                    padding: 4px 33px 4px 10px;
+                    height: 30px;
+                    line-height: 20px;
+                    box-shadow: none;
+                    border: none;
+                    // 输入框背景透明
+                    background-color: transparent;
+                    color: #808080;
+                    // 点击边框
+                    outline-style: none;
+                    // 多余文字的设置方式
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                }
             }
             
             .logo {
                 width: 140px;
+                display: flex;
+                // logo 整体水平对齐
+                justify-content: center;
+                .a-text(#333);
                 a {
-                    color: #000000;
-                    text-decoration: none;
+                    display: flex;
+                    // 字体 logo 垂直对齐
+                    align-items: center;
+                    span {
+                        &.icon {
+                            font-size: 36px;
+                        }
+                        &.logo-text {
+                            font-size: 20px;
+                            font-style: italic;
+                        }
+                    }
+                }
+            }
+        }
+
+        .right {
+            display: flex;
+            .nav {
+                .list {
+                    .none-ul(26px);
+                    .a-text(#333);
+                    a {
+                        display: flex;
+                        align-items: center;
+                        span {
+                            &.icon {
+                                font-size: 22px;
+                            }
+                            &.text {
+                                font-size: 16px;
+                            }
+                        }
+                    }
+                }
+            }
+            .login {
+                .list {
+                    .none-ul(15px);
+                    .grey-line {
+                        border-color: #d9d9d9;
+                        border-left-width: 1px;
+                        border-left-style: solid;
+                        width: 0;
+                    }
+                    .a-text(#333);
+                    a {
+                        font-size: 14px;
+                    }
                 }
             }
         }
