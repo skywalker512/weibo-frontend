@@ -31,7 +31,20 @@ module.exports = {
             }, {
                 loader: "less-loader" // compiles Less to CSS
             }]
-        }]
+        },
+        {
+            test: /\.woff(2)?(\?[a-z0-9]+)?$/,
+            use: [{
+                loader: "url-loader?limit=10000&mimetype=application/font-woff"
+            }]
+        },
+        {
+            test: /\.(ttf|eot|svg)(\?[a-z0-9]+)?$/,
+            use: [{
+                loader: "file-loader"
+            }]
+        }
+    ]
     },
     plugins: [
         new MiniCssExtractPlugin({
