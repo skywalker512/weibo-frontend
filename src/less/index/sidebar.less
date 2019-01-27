@@ -1,0 +1,26 @@
+.sidebar {
+    width: 110px;
+    ul {
+        .none-ul-vertical;
+        .a-text(#000);
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 3px;
+            font-size: 18px;
+            height: 40px;
+            border-radius: 3px;
+
+            &:hover {
+                color: #fff;
+                background: linear-gradient(128deg, #fa2f2f 0%, #ff5b36 90%);
+            }
+
+            &.active {
+                color: #fff;
+                background: linear-gradient(128deg, #fa2f2f 0%, #ff5b36 90%);
+            }
+        }
+    }
+}
