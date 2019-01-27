@@ -23,9 +23,16 @@ html,body {
     }
 }
 .a-text(@color) {
-    a{
+    a {
         color: @color;
         text-decoration: none;
+    }
+}
+.a-orange-hover {
+    a {
+        &:hover {
+            color: #eb7350;
+        }
     }
 }
 

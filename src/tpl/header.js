@@ -45,6 +45,7 @@ export default function headerEleCom() {
             </div>
             <div class="search">
                 <input type="text" node-type="searchInput" autocomplete="off" value="" class="input">
+                <a href="#" title="搜索" node-type="searchSubmit" ><span class="icon icon-nav-sreach"></span></a>
             </div>
         </div>
         <div class="right">
@@ -55,7 +56,7 @@ export default function headerEleCom() {
                         <li>
                             <a href={%=data[i].src%}>
                                 <span class="icon icon-{%=data[i].icon%}"></span>
-                                <span clsaa="text">{%= data[i].name %}</span>
+                                <span class="text">{%= data[i].name %}</span>
                             </a>
                         </li>
                     {% } %}
