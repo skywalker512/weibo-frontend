@@ -1,9 +1,9 @@
 import compile from '../js/compile';
-import { getUsefulContents } from '../js/ajax';
+import { getData } from '../js/ajax';
 
 
 
-getUsefulContents('http://127.0.0.1:8000/api/setting/link?format=json', data => {
+getData('http://127.0.0.1:8000/api/setting/link', data => {
     var ele = document.querySelector('.nav .list');
     ele.insertAdjacentHTML('beforeend', compile(`
     {% for(var i=0; i < data.length; i++) { %} 
@@ -16,5 +16,3 @@ getUsefulContents('http://127.0.0.1:8000/api/setting/link?format=json', data => 
     {% } %}
     `, data))
 });
-
-
