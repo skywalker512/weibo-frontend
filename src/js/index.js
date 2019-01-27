@@ -1,4 +1,7 @@
 import '../less/common.less';
-import headerEleCom from '../tpl/header'
+import headerEle from '../tpl/header';
+import indexEle from '../tpl/index/index_body';
 
-document.body.appendChild(headerEleCom());
+
+document.body.appendChild(headerEle());
+document.body.appendChild(indexEle());

@@ -3,7 +3,7 @@ import { getData } from '../js/ajax';
 
 
 
-getData('http://127.0.0.1:8000/api/setting/link', data => {
+getData('/api/setting/link', data => {
     var ele = document.querySelector('.nav .list');
     ele.insertAdjacentHTML('beforeend', compile(`
     {% for(var i=0; i < data.length; i++) { %} 

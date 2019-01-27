@@ -2,7 +2,7 @@
 // import '../less/header.less';
 import './header_api'
 
-export default function headerEleCom() {
+export default function headerEle() {
     var mainEle = document.createElement('div');
     mainEle.classList.add('header');
 
