@@ -14,37 +14,43 @@ module.exports = {
     output: {
         filename: '[name].[chunkhash].bundle.js',
         chunkFilename: '[name].[chunkhash].bundle.js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist'),
     },
     module: {
-        rules: [{
-            test: /\.less$/,
-            use: [{
-                loader: MiniCssExtractPlugin.loader,
-                options: {
-                    // you can specify a publicPath here
-                    // by default it use publicPath in webpackOptions.output
-                    publicPath: '../'
-                }
-            }, {
-                loader: "css-loader" // translates CSS into CommonJS
-            }, {
-                loader: "less-loader" // compiles Less to CSS
-            }]
-        },
-        {
-            test: /\.woff(2)?(\?[a-z0-9]+)?$/,
-            use: [{
-                loader: "url-loader?limit=10000&mimetype=application/font-woff"
-            }]
-        },
-        {
-            test: /\.(ttf|eot|svg)(\?[a-z0-9]+)?$/,
-            use: [{
-                loader: "file-loader"
-            }]
-        }
-    ]
+        rules: [
+            {
+                test: /\.less$/,
+                use: [{
+                    loader: MiniCssExtractPlugin.loader,
+                    options: {
+                        // you can specify a publicPath here
+                        // by default it use publicPath in webpackOptions.output
+                        publicPath: '../'
+                    }
+                }, {
+                    loader: "css-loader" // translates CSS into CommonJS
+                }, {
+                    loader: "less-loader" // compiles Less to CSS
+                }]
+            },
+            {
+                test: /\.woff(2)?(\?[a-z0-9]+)?$/,
+                use: [{
+                    loader: "url-loader?limit=10000&mimetype=application/font-woff"
+                }]
+            },
+            {
+                test: /\.(ttf|eot|svg)(\?[a-z0-9]+)?$/,
+                use: [{
+                    loader: "file-loader"
+                }]
+            },
+            {
+                test: /\.(js)$/,
+                exclude: /(node_modules|bower_components)/,
+                use: 'babel-loader'
+            },
+        ],
     },
     plugins: [
         new MiniCssExtractPlugin({
