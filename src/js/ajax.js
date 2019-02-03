@@ -1,7 +1,7 @@
 import { setting } from './setting';
 
 function getJSON(url, callback) {
-  let xhr = new XMLHttpRequest();
+  const xhr = new XMLHttpRequest();
   xhr.onload = function () {
     callback(this.responseText)
   };

@@ -3,13 +3,13 @@ import articleListEle from './article_list'
 import articleTipsEle from  './article_tips'
 
 // 用于 articleListController 中控制 是否显示 加载提示
-export var tipsEle = articleTipsEle();
+export const tipsEle = articleTipsEle();
 
 export default function indexEle() {
-    var mainEle = document.createElement('div');
+    const mainEle = document.createElement('div');
     mainEle.classList.add('frame');
 
-    var rightEle = document.createElement('div');
+    const rightEle = document.createElement('div');
     rightEle.classList.add('r_main');
     rightEle.appendChild(articleListEle());
     rightEle.appendChild(tipsEle);

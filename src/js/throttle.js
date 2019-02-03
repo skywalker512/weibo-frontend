@@ -1,5 +1,5 @@
 export default function throttle(func, wait, mustRun) {
-    var timeout,
+    let timeout,
         startTime = new Date();
  
     return function() {

@@ -1,6 +1,6 @@
 export default function compile(template, ...agrs) {
-    var evalExpr = /{%=(.+?)%}/g;
-    var expr = /{%([\s\S]+?)%}/g;
+    const evalExpr = /{%=(.+?)%}/g;
+    const expr = /{%([\s\S]+?)%}/g;
 
     template = template
         .replace(evalExpr, '`); \n  echo( $1 ); \n  echo(`')
@@ -8,9 +8,9 @@ export default function compile(template, ...agrs) {
 
     template = 'echo(`' + template + '`);';
 
-    var script =
+    const script =
         `(function parse(data){
-      var output = "";
+      let output = "";
   
       function echo(html){
         output += html;
@@ -20,6 +20,6 @@ export default function compile(template, ...agrs) {
   
       return output;
     })`;
-    var parse = eval(script);
+    const parse = eval(script);
     return parse(agrs);
 }

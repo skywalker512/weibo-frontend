@@ -1,19 +1,19 @@
 import compile from '../../js/compile';
 import { getData } from '../../js/ajax';
-var md5 = require('js-md5');
+const md5 = require('js-md5');
 
 export default function articleListApi(page, ele, callback) {
-    var url = '/api/article/list/';
+    let url = '/api/article/list/';
     url += page;
     getData(url, data => {
         ele.insertAdjacentHTML('beforeend', compile(`
-        {% for(var i=0; i < agrs[0].length; i++) { %} 
+        {% for(let i=0; i < agrs[0].length; i++) { %} 
             <div>
                 <div class="a_text" href="article/{%=agrs[0][i].id%}">
                     <div class="text">{%= agrs[0][i].content %}</div>
                     <div class="info">
                         <div class="user">
-                            {% let md5_mail = agrs[1](agrs[0][i].owner.belong_to.email) %} 
+                            {% const md5_mail = agrs[1](agrs[0][i].owner.belong_to.email) %} 
                             <div class="avatar"><img src="https://cdn.v2ex.com/gravatar/{%= md5_mail %}?d=retro&s=64"></div>
                             <div class="name">{%= agrs[0][i].owner.belong_to.username %}</div>
                         </div>

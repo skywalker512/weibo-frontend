@@ -3,7 +3,7 @@
 import './header_api'
 
 export default function headerEle() {
-    var mainEle = document.createElement('div');
+    const mainEle = document.createElement('div');
     mainEle.classList.add('header');
 
     mainEle.insertAdjacentHTML('beforeend', `
