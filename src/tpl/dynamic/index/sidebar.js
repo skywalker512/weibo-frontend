@@ -1,9 +1,6 @@
-import compile from '../../js/compile';
-import { getData } from '../../js/ajax';
+import compile from '../../../js/compile';
 
-
-
-getData('/api/setting/tag', data => {
+export default function sidebar(tag) {
     const ele = document.querySelector('.sidebar ul');
     ele.insertAdjacentHTML('beforeend', compile(`
         <li>
@@ -18,5 +15,5 @@ getData('/api/setting/tag', data => {
             </a>
         </li>
     {% } %}
-    `, data))
-});
+    `, tag));
+};

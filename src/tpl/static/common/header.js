@@ -1,7 +1,5 @@
 // 在 common.less 中使用 子级可以使用上级的
 // import '../less/header.less';
-import './header_api'
-
 export default function headerEle() {
     const mainEle = document.createElement('div');
     mainEle.classList.add('header');

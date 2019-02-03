@@ -1,6 +1,7 @@
-import sidebarEle from './sidebar'
+import sidebarEle from '../common/sidebar'
 import articleListEle from './article_list'
-import articleTipsEle from  './article_tips'
+import articleTipsEle from './article_tips'
+import '../../api/setting'
 
 // 用于 articleListController 中控制 是否显示 加载提示
 export const tipsEle = articleTipsEle();

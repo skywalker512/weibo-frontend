@@ -1,4 +1,4 @@
-import articleListController from './article_list_controller';
+import articleListController from '../../control/index/article_list_controller';
 
 export default function articleListEle() {
     const mainEle = document.createElement('div');

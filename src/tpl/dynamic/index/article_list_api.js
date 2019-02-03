@@ -1,5 +1,5 @@
-import compile from '../../js/compile';
-import { getData } from '../../js/ajax';
+import compile from '../../../js/compile';
+import { getData } from '../../../js/ajax';
 const md5 = require('js-md5');
 
 export default function articleListApi(page, ele, callback) {

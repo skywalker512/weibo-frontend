@@ -1,9 +1,6 @@
-import compile from '../js/compile';
-import { getData } from '../js/ajax';
+import compile from '../../../js/compile';
 
-
-
-getData('/api/setting/link', data => {
+export default function header(link) {
     const ele = document.querySelector('.nav .list');
     ele.insertAdjacentHTML('beforeend', compile(`
     {% for(let i=0; i < agrs[0].length; i++) { %} 
@@ -14,5 +11,5 @@ getData('/api/setting/link', data => {
             </a>
         </li>
     {% } %}
-    `, data))
-});
+    `, link));    
+};

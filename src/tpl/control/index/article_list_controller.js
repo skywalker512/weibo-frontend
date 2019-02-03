@@ -1,6 +1,6 @@
-import articleListApi from './article_list_api';
-import { tipsEle } from './index_body'
-import throttle from '../../js/throttle'
+import articleListApi from '../../dynamic/index/article_list_api';
+import { tipsEle } from '../../static/index/index_body'
+import throttle from '../../../js/throttle'
 
 export default function articleListController(ele) {
     let page = 1;
