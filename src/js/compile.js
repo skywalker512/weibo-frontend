@@ -1,6 +1,4 @@
-var md5 = require('js-md5');
-
-export default function compile(template, data) {
+export default function compile(template, ...agrs) {
     var evalExpr = /{%=(.+?)%}/g;
     var expr = /{%([\s\S]+?)%}/g;
 
@@ -23,5 +21,5 @@ export default function compile(template, data) {
       return output;
     })`;
     var parse = eval(script);
-    return parse(data);
+    return parse(agrs);
 }
