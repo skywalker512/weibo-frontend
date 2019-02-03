@@ -1,5 +1,5 @@
-import articleListApi from '../../dynamic/index/article_list_api';
-import { tipsEle } from '../../static/index/index_body'
+import articleListApi from '../../dynamic/index/articleList';
+import { tipsEle } from '../../static/index/indexEle'
 import throttle from '../../../js/throttle'
 
 export default function articleListController(ele) {

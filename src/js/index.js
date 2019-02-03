@@ -1,6 +1,6 @@
 import '../less/common.less';
-import headerEle from '../tpl/static/common/header';
-import indexEle from '../tpl/static/index/index_body';
+import headerEle from '../tpl/static/common/headerEle';
+import indexEle from '../tpl/static/index/indexEle';
 
 
 document.body.appendChild(headerEle());

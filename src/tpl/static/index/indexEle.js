@@ -1,6 +1,6 @@
-import sidebarEle from '../common/sidebar'
-import articleListEle from './article_list'
-import articleTipsEle from './article_tips'
+import sidebarEle from '../common/sidebarEle'
+import articleListEle from './articleListEle'
+import articleTipsEle from './articleTipsEle'
 import '../../api/setting'
 
 // 用于 articleListController 中控制 是否显示 加载提示

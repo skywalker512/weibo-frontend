@@ -2,7 +2,7 @@ import compile from '../../../js/compile';
 import { getData } from '../../../js/ajax';
 const md5 = require('js-md5');
 
-export default function articleListApi(page, ele, callback) {
+export default function articleList(page, ele, callback) {
     let url = '/api/article/list/';
     url += page;
     getData(url, data => {
