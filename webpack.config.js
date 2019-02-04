@@ -48,7 +48,14 @@ module.exports = {
             {
                 test: /\.(js)$/,
                 exclude: /(node_modules|bower_components)/,
-                use: 'babel-loader'
+                use: 'babel-loader',
+                use: [{
+                    loader: 'babel-loader',
+                    //如果有这个设置则不用在添加.babelrc
+                    options: {
+                        plugins: ['@babel/plugin-syntax-dynamic-import']
+                    }
+                }]
             },
         ],
     },
