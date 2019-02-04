@@ -1,4 +1,4 @@
-import articleListApi from '../../dynamic/index/articleList';
+import article from '../../api/article';
 import { tipsEle } from '../../static/index/indexEle'
 import throttle from '../../../js/throttle'
 
@@ -8,7 +8,7 @@ export default function articleListController(ele) {
     function hideTips() {
         tipsEle.classList.add('hide');
     }
-    articleListApi(page, ele);
+    article(page, ele);
     const clickEle = document.createElement('div');
     clickEle.classList.add('buttom');
     window.addEventListener('scroll', throttle(function () {
@@ -16,12 +16,12 @@ export default function articleListController(ele) {
         if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight)) {
             tipsEle.classList.remove('hide');
             page++;
-            articleListApi(page, ele, hideTips);
+            article(page, ele, hideTips);
         }
     }, 500, 1000), false);
     clickEle.addEventListener('click', () => {
         page++;
-        articleListApi(page, ele);
+        article(page, ele);
     })
     return clickEle;
 }

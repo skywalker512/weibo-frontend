@@ -1,11 +1,8 @@
 import compile from '../../../js/compile';
-import { getData } from '../../../js/ajax';
-const md5 = require('js-md5');
+import md5 from 'js-md5'
 
-export default function articleList(page, ele, callback) {
-    let url = '/api/article/list/';
-    url += page;
-    getData(url, data => {
+
+export default function articleList(data, ele, callback) {
         ele.insertAdjacentHTML('beforeend', compile(`
         {% for(let i=0; i < agrs[0].length; i++) { %} 
             <div>
@@ -22,5 +19,4 @@ export default function articleList(page, ele, callback) {
         {% } %}
         `, data, md5));
         (callback && typeof(callback) === "function") && callback();
-    });
-}
+};
