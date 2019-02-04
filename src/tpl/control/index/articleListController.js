@@ -16,7 +16,11 @@ export default function articleListController(ele) {
         if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight)) {
             tipsEle.classList.remove('hide');
             page++;
-            article(page, ele, hideTips);
+            if (document.location.pathname.indexOf('tag') !== -1) {
+                article(page, ele, hideTips, document.location.pathname.split('/')[2]);
+            } else {
+                article(page, ele, hideTips);
+            }
         }
     }, 500, 1000), false);
     clickEle.addEventListener('click', () => {

@@ -8,7 +8,7 @@ export default function headerEle() {
     <div class="content">
         <div class="left">
             <div class="logo">
-                <a href="#">
+                <a href="/">
                     <span class="icon icon-font-weibo"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></span>
                     <span class="logo-text">微博</span>
                 </a>

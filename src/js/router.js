@@ -128,8 +128,8 @@ var regexps = [
   Router.proxyLinks = function(nodes) {
     for (var i = 0; i < nodes.length; i++) {
       nodes[i].addEventListener('click', function(e) {
-        Router.go(e.target.href)
-        e.preventDefault()
+        Router.go(this.href);
+        e.preventDefault();
       })
     }
   }
