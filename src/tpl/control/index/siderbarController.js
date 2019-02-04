@@ -2,7 +2,6 @@ window.onload = (function (oldLoad) {
     return function () {
         oldLoad && oldLoad();
         (function () {
-            console.log('1')
             const ele = document.querySelectorAll('.sidebar a');
             ele.forEach((e) => {
                 e.addEventListener('click', function() {
@@ -11,6 +10,13 @@ window.onload = (function (oldLoad) {
                     })
                     this.className = 'active';
                 })
+            })
+            const headerEle = document.querySelector('.logo a');
+            headerEle.addEventListener('click', function() {
+                ele.forEach((e) => {
+                    e.className = '';
+                })
+                ele[0].className = 'active';
             })
         })()
     }
