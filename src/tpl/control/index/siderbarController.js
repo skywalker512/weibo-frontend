@@ -1,23 +1,18 @@
-window.onload = (function (oldLoad) {
-    return function () {
-        oldLoad && oldLoad();
-        (function () {
-            const ele = document.querySelectorAll('.sidebar a');
+window.addEventListener('load', () => {
+    const ele = document.querySelectorAll('.sidebar a');
+    ele.forEach((e) => {
+        e.addEventListener('click', function () {
             ele.forEach((e) => {
-                e.addEventListener('click', function() {
-                    ele.forEach((e) => {
-                        e.className = '';
-                    })
-                    this.className = 'active';
-                })
+                e.className = '';
             })
-            const headerEle = document.querySelector('.logo a');
-            headerEle.addEventListener('click', function() {
-                ele.forEach((e) => {
-                    e.className = '';
-                })
-                ele[0].className = 'active';
-            })
-        })()
-    }
-})(window.onload)
+            this.className = 'active';
+        })
+    })
+    const headerEle = document.querySelector('.logo a');
+    headerEle.addEventListener('click', function () {
+        ele.forEach((e) => {
+            e.className = '';
+        })
+        ele[0].className = 'active';
+    })
+})
