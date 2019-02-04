@@ -1,5 +1,7 @@
 // 在 common.less 中使用 子级可以使用上级的
 // import '../less/header.less';
+import '../../control/account/loginController'
+
 export default function headerEle() {
     const mainEle = document.createElement('div');
     mainEle.classList.add('header');
@@ -22,11 +24,11 @@ export default function headerEle() {
             <div class="nav">
                 <ul class="list"></ul>
             </div>
-            <div class="login">
+            <div class="account">
                 <ul class="list">
-                    <li><a href="">注册</a></li>
+                    <li><a href="" class="login">登陆</a></li>
                     <li class="grey-line"></li>
-                    <li><a href="">登陆</a></li>
+                    <li><a href="" class="register">注册</a></li>
                 </ul>
             </div>
         </div>
