@@ -24,7 +24,7 @@ export default function headerEle() {
             <div class="nav">
                 <ul class="list"></ul>
             </div>
-            <div class="account">
+            <div class="account-list">
                 <ul class="list">
                     <li><a href="" class="login">登陆</a></li>
                     <li class="grey-line"></li>
