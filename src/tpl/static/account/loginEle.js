@@ -6,18 +6,20 @@ export default function loginEle() {
         <div class="outer"></div>
         <div class="inner">
             <div class="container">
-                <div class="close">关闭</div>
+                <div class="close"><span class="icon icon-index-close"></span></div>
                 <div class="title">
                     <div class="text active">账号登陆</div>
                     <div class="text">短信登陆</div>
                 </div>
                 <div class="controller">
                     <div class="input">
-                        <div class="username">
-                            <input autocomplete="off" maxlength="128" tabindex="3" node-type="username" name="username" type="text" class="W_input" action-type="text_copy" action-data="text=邮箱/会员帐号/手机号" value="">
+                        <div class="username textarea">
+                            <span class="icon icon-account-user"></span>
+                            <input autocomplete="off" maxlength="128" name="username" id="username" spellcheck="false" type="text" value="" placeholder="邮箱/会员帐号">
                         </div>
-                        <div class="password">
-                            <input maxlength="24" tabindex="4" node-type="password" name="password" type="password" class="W_input" action-type="text_copy" value="">
+                        <div class="password textarea">
+                            <span class="icon icon-account-key"></span>
+                            <input maxlength="24" tabindex="4" name="password" id="password" type="password" value="" placeholder="密码">
                         </div>
                         <div class="auto">
                                 <input type="checkbox" tabindex="5" id="login_form_savestate" node-type="savestate">
