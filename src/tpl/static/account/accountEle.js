@@ -1,6 +1,7 @@
 window.addEventListener('load', () => {
     const loginEle = document.querySelector('.header .login');
     loginEle.addEventListener('click', () => {
+        import(/* webpackChunkName: "loginEle" */ '../../../less/account/common.less');
         import(/* webpackChunkName: "loginEle" */ './loginEle').then(module => {
             const login = module.default;
             const loginEle = login();
