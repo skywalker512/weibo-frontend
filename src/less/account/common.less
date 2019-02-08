@@ -1,7 +1,12 @@
 @import './login.less';
 
 .account {
-
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
     .outer {
         position: fixed;
         top: 0px;
@@ -10,29 +15,119 @@
         height: 100%;
         background: rgb(0, 0, 0);
         opacity: 0.3;
-        z-index: 9999;
     }
 
     .inner {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        position: fixed;
         .container {
-            z-index: 9999;
-            width: 370px;
-            height: 335px;
-            padding: 35px 116px 29px 116px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            border-top: 2px solid #fa7f40;
+            padding: 35px 116px 56px 116px;
             background-color: #FFF;
             .title {
-                font-size: 16px;
-                display: inline-block;
-                padding-bottom: 10px;
+                display: flex;
                 width: 370px;
-                text-align: center;
-                border-bottom: 3px solid #FFF;
                 color: #333;
                 -webkit-transition: all .3s linear;
                 transition: all .3s linear;
+                .text {
+                    width: 185px;
+                    text-align: center;
+                    padding-bottom: 10px;
+                    border-bottom: 1px solid #eeeeee;
+                }
+
+                .active {
+                    border-color:#f7691d;
+                    border-width: 3px;
+                    font-weight: bold;
+                }
+            }
+
+            .controller {
+                padding-top: 30px;
+                width: 230px;
+                margin: 0 auto;
+                .input {
+                    div:nth-child(-n+2) {
+                        width: 198px;
+                        border: 1px #ccc solid;
+                        padding-left: 30px;
+                        margin-bottom: 10px;
+                        input {
+                            border: none;
+                            width: 190px;
+                            height: 28px;
+                            color: #808080;
+                            // 外部的蓝色框
+                            outline-style: none;
+                        }
+                        // 表示一个元素获得焦点，或，该元素的后代元素获得焦点。换句话说，元素自身或者它的某个后代匹配:focus伪类
+                        // https://developer.mozilla.org/zh-CN/docs/Web/CSS/:focus-within 
+                        // 兼容性堪忧 chrome 60+ Firefox 52+
+                        // 考虑使用 js 来实现，但是好像 edge 也要用 chrome 内核了，微软都放弃了你为啥还不放弃
+                        &:focus-within {
+                            border-color: #f7691d;
+                        }
+                    }
+
+                    div:nth-child(3) {
+                        // float 设定之后 父级元素崩了，只能设定 高度这样就不需要 clear:both;
+                        // height: 16px;
+                        // 使用 伪类 不用手动设定
+                        &:after {
+                            clear:both;
+                            content:'';
+                            // 使其移到下面来
+                            display:block;
+                        }
+                        span,label {
+                            color: #808080;
+                            font-size: 12px;
+                        }
+                        // 因为 label 和 span 的文字对不齐只能通过 float 来实现，如果使用默认 16px 的字体大小就比较完美
+                        input {
+                            margin: 1.5px;
+                            float: left;
+                        }
+                        span {
+                            float: right;
+                        }
+                        label {
+                            float: left;
+                        }
+
+                    }
+                }
+
+                .button {
+                    margin-top: 16px;
+
+                    button {
+                        width: 230px;
+                        height: 36px;
+                        line-height: 36px;
+                        border: 0;
+                        outline-style: none;
+                        color: #FFF;
+                        background-color: #ff8140;
+                        box-shadow: 0px 1px 2px rgba(0,0,0,0.25);
+                        cursor: pointer;
+
+                        &:hover {
+                            background-color: #eb7350;
+                        }
+                    }
+                }
+            }
+            .close {
+                position: absolute;
+                right: 12px;
+                top: 9px;
+                cursor: pointer;
             }
         }
     }

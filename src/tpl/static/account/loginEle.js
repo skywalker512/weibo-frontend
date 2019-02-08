@@ -6,9 +6,10 @@ export default function loginEle() {
         <div class="outer"></div>
         <div class="inner">
             <div class="container">
+                <div class="close">关闭</div>
                 <div class="title">
-                    <span class="text">账号登陆</span>
-                    <span class="text">短信登陆</span>
+                    <div class="text active">账号登陆</div>
+                    <div class="text">短信登陆</div>
                 </div>
                 <div class="controller">
                     <div class="input">
