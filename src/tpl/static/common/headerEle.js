@@ -1,6 +1,6 @@
 // 在 common.less 中使用 子级可以使用上级的
 // import '../less/header.less';
-import '../../control/account/loginController'
+import '../account/accountEle'
 
 export default function headerEle() {
     const mainEle = document.createElement('div');
