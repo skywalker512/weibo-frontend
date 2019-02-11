@@ -1,8 +1,26 @@
-import '../less/common.less';
-import headerEle from '../tpl/static/common/headerEle';
-import indexEle from '../tpl/static/index/indexEle';
-import '../tpl/router/test'
+// 引入 less
+import './less/common.less';
+import header from './view/header';
+import indexBody from './view/indexBody';
+import indexApi from './api/index'
+import route from './routes/index';
+import controllers from './controllers'
 
 // 连接所有的 层级
-document.body.appendChild(headerEle());
-document.body.appendChild(indexEle());
+function render() {
+    document.body.appendChild(header());
+    document.body.appendChild(indexBody());
+}
+
+async function api() {
+    await indexApi();
+}
+
+async function main() {
+    render()
+    await api()
+    controllers()
+    route()
+}
+
+main()
