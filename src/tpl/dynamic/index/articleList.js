@@ -3,7 +3,8 @@ import md5 from 'js-md5'
 
 
 export default function articleList(data, ele, callback) {
-        ele.insertAdjacentHTML('beforeend', compile(`
+    const ele = document.querySelector()
+    ele.insertAdjacentHTML('beforeend', compile(`
         {% for(let i=0; i < agrs[0].length; i++) { %} 
             <div>
                 <div class="a_text" href="article/{%=agrs[0][i].id%}">
@@ -18,5 +19,5 @@ export default function articleList(data, ele, callback) {
             </div>
         {% } %}
         `, data, md5));
-        (callback && typeof(callback) === "function") && callback();
+    (callback && typeof (callback) === "function") && callback();
 };

@@ -9,7 +9,7 @@ module.exports = {
     mode: 'development',
     devtool: 'inline-source-map',
     entry: {
-        index: './src/js/index.js',
+        index: './index.js',
     },
     output: {
         filename: '[name].[chunkhash].bundle.js',
@@ -44,19 +44,7 @@ module.exports = {
                 use: [{
                     loader: "file-loader"
                 }]
-            },
-            {
-                test: /\.(js)$/,
-                exclude: /(node_modules|bower_components)/,
-                use: 'babel-loader',
-                use: [{
-                    loader: 'babel-loader',
-                    //如果有这个设置则不用在添加.babelrc
-                    options: {
-                        plugins: ['@babel/plugin-syntax-dynamic-import']
-                    }
-                }]
-            },
+            }
         ],
     },
     plugins: [

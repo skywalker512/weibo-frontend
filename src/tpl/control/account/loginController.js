@@ -19,6 +19,8 @@ export default function loginController(body, loginEle) {
             } else if(passwordInput.value === '' && mark === 0) {
                 passwordInput.insertAdjacentHTML('beforebegin', `<div class="tips">请输入密码<span class="icon icon-index-close"></span></div>`);
                 mark = 1;
+            } else {
+                
             };
 
             if (mark === 1) {
@@ -30,5 +32,4 @@ export default function loginController(body, loginEle) {
             };
         });
     };
-
 }

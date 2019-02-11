@@ -10,7 +10,7 @@ export default function sidebar(tag) {
         </li>
     {% for(let i=0; i < agrs[0].length; i++) { %} 
         <li>
-            <a href="/tag/{%=agrs[0][i].id%}">
+            <a href="/tag/{%=agrs[0][i]._id%}">
                 <span class="text">{%= agrs[0][i].name %}</span>
             </a>
         </li>

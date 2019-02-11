@@ -11,5 +11,5 @@ export default function header(link) {
             </a>
         </li>
     {% } %}
-    `, link));    
+    `, link));
 };
