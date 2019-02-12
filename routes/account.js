@@ -1,4 +1,4 @@
-import { loginBottomController, logoutBottomController }from '../controllers/account/navbottom'
+import { loginBottomController, logoutBottomController, registerBottomController }from '../controllers/account/navbottom'
 
 export default function(route){
     route.get('/logout', () => {
@@ -8,4 +8,9 @@ export default function(route){
     route.get('/login', () => {
         loginBottomController()
     })
+
+    route.get('/register',()=>{
+        registerBottomController()
+    })
+
 }

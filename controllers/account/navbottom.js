@@ -15,6 +15,20 @@ export function loginBottomController() {
     });
 }
 
+export function registerBottomController() {
+    import(/* webpackChunkName: "account" */ '../../less/account/common.less');
+    import(/* webpackChunkName: "account" */ '../../view/account/registerBox').then(module => {
+        const register = module.default;
+        const registerEle = register();
+        const body = document.querySelector('body');
+        body.appendChild(registerEle);
+        import(/* webpackChunkName: "account" */ './registerBox').then(module => {
+            const registerController = module.default;
+            registerController(body, registerEle)
+        });
+    });
+}
+
 export function logoutBottomController() {
     ajax('GET', '/api/logout').then(() => {
         const ele = document.querySelector('.account-list');
