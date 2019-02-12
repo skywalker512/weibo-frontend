@@ -1,4 +1,4 @@
-import article from '../../api/indexBody'
+import article from '../../api/indexArticle'
 import throttle from '../../utils/throttle'
 import {setCookie, getCookie} from '../../utils/cookie'
 

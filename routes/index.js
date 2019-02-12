@@ -1,7 +1,6 @@
 import router from '../utils/router';
-import article from '../api/indexBody';
+import article from '../api/indexArticle';
 import {setCookie} from '../utils/cookie'
-import {loginBox}from '../controllers/account/loginbox'
 
 import account from './account'
 
