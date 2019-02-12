@@ -1,3 +1,6 @@
+import { config } from "../../config";
+import ajax from '../../utils/ajax'
+
 export default function loginController(body, loginEle) {
     { // 登陆框关闭
         const closeEle = document.querySelector('.account .close')
@@ -13,14 +16,19 @@ export default function loginController(body, loginEle) {
         const passwordInput = document.querySelector('#password');
         let mark = 0;
         buttonEle.addEventListener('click', () => {
-            if(usernameInput.value === '' && mark === 0) {
-                usernameInput.insertAdjacentHTML('beforebegin', `<div class="tips">请输入登录名<span class="icon icon-index-close"></span></div>`);
+            if( !config.namePattern.test(usernameInput.value) && mark === 0) {
+                usernameInput.insertAdjacentHTML('beforebegin', `<div class="tips">用户名必须大于4个字符小于16个字符<span class="icon icon-index-close"></span></div>`);
                 mark = 1;
-            } else if(passwordInput.value === '' && mark === 0) {
-                passwordInput.insertAdjacentHTML('beforebegin', `<div class="tips">请输入密码<span class="icon icon-index-close"></span></div>`);
+            } else if( !config.namePattern.test(passwordInput.value) && mark === 0) {
+                passwordInput.insertAdjacentHTML('beforebegin', `<div class="tips">密码必须分别包含2个大小写字母,并且大于6个字符小于16个字符<span class="icon icon-index-close"></span></div>`);
                 mark = 1;
             } else {
-                
+                ajax('POST', '/api/login', { info: usernameInput.value , password: passwordInput.value  }).then(result=>{
+                    if( result.code === 200 ){
+                        body.removeChild(loginEle);
+                    }
+                })
+
             };
 
             if (mark === 1) {
