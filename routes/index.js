@@ -3,7 +3,7 @@ import article from '../api/indexArticle';
 import {setCookie} from '../utils/cookie'
 
 import account from './account'
-
+import post from './post' 
 export default function() {
     router();
     router.get('/', function () {
@@ -23,6 +23,7 @@ export default function() {
     });
 
     account(router)
+    post(router)
     
     router.proxyLinks(document.querySelectorAll('a'));
 

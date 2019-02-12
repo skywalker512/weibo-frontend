@@ -16,7 +16,7 @@ export function logined () {
 
     mainEle.insertAdjacentHTML('beforeend', `
     <li><a href="/logout" class="logout">登出</a></li>
-    <span class="icon icon-article-post"></span>
+    <a href="/post"><span class="icon icon-article-post"></span></a>
     `);
     return mainEle;
 }
