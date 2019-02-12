@@ -32,7 +32,6 @@ export default function loginController(body, loginEle) {
                         ele.innerHTML=''
                         ele.appendChild(logined())
                         userNav(result.data)
-                        history.pushState(null, null,'./')
                     }
                 })
 
