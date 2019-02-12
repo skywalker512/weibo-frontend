@@ -1,5 +1,7 @@
 import { config } from "../../config";
 import ajax from '../../utils/ajax'
+import { logined } from '../../view/account/nav'
+// import { logoutController } from '../../controllers/account/header'
 
 export default function loginController(body, loginEle) {
     { // 登陆框关闭
@@ -26,6 +28,10 @@ export default function loginController(body, loginEle) {
                 ajax('POST', '/api/login', { info: usernameInput.value , password: passwordInput.value  }).then(result=>{
                     if( result.code === 200 ){
                         body.removeChild(loginEle);
+                        const ele = document.querySelector('.account-list');
+                        ele.innerHTML=''
+                        ele.appendChild(logined())
+                        logoutController()
                     }
                 })
 

@@ -1,6 +1,9 @@
 import router from '../utils/router';
 import article from '../api/indexBody';
 import {setCookie} from '../utils/cookie'
+import {loginBox}from '../controllers/account/loginbox'
+
+import account from './account'
 
 export default function() {
     router();
@@ -19,11 +22,20 @@ export default function() {
         setCookie('isHave', 1)
         setCookie('page', 1)
     });
-    
-    // router.addResMethod('view', function (content) {
-    //     console.log(content)
-    // });
+
+    account(router)
     
     router.proxyLinks(document.querySelectorAll('a'));
+
+    const config = { attributes: true, childList: true, subtree: true };
+
+    const callback = function() {
+        router.proxyLinks(document.querySelectorAll('a'));
+    };
+
+    const observer = new MutationObserver(callback);
+
+    // Start observing the target node for configured mutations
+    observer.observe(document.querySelector('body'), config);
     
 }
