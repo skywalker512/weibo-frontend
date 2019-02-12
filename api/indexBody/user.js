@@ -1,4 +1,5 @@
 import { notLogin, logined } from '../../view/account/nav'
+import userNav from '../acount/userNav'
 
 export default function (user) {
     if( !user ){
@@ -7,5 +8,6 @@ export default function (user) {
     } else {
         const ele = document.querySelector('.account-list');
         ele.appendChild(logined())
+        userNav(user)
     }
 }

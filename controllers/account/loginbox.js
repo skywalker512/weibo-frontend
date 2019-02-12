@@ -1,6 +1,7 @@
 import { config } from "../../config";
 import ajax from '../../utils/ajax'
 import { logined } from '../../view/account/nav'
+import userNav from '../../api/acount/userNav'
 
 export default function loginController(body, loginEle) {
     { // 登陆框关闭
@@ -30,6 +31,7 @@ export default function loginController(body, loginEle) {
                         const ele = document.querySelector('.account-list');
                         ele.innerHTML=''
                         ele.appendChild(logined())
+                        userNav(result.data)
                     }
                 })
 
