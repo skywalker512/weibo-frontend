@@ -20,6 +20,5 @@ export function logoutBottomController() {
         const ele = document.querySelector('.account-list');
         ele.innerHTML = ''
         ele.appendChild(notLogin())
-        notLoginController()
     })
 }
