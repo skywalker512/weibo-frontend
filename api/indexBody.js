@@ -7,9 +7,9 @@ export default function (page, tag) {
         url = '/api/category/' + tag + '?page=' + page;
     }
     let isHave
-    ajax('GET', url).then((data)=>{
-        isHave = data.lenght
-        article(data)
+    ajax('GET', url).then(result=>{
+        isHave = result.data.lenght
+        article(result.data)
     })
     return isHave
 };

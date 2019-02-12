@@ -4,9 +4,9 @@ import siderbar from './indexBody/siderbar'
 import article from './indexBody/article'
 
 export default async function() {
-    await ajax('GET', '/api/index').then((data) => {
-        nav(data.link);
-        siderbar(data.category);
-        article(data.article);
+    await ajax('GET', '/api/index').then(result => {
+        nav(result.data.link);
+        siderbar(result.data.category);
+        article(result.data.article);
     });
 }
