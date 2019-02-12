@@ -1,17 +1,6 @@
 import router from '../utils/router';
 import article from '../api/indexBody';
-
-function setCookie(cname,cvalue,exdays){
-    var d = new Date();
-    d.setTime(d.getTime()+(exdays*24*60*60*1000));
-    var expires = "expires="+d.toGMTString();
-    document.cookie = cname+"="+cvalue+"; "+expires;
-}
-
-window.addEventListener('load', ()=>{
-    setCookie('isHave', 1)
-    setCookie('page', 1)
-})
+import {setCookie} from '../utils/cookie'
 
 export default function() {
     router();

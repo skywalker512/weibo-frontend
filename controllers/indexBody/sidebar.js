@@ -1,6 +1,5 @@
 export default function() {
     const ele = document.querySelectorAll('.sidebar a');
-    console.log(ele)
     ele.forEach((e) => {
         e.addEventListener('click', function () {
             ele.forEach((e) => {
