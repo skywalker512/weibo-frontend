@@ -2,7 +2,7 @@ import compile from '../../utils/compile';
 
 export default function article(article) {
     const ele = document.querySelector('.article_list')
-    ele.insertAdjacentHTML('beforeend', 
+    ele.insertAdjacentHTML('afterbegin', 
     compile(`
         {% for(let i=0; i < agrs[0].length; i++) { %} 
             <div>
@@ -11,7 +11,7 @@ export default function article(article) {
                     <div class="info">
                         <span class="avatar"><img src={%= agrs[0][i].authorId.avatar%}></span>
                         <span class="name">{%= agrs[0][i].authorId.name %}</span>
-                        {% const time = new Date(agrs[0][i].createdAt) %}
+                        {% const time = new Date(agrs[0][i].updatedAt) %}
                         <span class="time">{%= time.toLocaleString() %}</span>
                     </div>
                 </div>

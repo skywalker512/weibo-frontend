@@ -6,7 +6,7 @@ export default function() {
         <div class="outer"></div>
         <div class="inner">
             <div class="container">
-                <div class="close"><a href="/"><span class="icon icon-index-close"></span></a></div>
+                <div class="close"><a href="/done"><span class="icon icon-index-close"></span></a></div>
                 <div class="title">有什么新鲜事想告诉大家?</div>
                 <div class="box">
                     <div class="count">已输入<span id="count"></span>字</div>
@@ -21,7 +21,9 @@ export default function() {
                             <span class="icon icon-aticle-topic"></span>
                         </div>
                         <div class="push">
-                            <button type="submit">发布</button>
+                            <a href="/done">
+                                <button type="submit">发布</button>
+                            </a>
                         </div>
                     </div>
                 </div>
