@@ -6,30 +6,57 @@
     }
     .a-text(#000);
     .a_text {
-        padding-bottom: 10px;
+        cursor: pointer;
         border-bottom: 1px solid #e5e5e5;
-        margin-bottom: 10px;
+        padding: 10px 5px 10px 5px;
+        &:hover {
+            background-color: #f5f8fa;
+        }
         // 文章列表用户信息
         .info {
-            display: flex;
-            align-items: center;
             margin-top: 10px;
-            font-size: 12px;
-            .avatar {
+            display: flex;
+            justify-content: space-between;
+            .left {
                 display: flex;
                 align-items: center;
-                margin-right: 5px;
-                img {
+                font-size: 12px;
+                .avatar {
                     display: flex;
                     align-items: center;
-                    border-radius: 50%;
-                    max-width: 20px;
-                    max-height: 20px;
+                    margin-right: 5px;
+                    img {
+                        display: flex;
+                        align-items: center;
+                        border-radius: 50%;
+                        max-width: 20px;
+                        max-height: 20px;
+                    }
+                }
+                .name {
+                    margin-right: 12px;
                 }
             }
-            .name {
-                margin-right: 12px;
+            .right {
+                font-size: 14px;
+                display: inline-block;
+                .icon:hover {
+                    color: #ed7350;
+                }
+
+                .text {
+                    font-size: 13px;
+                }
+
+                .grey-line {
+                    margin: 0 8px 0 8px;
+                    border-color: #d9d9d9;
+                    border-left-width: 1px;
+                    border-left-style: solid;
+                    width: 0;
+                }
             }
+            
         }
     }
 }
