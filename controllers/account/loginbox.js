@@ -20,7 +20,7 @@ export default function loginController(body, loginEle) {
             let tipsName = document.querySelector('.account .tips.name')
             let tipsPassword = document.querySelector('.account .tips.password')
             const isName = config.namePattern.test(usernameInput.value)
-            const isPassword = config.namePattern.test(passwordInput.value)
+            const isPassword = config.passwordPattern.test(passwordInput.value)
 
             if( !isName && !tipsName ) {
                 usernameInput.insertAdjacentHTML('beforebegin', `<div class="tips name">用户名必须大于4个字符小于16个字符<span class="icon icon-index-close"></span></div>`);
