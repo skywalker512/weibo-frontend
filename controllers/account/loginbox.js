@@ -17,29 +17,29 @@ export default function loginController(body, loginEle) {
         const usernameInput = document.querySelector('#username');
         const passwordInput = document.querySelector('#password');
         buttonEle.addEventListener('click', () => {
-            let tipsName = document.querySelector('.account .tips.name')
-            let tipsPassword = document.querySelector('.account .tips.password')
+            let tipsName = document.querySelector('.account .tips.name .icon')
+            let tipsPassword = document.querySelector('.account .tips.password .icon')
             const isName = config.namePattern.test(usernameInput.value)
             const isPassword = config.passwordPattern.test(passwordInput.value)
 
             if( !isName && !tipsName ) {
                 usernameInput.insertAdjacentHTML('beforebegin', `<div class="tips name">用户名必须大于4个字符小于16个字符<span class="icon icon-index-close"></span></div>`);
-                tipsName = document.querySelector('.account .tips.name')
+                tipsName = document.querySelector('.account .tips.name .icon')
                 tipsName.addEventListener('click', ()=>{
-                    tipsName.parentNode.removeChild(tipsName);
+                    tipsName.parentNode.remove();
                 })
             } else if (isName && tipsName) {
-                tipsName.remove()
+                tipsName.parentNode.remove();
             }
 
             if( !isPassword && !tipsPassword ) {
                 passwordInput.insertAdjacentHTML('beforebegin', `<div class="tips password">密码必须分别包含2个大小写字母,并且大于6个字符小于16个字符<span class="icon icon-index-close"></span></div>`);
-                tipsPassword = document.querySelector('.account .tips.password')
+                tipsPassword = document.querySelector('.account .tips.password .icon')
                 tipsPassword.addEventListener('click', ()=>{
-                    tipsPassword.parentNode.removeChild(tipsPassword);
+                    tipsPassword.parentNode.remove();
                 })
             } else if ( isPassword && tipsPassword ) {
-                tipsPassword.remove()
+                tipsPassword.parentNode.remove();
             }
 
             if ( isName && isPassword ) {

@@ -20,10 +20,10 @@ export default function registerController(body, registerEle) {
         const apasswordInput = document.querySelector('#apassword');
 
         buttonEle.addEventListener('click', () => {
-            let tipsEmail = document.querySelector('.account .tips.email')
-            let tipsName = document.querySelector('.account .tips.name')
-            let tipsPassword = document.querySelector('.account .tips.password')
-            let tipsaPassword = document.querySelector('.account .tips.apassword')
+            let tipsEmail = document.querySelector('.account .tips.email .icon')
+            let tipsName = document.querySelector('.account .tips.name .icon')
+            let tipsPassword = document.querySelector('.account .tips.password .icon')
+            let tipsaPassword = document.querySelector('.account .tips.apassword .icon')
             const isEmail = config.emailPattern.test(emailInput.value)
             const isName = config.namePattern.test(usernameInput.value)
             const isPassword = config.passwordPattern.test(passwordInput.value)
@@ -31,42 +31,42 @@ export default function registerController(body, registerEle) {
 
             if ( !isEmail && !tipsEmail ) {
                 emailInput.insertAdjacentHTML('beforebegin', `<div class="tips email">请输入正确的邮箱地址<span class="icon icon-index-close"></span></div>`);
-                tipsEmail = document.querySelector('.account .tips.email')
+                tipsEmail = document.querySelector('.account .tips.email .icon')
                 tipsEmail.addEventListener('click', ()=>{
-                    tipsEmail.parentNode.removeChild(tipsEmail);
+                    tipsEmail.parentNode.remove();
                 })
             } else if (isEmail && tipsEmail) {
-                tipsEmail.remove()
+                tipsEmail.parentNode.remove();
             }
 
             if( !isName && !tipsName ) {
                 usernameInput.insertAdjacentHTML('beforebegin', `<div class="tips name">用户名必须大于4个字符小于16个字符<span class="icon icon-index-close"></span></div>`);
-                tipsName = document.querySelector('.account .tips.name')
+                tipsName = document.querySelector('.account .tips.name .icon')
                 tipsName.addEventListener('click', ()=>{
-                    tipsName.parentNode.removeChild(tipsName);
+                    tipsName.parentNode.remove();
                 })
             } else if (isName && tipsName) {
-                tipsName.remove()
+                tipsName.parentNode.remove();
             }
 
             if( !isPassword && !tipsPassword ) {
                 passwordInput.insertAdjacentHTML('beforebegin', `<div class="tips password">密码必须分别包含2个大小写字母,并且大于6个字符小于16个字符<span class="icon icon-index-close"></span></div>`);
-                tipsPassword = document.querySelector('.account .tips.password')
+                tipsPassword = document.querySelector('.account .tips.password .icon')
                 tipsPassword.addEventListener('click', ()=>{
-                    tipsPassword.parentNode.removeChild(tipsPassword);
+                    tipsPassword.parentNode.remove();
                 })
             } else if ( isPassword && tipsPassword ) {
-                tipsPassword.remove()
+                tipsPassword.parentNode.remove();
             }
 
             if( !tipsaPassword && !isaPassword ) {
-                apasswordInput.insertAdjacentHTML('beforebegin', `<div class="tips password">两次输入的密码不相同<span class="icon icon-index-close"></span></div>`);
-                tipsaPassword = document.querySelector('.account .tips.password')
+                apasswordInput.insertAdjacentHTML('beforebegin', `<div class="tips apassword">两次输入的密码不相同<span class="icon icon-index-close"></span></div>`);
+                tipsaPassword = document.querySelector('.account .tips.apassword .icon')
                 tipsaPassword.addEventListener('click', ()=>{
-                    tipsaPassword.parentNode.removeChild(tipsaPassword);
+                    tipsaPassword.parentNode.remove();
                 })
             } else if ( tipsaPassword && isaPassword ) {
-                tipsaPassword.remove()
+                tipsaPassword.parentNode.remove();
             }
             
             if(isEmail && isName && isPassword && isaPassword) {
