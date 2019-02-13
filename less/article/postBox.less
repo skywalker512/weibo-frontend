@@ -41,8 +41,30 @@
                     display: flex;
                     justify-content: flex-end;
                 }
-
+                .tips {
+                    position: absolute;
+                    bottom: 78px;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                    padding: 6px 13px 6px 10px;
+                    background: #fff;
+                    border-radius: 3px;
+                    border: 1px solid #ccc;
+                    box-shadow: 0 4px 20px 1px rgba(0,0,0,0.2);
+                    font-size: 12px;
+                    white-space:nowrap;
+                    
+                    .icon {
+                        margin-left: 5px;
+                        cursor: pointer;
+                        &:hover {
+                            color: #eb7350;
+                        }
+                    }
+                }
                 .input {
+                    // 用于提示框的定位
+                    position: relative;
                     border-width: 1px;
                     border-style: solid;
                     margin: 4px 0 0;
