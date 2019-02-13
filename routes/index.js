@@ -27,7 +27,7 @@ export default function() {
     
     router.proxyLinks(document.querySelectorAll('a'));
 
-    const config = { attributes: true, childList: true, subtree: true };
+    const config = { attributes: false, childList: true, subtree: true };
 
     const callback = function() {
         router.proxyLinks(document.querySelectorAll('a'));
