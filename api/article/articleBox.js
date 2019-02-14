@@ -37,7 +37,8 @@ export default function (data) {
             </div>
             <div class="pinglun">
                 <span class="icon icon-pinglun"></span>
-                <span class="text pinglun-text">评论</span>
+                <span class="text pinglun-text">{%= agrs[0].article.commentNum %}</span>
+                <span class="arrow"></span>
             </div>
             {% if( Number(agrs[0].status.isParise) === -1){ %}
             <div class="zan">
