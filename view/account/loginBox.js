@@ -19,7 +19,7 @@ export default function() {
                         </div>
                         <div class="password textarea">
                             <span class="icon icon-account-key"></span>
-                            <input maxlength="24" tabindex="4" name="password" id="password" type="password" value="" placeholder="密码">
+                            <input maxlength="24" name="password" id="password" type="password" value="" placeholder="密码">
                         </div>
                         <div class="auto">
                                 <input type="checkbox" tabindex="5" id="login_form_savestate" node-type="savestate">
