@@ -44,7 +44,6 @@ export default function(body, postBoxEle) {
             if(textarea.value.length>0){
                 textTips.classList.remove('hide')
             }
-            console.log(textarea.value.length)
             textNum.innerText = textarea.value.length
         })
     }

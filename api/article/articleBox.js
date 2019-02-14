@@ -21,6 +21,7 @@ export default function (data) {
             </div>
         </div>
         <div class="pic"></div>
+
         <div class="function">
             {% if( Number(agrs[0].status.isFavorite) === -1){ %}
             <div class="favorite">
@@ -28,15 +29,15 @@ export default function (data) {
             <div class="favorite isStatus">
             {% } %}
                 <span class="icon icon-favorite"></span>
-                <span class="favorite-text">{%= agrs[0].article.favoriteNum %}</span>
+                <span class="text favorite-text">{%= agrs[0].article.favoriteNum %}</span>
             </div>
             <div class="zhuanfa">
                 <span class="icon icon-zhuanfa"></span>
-                <span class="zhuanfa-text">转发</span>
+                <span class="text zhuanfa-text">转发</span>
             </div>
             <div class="pinglun">
                 <span class="icon icon-pinglun"></span>
-                <span class="pinglun-text">评论</span>
+                <span class="text pinglun-text">评论</span>
             </div>
             {% if( Number(agrs[0].status.isParise) === -1){ %}
             <div class="zan">
@@ -44,9 +45,27 @@ export default function (data) {
             <div class="zan isStatus">
             {% } %}
                 <span class="icon icon-zan"></span>
-                <span class="zan-text">{%= agrs[0].article.praiseNum %}</span>
+                <span class="text zan-text">{%= agrs[0].article.praiseNum %}</span>
             </div>
         </div>
-        
+
+        <div class="comment">
+            <div class="post-comment">
+                <div class="post">
+                    <div class="input">
+                        <textarea spellcheck="false" maxlength="140"></textarea>
+                    </div>
+                    <div class="controller">
+                        <div class="function">
+                            <span class="icon icon-article-emoji"></span>
+                        </div>
+                        <div class="submit">
+                            <button type="submit">评论</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="comment-list"></div>
+        </div>
     `, data));
 };
