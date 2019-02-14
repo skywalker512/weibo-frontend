@@ -31,8 +31,8 @@ export default function() {
 
     const config = { attributes: false, childList: true, subtree: true };
 
-    const callback = function() {
-        router.proxyLinks(document.querySelectorAll('a'));
+    const callback = function(records) {
+        router.proxyLinks(records[records.length-1].target.querySelectorAll('a'));
     };
 
     const observer = new MutationObserver(callback);
