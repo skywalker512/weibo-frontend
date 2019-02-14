@@ -9,9 +9,9 @@ export default function() {
                 <div class="close"><a href="/done"><span class="icon icon-index-close"></span></a></div>
                 <div class="title">有什么新鲜事想告诉大家?</div>
                 <div class="box">
-                    <div class="count">已输入<span id="count"></span>字</div>
+                    <div class="count">已输入<span id="count">0</span>字</div>
                     <div class="input">
-                        <textarea></textarea>
+                        <textarea spellcheck="false" maxlength="140"></textarea>
                     </div>
                     <div class="controller">
                         <div class="function">                    

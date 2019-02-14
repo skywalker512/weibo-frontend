@@ -10,11 +10,11 @@ export default function(body, postBoxEle) {
             body.removeChild(postBoxEle);
         });
     }
-
-    {
+    const textarea =  document.querySelector('.post textarea')
+    { // 发布 以及 一些检查
         const pushBotton = document.querySelector('.post .push button')
         pushBotton.addEventListener('click', () =>{
-            const textarea =  document.querySelector('.post textarea')
+            
             const isText = config.articlePattern.test(textarea.value)
             let isTips = document.querySelector('.post .tips .icon')
             if( !isTips && !isText ) {
@@ -35,6 +35,17 @@ export default function(body, postBoxEle) {
                     }
                 })
             }
+        })
+    }
+    const textNum = document.querySelector('#count')
+    const textTips = document.querySelector('.post .count')
+    {
+        textarea.addEventListener('keyup', ()=>{
+            if(textarea.value.length>0){
+                textTips.classList.remove('hide')
+            }
+            console.log(textarea.value.length)
+            textNum.innerText = textarea.value.length
         })
     }
 }
