@@ -23,7 +23,7 @@ export default function (data) {
         <div class="pic"></div>
 
         <div class="function">
-            {% if( Number(agrs[0].status.isFavorite) === -1){ %}
+            {% if( Number(agrs[0].status.isFavorite) === 0){ %}
             <div class="favorite">
             {% }else{ %}
             <div class="favorite isStatus">
@@ -40,7 +40,7 @@ export default function (data) {
                 <span class="text pinglun-text">{%= agrs[0].article.commentNum %}</span>
                 <span class="arrow"></span>
             </div>
-            {% if( Number(agrs[0].status.isParise) === -1){ %}
+            {% if( Number(agrs[0].status.isParise) === 0){ %}
             <div class="zan">
             {% }else{ %}
             <div class="zan isStatus">
