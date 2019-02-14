@@ -1,6 +1,8 @@
 import articleApi from '../../api/aricleBox'
 
 export default function (body, articleBoxEle, articleId) {
+    body.classList.add('body-fixed')
+
     // 装载数据
     articleApi(articleId)
 
@@ -8,6 +10,7 @@ export default function (body, articleBoxEle, articleId) {
         const closeEle = document.querySelector('.articlebox .close')
         closeEle.addEventListener('click', () => {
             body.removeChild(articleBoxEle);
+            body.classList.remove('body-fixed')
         });
     }
 
