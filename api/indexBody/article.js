@@ -6,7 +6,7 @@ export default function article(article) {
     compile(`
         {% for(let i=0; i < agrs[0].length; i++) { %} 
             <div>
-                <div class="a_text" href="article/{%=agrs[0][i]._id%}">
+                <a class="a_text" href="/article/{%=agrs[0][i]._id%}">
                     <div class="text">{%= agrs[0][i].content %}</div>
                     <div class="info">
                         <div class="left">
@@ -23,7 +23,7 @@ export default function article(article) {
                             <span class="text zan">{%= agrs[0][i].praiseNum %}</span>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
         {% } %}
     `,

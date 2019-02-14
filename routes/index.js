@@ -4,6 +4,7 @@ import {setCookie} from '../utils/cookie'
 
 import account from './account'
 import post from './post' 
+import articleBox from './articleBox'
 export default function() {
     router();
     router.get('/', function () {
@@ -14,16 +15,17 @@ export default function() {
         setCookie('page', 1)
     });
     
-    router.get('/category/:int', function (req) {
+    router.get('/category/:_id', function (req) {
         const ele = document.querySelector('.article_list');
         ele.innerHTML = '';
-        article(1, req.params.int);
+        article(1, req.params._id);
         setCookie('isHave', 1)
         setCookie('page', 1)
     });
 
     account(router)
     post(router)
+    articleBox(router)
     
     router.proxyLinks(document.querySelectorAll('a'));
 
