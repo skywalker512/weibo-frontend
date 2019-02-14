@@ -6,7 +6,7 @@ export default function() {
         <div class="outer"></div>
         <div class="inner">
             <div class="container">
-                <div class="close"><a href="/done"><span class="icon icon-index-close"></span></a></div>
+                <div class="close"><a href="/"><span class="icon icon-index-close"></span></a></div>
                 <div class="title">文章详情</div>
                 <div class="box"></div>
             </div>

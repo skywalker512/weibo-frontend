@@ -16,7 +16,7 @@
         .container {
             position: relative;
             margin: 60px auto 60px auto;
-            width: 640px;
+            width: 600px;
             border-top: 2px solid #fa7f40;
             background-color: #FFF;
             .title {
@@ -27,9 +27,57 @@
                 padding: 0 0 0 16px;
             }
             .box {
-                width: 470px;
                 margin: 0;
-                padding: 10px 16px 16px;
+                .content {
+                    display: flex;
+                    padding: 20px 20px 10px 20px;
+
+                    .avatar {
+                        img {
+                            border-radius: 50%;
+                            max-width: 50px;
+                            max-height: 50px;
+                        }
+                    }
+
+                    .text {
+                        margin-left: 12px;
+                        .name {
+                            color: #333;
+                            font-weight: 700;
+                            font-size: 14px;
+                            margin: 5px 0;
+                        }
+
+                        .time {
+                            color: #808080;
+                            margin-bottom: 2px;
+                            font-size: 12px;
+                        }
+
+                        .text-content {
+                            overflow: hidden;
+                            line-height: 23px;
+                            word-wrap: break-word;
+                            font-size: 14px;
+                        }
+                    }
+                }
+                .function {
+                    height: 38px;
+                    border-top-width: 1px;
+                    border-top-style: solid;
+                    border-color: #f2f2f5;
+                    display: flex;
+                    justify-content: space-around;
+                    span {
+                        cursor: pointer;
+                        line-height: 38px;
+                    }
+                    .isStatus {
+                        color: #eb7350;
+                    }
+                }
             }
             .close {
                 position: absolute;

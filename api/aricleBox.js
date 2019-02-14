@@ -1,8 +1,8 @@
 import ajax from '../utils/ajax'
 import articleBox from './article/articleBox'
 
-export default function(articleId) {
-    ajax('GET', '/api/article/'+articleId).then(result => {
+export default async function(articleId) {
+    await ajax('GET', '/api/article/'+articleId).then(result => {
         articleBox(result.data);
     })
 }
