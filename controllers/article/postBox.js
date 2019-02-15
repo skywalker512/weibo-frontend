@@ -40,19 +40,15 @@ export default function (body, postBoxEle) {
         })
     }
     const textNum = postBoxEle.querySelector('#count')
-    const textTips = postBoxEle.querySelector('.count')
     {
         textarea.addEventListener('keyup', () => {
-            if (textarea.value.length > 0) {
-                textTips.classList.remove('hide')
-            }
             textNum.innerText = textarea.value.length
         })
     }
 
     {// 上传图片的 bottom 的点击发生的事情，引入对应的 js 和 css 文件
         const imgBottom = postBoxEle.querySelector('.icon-article-pic')
-        imgBottom.addEventListener('click', (e) => {
+        imgBottom.addEventListener('click', () => {
             import(/* webpackChunkName: "image" */ '../../less/article/image.less');
             import(/* webpackChunkName: "image" */ '../../view/article/image').then(module => {
                 const image = module.default;
@@ -61,6 +57,22 @@ export default function (body, postBoxEle) {
                 import(/* webpackChunkName: "image" */ './image').then(module => {
                     const imageController = module.default;
                     imageController(imageEle, pic)
+                });
+            });
+        })
+    }
+
+    {
+        const emojiBottom = postBoxEle.querySelector('.icon-article-emoji')
+        emojiBottom.addEventListener('click', ()=>{
+            import(/* webpackChunkName: "emoji" */ '../../less/article/emoji.less');
+            import(/* webpackChunkName: "emoji" */ '../../view/article/emoji').then(module => {
+                const emoji = module.default;
+                const emojiEle = emoji()
+                emojiBottom.parentNode.appendChild(emojiEle);
+                import(/* webpackChunkName: "emoji" */ './emoji').then(module => {
+                    const emojiController = module.default;
+                    emojiController(emojiEle, textarea, textNum)
                 });
             });
         })

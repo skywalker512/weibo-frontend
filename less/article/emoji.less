@@ -1,0 +1,44 @@
+.emoji {
+    position: absolute;
+    z-index: 10001;
+    background: #fff;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 20px 1px rgba(0,0,0,0.2);
+    color: #000000;
+    cursor: auto;
+    line-height: 18px;
+    .emoji-container {
+        padding: 16px;
+        .emoji-title {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .icon-index-close {
+            color: #000000;
+            position: absolute;
+            right: 6px;
+            top: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            &:hover {
+                color: #eb7350;
+            }
+        }
+        .emoji-box {
+            width: 258px;
+            .emojis{
+                display: flex;
+                flex-wrap: wrap;
+                div {
+                    padding: 3px;
+                    &:hover {
+                        cursor: pointer;
+                        background-color: #ccc;
+                    }
+                }
+            }
+        }
+    }
+}
