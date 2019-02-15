@@ -21,7 +21,7 @@ export default function (emojiEle, textarea, textNum) {
         emojis.forEach(value => {
             value.addEventListener('click', function(){
                 add(this.innerHTML)
-                textNum.innerText = textarea.value.length
+                if(textNum) textNum.innerText = textarea.value.length
             })
         })
     }

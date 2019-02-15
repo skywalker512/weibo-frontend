@@ -4,7 +4,7 @@ export default function() {
 
     mainEle.insertAdjacentHTML('beforeend', `
         <div class="img-container">
-            <div class="image-close"><a href="/post"><span class="icon icon-index-close"></span></a></div>
+            <div class="image-close"><a><span class="icon icon-index-close"></span></a></div>
             <div class="image-title">图片上传</div>
             <div class="image-box">
                 <div class="text"></div>

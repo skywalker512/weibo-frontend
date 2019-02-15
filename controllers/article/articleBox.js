@@ -84,4 +84,21 @@ export default async function (body, articleBoxEle, articleId) {
             })
         })
     }
+
+    { // emoji 表情
+        const emojiBottom = articleBoxEle.querySelector('.icon-article-emoji')
+        const textarea = articleBoxEle.querySelector('textarea')
+        emojiBottom.addEventListener('click', ()=>{
+            import(/* webpackChunkName: "emoji" */ '../../less/article/emoji.less');
+            import(/* webpackChunkName: "emoji" */ '../../view/article/emoji').then(module => {
+                const emoji = module.default;
+                const emojiEle = emoji()
+                emojiBottom.parentNode.appendChild(emojiEle);
+                import(/* webpackChunkName: "emoji" */ './emoji').then(module => {
+                    const emojiController = module.default;
+                    emojiController(emojiEle, textarea, null)
+                });
+            });
+        })
+    }
 }

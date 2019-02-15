@@ -66,16 +66,16 @@
                         }
                     }
                 }
-                .function {
+                >.function {
                     height: 38px;
                     border-top-width: 1px;
                     border-top-style: solid;
                     border-color: #f2f2f5;
                     display: flex;
-                    div:first-child {
+                    >div:first-child {
                         border-left-width: 0;
                     }
-                    div {
+                    >div {
                         position: relative;
                         display: flex;
                         justify-content: center;
@@ -90,13 +90,13 @@
                             color: #eb7350;
                         }
                     }
-                    span {
+                    >span {
                         line-height: 20px;
                     }
-                    .icon {
+                    >.icon {
                         margin-right: 5px;
                     }
-                    .text {
+                    >.text {
                         font-size: 14px;
                     }
                     .arrow {
@@ -141,6 +141,7 @@
                                 border-bottom-style: solid;
                                 border-color: #d9d9d9;
                                 .function {
+                                    position: relative;
                                     .icon {
                                         font-size: 20px;
                                         cursor: pointer;
