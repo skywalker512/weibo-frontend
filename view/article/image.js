@@ -9,8 +9,8 @@ export default function() {
             <div class="image-box">
                 <div class="text"></div>
                 <div class="images">
-                    <input type="file" id="fileElem" multiple accept="image/*">
-                    <label for="fileElem">
+                    <input type="file" id="upload" accept="image/*">
+                    <label for="upload">
                         <div class="add-image">+</div>
                     </label>
                 </div>

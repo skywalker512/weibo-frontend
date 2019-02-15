@@ -10,7 +10,7 @@ export default function (body, postBoxEle) {
             postBoxEle.remove();
         });
     }
-    let pic = []
+    let pic = {}
     const textarea = postBoxEle.querySelector('textarea')
     { // 发布 以及 一些检查
         const pushBotton = postBoxEle.querySelector('.push button')
@@ -27,8 +27,9 @@ export default function (body, postBoxEle) {
                 })
             }
             if (isText) {
-                ajax('POST', '/api/article', { content: textarea.value, categoryId: '5c600f1c3fae496320e819e0', cover: pic }).then(result => {
+                ajax('POST', '/api/article', { content: textarea.value, categoryId: '5c600f1c3fae496320e819e0', images: pic._id }).then(result => {
                     if (result.code === 200) {
+                        console.log(pic);
                         postBoxEle.remove()
                         let data = []
                         data[0] = result.data
@@ -59,7 +60,7 @@ export default function (body, postBoxEle) {
                 imgBottom.parentNode.appendChild(imageEle);
                 import(/* webpackChunkName: "image" */ './image').then(module => {
                     const imageController = module.default;
-                    imageController(imgBottom, imageEle, pic)
+                    imageController(imageEle, pic)
                 });
             });
         })
