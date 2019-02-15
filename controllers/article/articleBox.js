@@ -10,19 +10,19 @@ export default async function (body, articleBoxEle, articleId) {
     await articleApi(articleId)
 
     { // 框关闭
-        const closeEle = document.querySelector('.articlebox .close')
+        const closeEle = articleBoxEle.querySelector('.close')
         closeEle.addEventListener('click', () => {
-            body.removeChild(articleBoxEle);
+            articleBoxEle.remove()
             body.classList.remove('body-fixed')
         });
     }
 
     { // 点赞
-        const parise = document.querySelector('.articlebox .zan')
+        const parise = articleBoxEle.querySelector('.zan')
         parise.addEventListener('click', ()=>{
             ajax('POST', `/api/article/${articleId}/praise`).then(data=>{
                 if( data.code === 200 ){
-                    const pariseNum = document.querySelector('.articlebox .zan-text')
+                    const pariseNum = articleBoxEle.querySelector('.zan-text')
                     pariseNum.innerText = data.data
                     parise.classList.toggle('isStatus')
                 }
@@ -31,11 +31,11 @@ export default async function (body, articleBoxEle, articleId) {
     }
 
     { // 喜欢
-        const parise = document.querySelector('.articlebox .favorite')
+        const parise = articleBoxEle.querySelector('.favorite')
         parise.addEventListener('click', ()=>{
             ajax('POST', `/api/article/${articleId}/favorite`).then(data=>{
                 if( data.code === 200 ){
-                    const pariseNum = document.querySelector('.articlebox .favorite-text')
+                    const pariseNum = articleBoxEle.querySelector('.favorite-text')
                     pariseNum.innerText = data.data
                     parise.classList.toggle('isStatus')
                 }
@@ -44,8 +44,8 @@ export default async function (body, articleBoxEle, articleId) {
     }
 
     { // 评论
-        const commetBottom = document.querySelector('.articlebox .comment .submit')
-        const commet = document.querySelector('.articlebox .comment textarea')
+        const commetBottom = articleBoxEle.querySelector('.comment .submit')
+        const commet = articleBoxEle.querySelector('.comment textarea')
         commetBottom.addEventListener('click', ()=>{
             ajax('POST', `/api/article/comment`, { content: commet.value, articleId }).then(result=>{
                 if( result.code === 200  ){
@@ -53,7 +53,7 @@ export default async function (body, articleBoxEle, articleId) {
                     let data = []
                     data[0] = result.data
                     commentApi(data)
-                    const commentPraise = document.querySelector('.articlebox .comment .comment-list .right')
+                    const commentPraise = articleBoxEle.querySelector('.comment .comment-list .right')
                     commentPraise.addEventListener('click', function(){
                         const _id = this.getAttribute('data-index')
                         ajax('POST', `/api/article/comment/${_id}/praise`).then(data=>{
@@ -70,7 +70,7 @@ export default async function (body, articleBoxEle, articleId) {
     }
 
     { // 评论点赞
-        const commentPraise = document.querySelectorAll('.articlebox .comment .comment-list .right')
+        const commentPraise = articleBoxEle.querySelectorAll('.comment .comment-list .right')
         commentPraise.forEach((value)=>{
             value.addEventListener('click', function(){
                 const _id = this.getAttribute('data-index')
