@@ -1,12 +1,11 @@
 .body-fixed {
-    overflow-x: hidden;
     overflow-y: hidden;
 }
 
 .articlebox {
     bottom: 0;
     left: 0;
-    overflow: auto;
+    overflow-y: scroll;
     position: fixed;
     right: 0;
     top: 0;
@@ -202,10 +201,10 @@
                             .right {
                                 font-size: 14px;
                                 display: inline-block;
-                                .icon:hover {
+                                &:hover {
                                     color: #ed7350;
+                                    cursor: pointer;
                                 }
-                
                                 .text {
                                     font-size: 13px;
                                 }
