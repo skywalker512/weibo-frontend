@@ -40,7 +40,7 @@ export default function (data) {
                 <span class="text pinglun-text">{%= agrs[0].article.commentNum %}</span>
                 <span class="arrow"></span>
             </div>
-            {% if( Number(agrs[0].status.isParise) === 0){ %}
+            {% if( Number(agrs[0].status.isPraise) === 0){ %}
             <div class="zan">
             {% }else{ %}
             <div class="zan isStatus">

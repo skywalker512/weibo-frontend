@@ -20,7 +20,7 @@ export default async function (body, articleBoxEle, articleId) {
     { // 点赞
         const parise = document.querySelector('.articlebox .zan')
         parise.addEventListener('click', ()=>{
-            ajax('POST', `/api/article/${articleId}/parise`).then(data=>{
+            ajax('POST', `/api/article/${articleId}/praise`).then(data=>{
                 if( data.code === 200 ){
                     const pariseNum = document.querySelector('.articlebox .zan-text')
                     pariseNum.innerText = data.data
@@ -47,13 +47,40 @@ export default async function (body, articleBoxEle, articleId) {
         const commetBottom = document.querySelector('.articlebox .comment .submit')
         const commet = document.querySelector('.articlebox .comment textarea')
         commetBottom.addEventListener('click', ()=>{
-            ajax('POST', `/api/article/${articleId}/comment`, { content: commet.value }).then(result=>{
+            ajax('POST', `/api/article/comment`, { content: commet.value, articleId }).then(result=>{
                 if( result.code === 200  ){
                     commet.value = ''
                     let data = []
                     data[0] = result.data
                     commentApi(data)
+                    const commentPraise = document.querySelector('.articlebox .comment .comment-list .right')
+                    commentPraise.addEventListener('click', function(){
+                        const _id = this.getAttribute('data-index')
+                        ajax('POST', `/api/article/comment/${_id}/praise`).then(data=>{
+                            if(data.code === 200) {
+                                const pariseNum = this.querySelector('.text.zan')
+                                pariseNum.innerText = data.data
+                                this.classList.toggle('isStatus')
+                            }
+                        })
+                    })
                 }
+            })
+        })
+    }
+
+    { // 评论点赞
+        const commentPraise = document.querySelectorAll('.articlebox .comment .comment-list .right')
+        commentPraise.forEach((value)=>{
+            value.addEventListener('click', function(){
+                const _id = this.getAttribute('data-index')
+                ajax('POST', `/api/article/comment/${_id}/praise`).then(data=>{
+                    if(data.code === 200) {
+                        const pariseNum = this.querySelector('.text.zan')
+                        pariseNum.innerText = data.data
+                        this.classList.toggle('isStatus')
+                    }
+                })
             })
         })
     }
