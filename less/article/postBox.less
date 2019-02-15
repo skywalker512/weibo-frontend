@@ -17,21 +17,21 @@
 
     .inner {
         position: fixed;
-        .container {
+        >.container {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%,-50%);
             border-top: 2px solid #fa7f40;
             background-color: #FFF;
-            .title {
+            >.title {
                 border-bottom: 1px solid #f2f2f5;
                 line-height: 38px;
                 font-size: 14px;
                 font-weight: 700;
                 padding: 0 0 0 16px;
             }
-            .box {
+            >.box {
                 width: 470px;
                 margin: 0;
                 padding: 10px 16px 16px;
@@ -99,11 +99,15 @@
                 .controller {
                     display: flex;
                     justify-content: space-between;
-                    .function {
+                    >.function {
+                        position: relative;
+                        #fileElem {
+                            display: none;
+                        }
                         height: 24px;
                         padding: 10px 0 0;
                         line-height: 24px;
-                        .icon {
+                        >.icon {
                             margin: 0 23px 0 0;
                             font-size: 20px;
                             cursor: pointer;
@@ -113,6 +117,7 @@
                             color: #ffa405;
                         }
                         .icon-article-pic {
+                            display: inline;
                             color: #72a305;
                         }
                         .icon-article-video {
@@ -143,7 +148,7 @@
                     }
                 }
             }
-            .close {
+            >.close {
                 position: absolute;
                 right: 12px;
                 top: 9px;
