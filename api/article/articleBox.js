@@ -52,7 +52,7 @@ export default function (data) {
 
         <div class="comment">
             <div class="post-comment">
-                <div class="post">
+                <div class="post-input">
                     <div class="input">
                         <textarea spellcheck="false" maxlength="140"></textarea>
                     </div>
