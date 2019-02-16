@@ -9,10 +9,15 @@ export default function (imageEle, pic) {
         const closeEle = imageEle.querySelector('.image-close a')
         closeEle.addEventListener('click', (e) => {
             e.preventDefault()
-            if (window.confirm("是否取消上传图片，图片将被删除")) {
-                pic._id = [] // 将图片设置为0
+            if ( pic._id.length !== 0 ) {
+                if (window.confirm("是否取消上传图片，图片将被删除")) {
+                    pic._id = [] // 将图片设置为0
+                    imageEle.remove()
+                }
+            } else {
                 imageEle.remove()
             }
+            
         });
     }
 
