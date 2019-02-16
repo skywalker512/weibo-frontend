@@ -20,7 +20,17 @@ export default function (data) {
                 </div>
             </div>
         </div>
-        <div class="pic"></div>
+        {% if( agrs[0].article.images.length !== 0){ %}
+        <div class="pic">
+            <div class="big-image"><img src="{%= agrs[0].article.images[0].url %}"></div>
+            <div class="small-image">
+                <div class="current"><img src="{%= agrs[0].article.images[0].url %}"></div>
+                {% for(let i=1; i < agrs[0].article.images.length; i++) { %}
+                <div><img src="{%= agrs[0].article.images[i].url %}"></div>
+                {% } %}
+            </div>
+        </div>
+        {% } %}
 
         <div class="function">
             {% if( Number(agrs[0].status.isFavorite) === 0){ %}

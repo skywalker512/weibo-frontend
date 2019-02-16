@@ -1,0 +1,17 @@
+<svg width="54.99999999999999" height="54.99999999999999" xmlns="http://www.w3.org/2000/svg">
+ <title/>
+ <defs>
+  <filter height="200%" width="200%" y="-50%" x="-50%" id="svg_1_blur">
+   <feGaussianBlur stdDeviation="1.1"/>
+  </filter>
+ </defs>
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="57" width="57" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g id="icomoon-ignore"/>
+  <path filter="url(#svg_1_blur)" stroke="#000000" id="svg_1" d="m22.898772,27.495141l16.559638,-17.117341c1.376253,-1.410487 1.376253,-3.707721 0,-5.118003c-1.387233,-1.398894 -3.627932,-1.398894 -5.015574,0l-18.902085,19.561808c-0.717894,0.735761 -1.06044,1.71273 -1.029411,2.677628c-0.031097,0.966535 0.311449,1.943503 1.029411,2.67906l18.902085,19.561808c1.387642,1.39903 3.628341,1.39903 5.015574,0c1.376253,-1.421467 1.376253,-3.707516 0,-5.118003l-16.559638,-17.126957z" fill="#ffffff" stroke-width="1.5"/>
+ </g>
+</svg>

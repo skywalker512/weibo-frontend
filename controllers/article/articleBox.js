@@ -102,4 +102,46 @@ export default async function (body, articleBoxEle, articleId) {
             });
         })
     }
+
+    { // 幻灯片切换
+        // 鼠标滑动切换
+        const bigImage = articleBoxEle.querySelector('.big-image')
+        bigImage.addEventListener ('mousemove', function(event) {
+            if( event.offsetX < 300 && event.offsetX>0 ) {
+                bigImage.classList.add('isPre')
+            } else {
+                bigImage.classList.remove('isPre')
+            }
+        }, false);
+        bigImage.addEventListener('click', function(event){
+            if( event.offsetX < 300 && event.offsetX>0 ) {
+                const current = articleBoxEle.querySelector('.small-image .current')
+                const prev = current.previousElementSibling
+                if (prev) {
+                    current.classList.toggle('current')
+                    prev.classList.toggle('current')
+                    bigImage.firstChild.setAttribute('src', prev.firstChild.getAttribute('src'))
+                }
+            } else {
+                const current = articleBoxEle.querySelector('.small-image .current')
+                const next = current.nextElementSibling
+                if (next) {
+                    current.classList.toggle('current')
+                    next.classList.toggle('current')
+                    bigImage.firstChild.setAttribute('src', next.firstChild.getAttribute('src'))
+                }
+            }
+        })
+
+        // 鼠标点击切换
+        const smallImages = articleBoxEle.querySelectorAll('.small-image div')
+        smallImages.forEach(value=>{
+            value.addEventListener('click', function(){
+                const smallImagesCurrent = articleBoxEle.querySelector('.small-image .current')
+                smallImagesCurrent.classList.toggle('current')
+                this.classList.toggle('current')
+                bigImage.firstChild.setAttribute('src', this.firstChild.getAttribute('src'))
+            })
+        })
+    }
 }

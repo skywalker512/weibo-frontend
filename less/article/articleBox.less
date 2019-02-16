@@ -31,6 +31,56 @@
             }
             .box {
                 margin: 0;
+                .pic {
+                    padding: 20px 0 20px 82px;
+                    background-color: #f2f2f5;
+                    .isPre {
+                        cursor: url(../../less/svg/pic_prev.svg), auto !important;
+                    }
+                    .big-image {
+                        cursor: url(../../less/svg/pic_next.svg), auto;
+                        width: 500px;
+                        overflow: hidden;
+                        img {
+                            max-width: 500px;
+                            min-width: 500px;
+                        }
+                    }
+
+                    .small-image {
+                        margin-top: 10px;
+                        display: flex;
+                        div {
+                            cursor: pointer;
+                            width: 52px;
+                            height: 52px;
+                            overflow: hidden;
+                            img {
+                                max-width: 50px;
+                                min-width: 50px;
+                                border-width: 1px;
+                                border-style: solid;
+                                border-color: #f2f2f5;
+                                opacity: 0.5;
+                            }
+                            border-color: #f2f2f5;
+                            border-width: 2px;
+                            border-style: solid;
+                            &:hover{
+                                border-color: #fa7d3c;
+                                img {
+                                    opacity: 1;
+                                }
+                            }
+                        }
+                        .current {
+                            border-color: #fa7d3c;
+                            img {
+                                opacity: 1;
+                            }
+                        }
+                    }
+                }
                 .content {
                     display: flex;
                     padding: 20px 20px 10px 20px;
