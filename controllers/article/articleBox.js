@@ -52,6 +52,7 @@ export default async function (body, articleBoxEle, articleId) {
                     commet.value = ''
                     let data = []
                     data[0] = result.data
+                    result.data.isPraise = 0
                     commentApi(data)
                     const commentPraise = articleBoxEle.querySelector('.comment .comment-list .right')
                     commentPraise.addEventListener('click', function(){
