@@ -47,7 +47,7 @@ export default async function (body, articleBoxEle, articleId) {
         const commetBottom = articleBoxEle.querySelector('.comment .submit')
         const commet = articleBoxEle.querySelector('.comment textarea')
         commetBottom.addEventListener('click', ()=>{
-            ajax('POST', `/api/article/comment`, { content: commet.value, articleId }).then(result=>{
+            ajax('POST', `/api/comment`, { content: commet.value, articleId }).then(result=>{
                 if( result.code === 200  ){
                     commet.value = ''
                     let data = []
@@ -56,7 +56,7 @@ export default async function (body, articleBoxEle, articleId) {
                     const commentPraise = articleBoxEle.querySelector('.comment .comment-list .right')
                     commentPraise.addEventListener('click', function(){
                         const _id = this.getAttribute('data-index')
-                        ajax('POST', `/api/article/comment/${_id}/praise`).then(data=>{
+                        ajax('POST', `/api/comment/${_id}/praise`).then(data=>{
                             if(data.code === 200) {
                                 const pariseNum = this.querySelector('.text.zan')
                                 pariseNum.innerText = data.data
@@ -74,7 +74,7 @@ export default async function (body, articleBoxEle, articleId) {
         commentPraise.forEach((value)=>{
             value.addEventListener('click', function(){
                 const _id = this.getAttribute('data-index')
-                ajax('POST', `/api/article/comment/${_id}/praise`).then(data=>{
+                ajax('POST', `/api/comment/${_id}/praise`).then(data=>{
                     if(data.code === 200) {
                         const pariseNum = this.querySelector('.text.zan')
                         pariseNum.innerText = data.data

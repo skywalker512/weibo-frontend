@@ -27,7 +27,7 @@ export default function (imageEle, pic) {
                 smms(imgUpload).then(result => {
                     if (result.code === 'success') {
                         // pic.url.push(result.data.url)
-                        ajax('POST', '/api/article/image', {
+                        ajax('POST', '/api/image', {
                             hash: result.data.hash,
                             path: result.data.path,
                             height: result.data.height,
