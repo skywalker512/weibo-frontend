@@ -1,6 +1,5 @@
 import router from '../utils/router';
 import article from '../api/indexArticle';
-import {setCookie} from '../utils/cookie'
 
 import account from './account'
 import post from './post' 
@@ -11,16 +10,12 @@ export default function() {
         const ele = document.querySelector('.article_list');
         ele.innerHTML = '';
         article(1);
-        setCookie('isHave', 1)
-        setCookie('page', 1)
     });
     
     router.get('/category/:_id', function (req) {
         const ele = document.querySelector('.article_list');
         ele.innerHTML = '';
         article(1, req.params._id);
-        setCookie('isHave', 1)
-        setCookie('page', 1)
     });
 
     account(router)

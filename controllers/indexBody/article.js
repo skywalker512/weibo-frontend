@@ -2,27 +2,36 @@ import article from '../../api/indexArticle'
 import throttle from '../../utils/throttle'
 import {setCookie, getCookie} from '../../utils/cookie'
 
+let isHave = 1
+let page = 1
 export default function () {
-    window.addEventListener('scroll', throttle(function () {
+
+    window.addEventListener('load', ()=>{
+        isHave = 1
+        page = 1
+    })
+
+    window.addEventListener('scroll', throttle(async function () {
+        console.log(isHave, page)
         if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight)) {
-            let isHave = getCookie('isHave')
-            let page = getCookie('page') || 1
-            if( isHave !== 'undefined' ){
+            if( isHave !== 0 ){
                 const loading = document.querySelector('.article_tips')
                 loading.classList.remove('hide');
                 page++;
-                if (document.location.pathname.indexOf('tag') !== -1) {
-                    isHave = article(page, document.location.pathname.split('/')[2]);
+                if (document.location.pathname.indexOf('category') !== -1) {
+                    isHave = await article(page, document.location.pathname.split('/')[2]);
                 } else {
-                    isHave = article(page);
+                    isHave = await article(page);
                 }
                 loading.classList.add('hide');
-                setCookie('isHave', isHave)
-                setCookie('page', page)
             } else {
                 const noMore = document.querySelector('.article_nomore')
                 noMore.classList.remove('hide');
             }
         }
     }, 500, 1000), false);
+
+
 }
+
+export { isHave, page }
