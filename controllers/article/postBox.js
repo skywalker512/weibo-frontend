@@ -11,6 +11,7 @@ export default function (body, postBoxEle) {
         });
     }
     let pic = {}
+    pic._id = []
     const textarea = postBoxEle.querySelector('textarea')
     { // 发布 以及 一些检查
         const pushBotton = postBoxEle.querySelector('.push button')
