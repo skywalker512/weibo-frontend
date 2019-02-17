@@ -1,7 +1,7 @@
 import compile from '../../utils/compile';
 
-export default function article(article, isBegin=true) {
-    const ele = document.querySelector('.article_list')
+export default function article(article, isBegin=true, selector='.article_list') {
+    const ele = document.querySelector(selector)
     const order = isBegin ? 'afterbegin' : 'beforeend'
     ele.insertAdjacentHTML(order, 
     compile(`
