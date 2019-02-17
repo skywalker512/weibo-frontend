@@ -12,7 +12,11 @@ export default function (data) {
                 {%= agrs[0].name %}
                 </div>
                 <div class="profile">
-                {%= agrs[0].profile %}
+                {% if( agrs[0].profile ){ %}
+                    <span id="eidt-profile" class="{% if( agrs[0].isMe ){ %}editable{% } %}">{%= agrs[0].profile %}</span>
+                {% }else{ %}
+                    <span id="eidt-profile" class="{% if( agrs[0].isMe ){ %}editable{% } %}">一句话介绍一下自己吧，让别人更了解你</span>
+                {% } %}
                 </div>
             </div>
         </div>
