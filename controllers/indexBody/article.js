@@ -1,6 +1,5 @@
 import article from '../../api/indexArticle'
 import throttle from '../../utils/throttle'
-import {setCookie, getCookie} from '../../utils/cookie'
 
 let isHave = 1
 let page = 1
