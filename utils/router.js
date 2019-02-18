@@ -50,6 +50,7 @@ export default class Router {
 
     emit() { // 这里传入了所有的连接 对所有的连接都做了处理
         if (this.req.url === location.href) return // 如果当前次的点击与上次相同 结束整个过程
+        if (url.length===0) return
         this.req.url = location.href // 将当此的 url 赋值
         this.req.path = location.pathname
         this.exec() // 对当前的 连接进行配备以及执行相应的函数
@@ -58,8 +59,15 @@ export default class Router {
     go(url) { // 浏览器变化控制
         // history.pushState({ path }, null, path) // 将浏览器变化移到后面处理
         if (this.req.url === url) return // 如果当前次的点击与上次相同 结束整个过程
+        if (url.length===0) return // 以防是空地址
         this.req.url = url
         this.req.path = '/' + url.split('//')[1].split('/').slice(1).join('/')
+        this.exec() // 对当前的 连接进行配备以及执行相应的函数
+    }
+
+    goPath(path) {
+        this.req.path = path
+        this.req.url = 'http://redrock.test' + path
         this.exec() // 对当前的 连接进行配备以及执行相应的函数
     }
 
