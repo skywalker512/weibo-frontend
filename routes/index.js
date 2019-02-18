@@ -1,23 +1,14 @@
 import Router from '../utils/router';
-import article from '../api/indexArticle';
 
 import account from './account'
 import post from './post' 
 import articleBox from './articleBox'
+import indexBody from './indexBody'
+
 export default function() {
     const router = new Router(null)
-    router.get('/', function () {
-        const ele = document.querySelector('.article_list');
-        ele.innerHTML = '';
-        article(1);
-    });
-    
-    router.get('/category/:_id', function (req) {
-        const ele = document.querySelector('.article_list');
-        ele.innerHTML = '';
-        article(1, req.params._id);
-    });
 
+    indexBody(router)
     account(router)
     post(router)
     articleBox(router)

@@ -1,19 +1,19 @@
 import { loginBottomController, logoutBottomController, registerBottomController }from '../controllers/account/navbottom'
 import {userBottomController} from '../controllers/account/personBottom'
 
-export default function(route){
-    route.get('/logout', () => {
+export default function(router){
+    router.get('/logout', () => {
         logoutBottomController()
     })
 
-    route.get('/login', () => {
+    router.get('/login', () => {
         loginBottomController()
     })
 
-    route.get('/register',()=>{
+    router.get('/register',()=>{
         registerBottomController()
     })
-    route.get('/user/:_id',(req)=>{
+    router.get('/user/:_id',(req)=>{
         userBottomController(req.params._id)
     })
 

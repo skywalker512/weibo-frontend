@@ -1,7 +1,7 @@
 import {articleBottomController} from '../controllers/article/articleBottom'
 
-export default function(route){
-    route.get('/article/:_id', (req) => {
+export default function(router){
+    router.get('/article/:_id', (req) => {
         articleBottomController(req.params._id)
     })
 }
