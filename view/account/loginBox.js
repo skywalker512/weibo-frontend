@@ -21,6 +21,7 @@ export default function() {
                             <span class="icon icon-account-key"></span>
                             <input maxlength="24" name="password" id="password" type="password" value="" placeholder="密码">
                         </div>
+                        <div id="geetest"></div>
                         <div class="auto">
                                 <input type="checkbox" tabindex="5" id="login_form_savestate" node-type="savestate">
                                 <label for="login_form_savestate" class="S_txt2">下次自动登录</label>
