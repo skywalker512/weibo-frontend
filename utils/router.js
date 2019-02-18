@@ -71,13 +71,6 @@ export default class Router {
                 go(this.href) // 点击事件发生时传递给 go 函数 推入浏览器 history api
             })
         }
-
-        const config = { attributes: false, childList: true, subtree: true };
-        const callback = records =>{
-            this.proxyLinks(records[records.length - 1].target.querySelectorAll('a')) // 记录最后一个，以防触到浏览器限制
-        };
-        const observer = new MutationObserver(callback)
-        observer.observe(document.querySelector('body'), config);
     }
 
     get(path, fn) { // url 的模式匹配以及相应方法的设置入口
