@@ -120,12 +120,79 @@
                         .icon-article-video {
                             color: #40A7F2;
                         }
-                        .icon-aticle-topic {
-                            color: #5a8ce6;
-                        }
                     }
 
                     .push {
+                        position: relative;
+                        display: flex;
+                        .categorytext {
+                            position: relative;
+                            font-size: 14px;
+                            line-height: 24px;
+                            height: 24px;
+                            color: #333;
+                            padding: 10px 5px 0 5px;
+                            .tips {
+                                bottom: 20px;
+                                line-height: 14px;
+                                .icon {
+                                    height: 12px;
+                                    padding: 0;
+                                    line-height: 12px;
+                                    font-size: 12px;
+                                }
+                            }
+                        }
+                        .icon {
+                            height: 24px;
+                            padding: 10px 15px 0 0;
+                            line-height: 24px;
+                            font-size: 20px;
+                            cursor: pointer;
+                        }
+                        .icon-aticle-topic {
+                            color: #5a8ce6;
+                        }
+                        .category {
+                            top: 40px;
+                            position: absolute;
+                            z-index: 10001;
+                            background: #fff;
+                            border-radius: 3px;
+                            border: 1px solid #ccc;
+                            box-shadow: 0 4px 20px 1px rgba(0,0,0,0.2);
+                            .category-container {
+                                width: 80px;
+                                padding: 16px;
+                                .category-title {
+                                    font-size: 14px;
+                                    font-weight: 700;
+                                    margin-bottom: 10px;
+                                }
+                                .icon-index-close {
+                                    color: #000000;
+                                    position: absolute;
+                                    right: 4px;
+                                    top: 3px;
+                                    cursor: pointer;
+                                    font-size: 18px;
+                                    &:hover {
+                                        color: #eb7350;
+                                    }
+                                }
+                                .category-box {
+                                    display: flex;
+                                    flex-direction: column;
+                                    align-items: center;
+                                    .category-name {
+                                        font-size: 14px;
+                                        line-height: 40px;
+                                        height: 30px;
+                                        cursor: pointer;
+                                    }
+                                }
+                            }
+                        }
                         button {
                             margin-top: 5px;
                             width: 82px;

@@ -1,40 +1,54 @@
 import { config } from '../../config'
 import ajax from '../../utils/ajax'
+import postBox from '../../api/postBox'
 
-import article from '../../api/indexBody/article'
+import {router} from '../../routes/index'
 
-export default function (body, postBoxEle) {
+import categoryBox from './categoryBox'
+
+export default async function (body, postBoxEle) {
     { // 框关闭
         const closeEle = postBoxEle.querySelector('.close')
         closeEle.addEventListener('click', () => {
             postBoxEle.remove();
         });
     }
-    let pic = {}
-    pic._id = []
+
+    const pic = { _id: [] }
+    const category = { _id: [] }
+
     const textarea = postBoxEle.querySelector('textarea')
     { // 发布 以及 一些检查
         const pushBotton = postBoxEle.querySelector('.push button')
         pushBotton.addEventListener('click', () => {
 
             const isText = config.articlePattern.test(textarea.value)
-            let isTips = postBoxEle.querySelector('.tips .icon')
-            if (!isTips && !isText) {
+            const isCategory = !(category._id.length === 0)
+            let isTextTips = postBoxEle.querySelector('.tips.text .icon')
+            let isCategoryTips = postBoxEle.querySelector('.tips.categorytips .icon')
+            if (!isTextTips && !isText) {
                 const post = postBoxEle.querySelector('.input')
-                post.insertAdjacentHTML('afterbegin', `<div class="tips">请不要输入特殊字符，且大于10个字符小于140个字符<span class="icon icon-index-close"></span></div>`)
-                isTips = postBoxEle.querySelector('.tips .icon')
-                isTips.addEventListener('click', () => {
-                    isTips.parentNode.remove()
+                post.insertAdjacentHTML('afterbegin', `<div class="tips text">请不要输入特殊字符，且大于10个字符小于140个字符<span class="icon icon-index-close"></span></div>`)
+                isTextTips = postBoxEle.querySelector('.tips.text .icon')
+                isTextTips.addEventListener('click', () => {
+                    isTextTips.parentNode.remove()
                 })
             }
-            if (isText) {
-                ajax('POST', '/api/article', { content: textarea.value, categoryId: '5c600f1c3fae496320e819e0', images: pic._id }).then(result => {
+
+            if (!isCategoryTips && !isCategory) {
+                const text = postBoxEle.querySelector('.categorytext')
+                text.insertAdjacentHTML('afterbegin', `<div class="tips categorytips">请选择一个节点<span class="icon icon-index-close"></span></div>`)
+                isCategoryTips = postBoxEle.querySelector('.tips.categorytips .icon')
+                isCategoryTips.addEventListener('click', () => {
+                    isCategoryTips.parentNode.remove()
+                })
+            }
+
+            if (isText && isCategory) {
+                ajax('POST', '/api/article', { content: textarea.value, categoryId: category._id, images: pic._id }).then(result => {
                     if (result.code === 200) {
-                        console.log(pic);
                         postBoxEle.remove()
-                        let data = []
-                        data[0] = result.data
-                        article(data)
+                        router.goPath('/')
                     }
                 })
             }
@@ -76,6 +90,14 @@ export default function (body, postBoxEle) {
                     emojiController(emojiEle, textarea, textNum)
                 });
             });
+        })
+    }
+
+    { // 选择节点
+        const categoryBottom = postBoxEle.querySelector('.icon-aticle-topic')
+        categoryBottom.addEventListener('click', async ()=>{
+            await postBox()
+            categoryBox(postBoxEle ,category)
         })
     }
 }

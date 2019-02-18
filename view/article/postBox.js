@@ -18,9 +18,11 @@ export default function() {
                             <span class="icon icon-article-emoji"></span>
                             <span class="icon icon-article-pic"></span>
                             <span class="icon icon-article-video"></span>
-                            <span class="icon icon-aticle-topic"></span>
                         </div>
                         <div class="push">
+                            <div class="categorytext">请选择一个节点</div>
+                            <div class="icon icon-aticle-topic"></div>
+                            <div class="category"></div>
                             <a href="/done">
                                 <button type="submit">发布</button>
                             </a>
