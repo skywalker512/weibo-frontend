@@ -1,18 +1,17 @@
-export default function() {
+export default function(id) {
     const ele = document.querySelectorAll('.sidebar a');
-    ele.forEach((e) => {
-        e.addEventListener('click', function () {
-            ele.forEach((e) => {
-                e.className = '';
-            })
-            this.className = 'active';
-        })
-    })
-    const headerEle = document.querySelector('.logo a');
-    headerEle.addEventListener('click', function () {
+
+    if (id) {
         ele.forEach((e) => {
-            e.className = '';
+            if(e.href.split('//')[1].split('/')[2] === id){
+                const active = document.querySelector('.sidebar a.active')
+                active.classList.toggle('active')
+                e.classList.toggle('active')
+            }
         })
-        ele[0].className = 'active';
-    })
+    } else {
+        const active = document.querySelector('.sidebar a.active')
+        active.classList.toggle('active')
+        ele[0].classList.toggle('active')
+    }
 }
