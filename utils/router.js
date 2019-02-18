@@ -1,137 +1,85 @@
-var regexps = [
-    /[\-{}\[\]+?.,\\\^$|#\s]/g,
-    /\((.*?)\)/g,
-    /(\(\?)?:\w+/g,
-    /\*\w+/g,
-]
+export default class Router {
+    constructor(self) {
+        this.go = this.go.bind(this) // 绑定在 eventlinstener 里的 go 的 this
+        this.emit = this.emit.bind(this)
 
-function extractRoute(route) {
-    var matchs = []
-    route = route.replace(regexps[0], '\\$&')
-        .replace(regexps[1], '(?:$1)?')
-        .replace(regexps[2], function (match, optional) {
-            if (match) matchs.push(match.replace(':', ''))
-            return optional ? match : '([^/?]+)'
-        }).replace(regexps[3], function (match, optional) {
-            if (match) matchs.push(match.replace('*', ''))
-            return '([^?]*?)'
-        })
-    return {
-        regexp: new RegExp('^' + route + '(?:\\?([\\s\\S]*))?$'),
-        matchs: matchs
+        this.routes = []
+        this.req = {} // 该对象在每次请求时都会变化 类似于 ctx
+        this.self = self
+        this.regexp = []
+        window.addEventListener('popstate', this.emit, false)
     }
-}
 
-function extractParams(route, path) {
-    var params = route.exec(path).slice(1)
-    var results = []
-    for (var i = 0; i < params.length; i++) {
-        results.push(decodeURIComponent(params[i]) || null)
-    }
-    return results
-}
-
-// borwser
-function extractQuery() {
-    var url = location.search
-    var pattern = /(\w+)=([^\?|^\&]+)/ig
-    var query = {}
-    url.replace(pattern, function (a, b, c) {
-        query[b] = c;
-    })
-    return query;
-}
-
-async function exec() {
-    var match = false
-    for (var i = 0; i < data.routes.length; i++) {
-        var route = extractRoute(data.routes[i].path);
-        if (!route.regexp.test(data.req.path)) {
-            continue
+    extractRoute(route) {
+        let matchs = []
+        route = route.replace(/[\-{}\[\]+?.,\\\^$|#\s]/g, '\\$&') // 匹配正则中的保留字 将其转换为 \啥子 形成转义
+            .replace(/:\w+/g, function (match) {
+                if (match) matchs.push(match.replace(':', ''))
+                return '([^/?]+)'
+            })
+        return {
+            regexp: new RegExp(`^${route}$`),
+            matchs
         }
-        match = true
-        var results = extractParams(route.regexp, data.req.path)
-        data.req.params = data.req.params || {}
-        for (var j = 0; j < route.matchs.length; j++) {
-            data.req.params[route.matchs[j]] = results[j]
+    }
+    
+    extractParams(routeReg, path) {
+        var params = routeReg.exec(path).slice(1) // 正则 踢掉第一个 exec 返回的完整连接
+        var results = []
+        for(let i = 0, len = params.length; i < len; i++) {
+            results.push(decodeURIComponent(params[i]) || null) // 转换 为 uri
         }
-        await data.routes[i].fn.call(data, data.req, data.res, data.next)
+        return results
     }
-    if (!match && typeof data.next === 'function') await data.next()
-}
 
-// borwser
-function emit() {
-    if (data.req.url === location.href) return
-    data.req.url = location.href
-    data.req.path = location.pathname
-    data.req.query = extractQuery()
-    exec()
-}
-
-var data = { routes: [], resMethods: {} }
-async function Router(req, res, next) {
-    if (typeof document === 'object') { // browser
-        data.env = 'browser'
-        data.req = { query: {} }
-        data.res = {}
-        window.addEventListener('popstate', emit, false)
-    } else if (next) { // express
-        data.req = req
-        data.req.url = data.req.originalUrl
-        data.res = res
-        data.next = next
-        data.env = 'express'
-    } else { // koa
-        data.ctx = req
-        data.req = data.ctx.request
-        // 替换掉问号后面的参数
-        data.req.path = data.req.url.replace(/\?.*/g, '')
-        data.res = data.ctx.response
-        data.next = res
-        data.env = 'koa'
+    async exec() {
+        for(let i = 0, len = this.routes.length; i < len; i++) { // 进行匹配
+            const route = this.regexp[i]
+            if(!route.regexp.test(this.req.path)) {
+                continue
+            }
+            const result = this.extractParams(route.regexp, this.req.path)
+            this.req.params = {} // 这一次的 params
+            for(let j=0,len=route.matchs.length; j<len; j++){
+                this.req.params[route.matchs[j]] = result[j]
+            }
+            history.pushState(null, null, this.req.url)
+            await this.routes[i].fn.call(this.self, this.req)
+        }
     }
-    for (var m in data.resMethods) {
-        data.res[m] = data.resMethods[m].bind(data)
-    }
-    data.env === 'browser' ? emit() : await exec()
-}
-/**
-* browser
-* 需要注意的是调用history.pushState()或history.replaceState()不会触发popstate事件，
-* 只有在做出浏览器动作时，才会触发该事件，如用户点击浏览器的回退按钮（或者在Javascript代码中调用history.back()）
-*/
-Router.go = function (path, isReplace) {
-    if (isReplace) {
-        history.replaceState({ path: path }, null, path);
-    } else {
-        history.pushState({ path: path }, null, path);
-    }
-    emit()
-}
 
-// browser
-Router.back = function () {
-    history.back()
-}
+    emit() { // 这里传入了所有的连接 对所有的连接都做了处理
+        if (this.req.url === location.href) return // 如果当前次的点击与上次相同 结束整个过程
+        this.req.url = location.href // 将当此的 url 赋值
+        this.req.path = location.pathname
+        this.exec() // 对当前的 连接进行配备以及执行相应的函数
+    }
 
-// browser, 代理链接功能
-Router.proxyLinks = function (nodes) {
-    for (var i = 0; i < nodes.length; i++) {
-        nodes[i].addEventListener('click', function (e) {
-            Router.go(this.href);
-            e.preventDefault();
-        })
+    go(url) { // 浏览器变化控制
+        // history.pushState({ path }, null, path) // 将浏览器变化移到后面处理
+        if (this.req.url === url) return // 如果当前次的点击与上次相同 结束整个过程
+        this.req.url = url
+        this.req.path = '/' + url.split('//')[1].split('/').slice(1).join('/')
+        this.exec() // 对当前的 连接进行配备以及执行相应的函数
+    }
+
+    proxyLinks(nodes) { // 获取 a 标签的 node
+        for(let i = 0, len = nodes.length; i < len; i++) {
+            const go = this.go
+            nodes[i].addEventListener('click', function(e){
+                e.preventDefault() // 阻止 a 标签的默认行为
+                go(this.href) // 点击事件发生时传递给 go 函数 推入浏览器 history api
+            })
+        }
+    }
+
+    get(path, fn) { // url 的模式匹配以及相应方法的设置入口
+        this.routes.push({ path, fn }) // 推入记录的变量中
+    }
+
+    buildRule() {
+        for(let i = 0, len = this.routes.length; i < len; i++) { // 进行匹配
+            this.regexp.push(this.extractRoute(this.routes[i].path))
+        }
     }
 }
-Router.get = function (path, fn) {
-    data.routes.push({ path: path, fn: fn })
-}
-
-Router.addResMethod = function (name, fn) {
-    data.resMethods[name] = fn
-}
-
-
-
-module.exports = Router

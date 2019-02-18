@@ -1,11 +1,11 @@
-import router from '../utils/router';
+import Router from '../utils/router';
 import article from '../api/indexArticle';
 
 import account from './account'
 import post from './post' 
 import articleBox from './articleBox'
 export default function() {
-    router();
+    const router = new Router(null)
     router.get('/', function () {
         const ele = document.querySelector('.article_list');
         ele.innerHTML = '';
@@ -22,7 +22,9 @@ export default function() {
     post(router)
     articleBox(router)
     
-    router.proxyLinks(document.querySelectorAll('a'));
+    router.proxyLinks(document.querySelectorAll('a'))
+
+    router.buildRule()
 
     const config = { attributes: false, childList: true, subtree: true };
 
