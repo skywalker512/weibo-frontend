@@ -57,7 +57,8 @@ module.exports = {
         }),
         new webpack.HashedModuleIdsPlugin(),
         new HtmlWebpackPlugin({
-            title: 'Weibo'
+            title: 'Weibo',
+            template: './index.html'
         }),
         new CleanWebpackPlugin(['dist']),
         // new WorkboxPlugin.GenerateSW({
