@@ -22,25 +22,25 @@ export default class Router {
             matchs
         }
     }
-    
+
     extractParams(routeReg, path) {
         var params = routeReg.exec(path).slice(1) // 正则 踢掉第一个 exec 返回的完整连接
         var results = []
-        for(let i = 0, len = params.length; i < len; i++) {
+        for (let i = 0, len = params.length; i < len; i++) {
             results.push(decodeURIComponent(params[i]) || null) // 转换 为 uri
         }
         return results
     }
 
     async exec() {
-        for(let i = 0, len = this.routes.length; i < len; i++) { // 进行匹配
+        for (let i = 0, len = this.routes.length; i < len; i++) { // 进行匹配
             const route = this.regexp[i]
-            if(!route.regexp.test(this.req.path)) {
+            if (!route.regexp.test(this.req.path)) {
                 continue
             }
             const result = this.extractParams(route.regexp, this.req.path)
             this.req.params = {} // 这一次的 params
-            for(let j=0,len=route.matchs.length; j<len; j++){
+            for (let j = 0, len = route.matchs.length; j < len; j++) {
                 this.req.params[route.matchs[j]] = result[j]
             }
             history.pushState(null, null, this.req.url)
@@ -64,13 +64,20 @@ export default class Router {
     }
 
     proxyLinks(nodes) { // 获取 a 标签的 node
-        for(let i = 0, len = nodes.length; i < len; i++) {
+        for (let i = 0, len = nodes.length; i < len; i++) {
             const go = this.go
-            nodes[i].addEventListener('click', function(e){
+            nodes[i].addEventListener('click', function (e) {
                 e.preventDefault() // 阻止 a 标签的默认行为
                 go(this.href) // 点击事件发生时传递给 go 函数 推入浏览器 history api
             })
         }
+
+        const config = { attributes: false, childList: true, subtree: true };
+        const callback = records =>{
+            this.proxyLinks(records[records.length - 1].target.querySelectorAll('a')) // 记录最后一个，以防触到浏览器限制
+        };
+        const observer = new MutationObserver(callback)
+        observer.observe(document.querySelector('body'), config);
     }
 
     get(path, fn) { // url 的模式匹配以及相应方法的设置入口
@@ -78,7 +85,7 @@ export default class Router {
     }
 
     buildRule() {
-        for(let i = 0, len = this.routes.length; i < len; i++) { // 进行匹配
+        for (let i = 0, len = this.routes.length; i < len; i++) { // 进行匹配
             this.regexp.push(this.extractRoute(this.routes[i].path))
         }
     }
