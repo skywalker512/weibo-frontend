@@ -5,11 +5,13 @@ import indexBody from './view/indexBody';
 import indexApi from './api/indexFirstLoad'
 import route from './routes/index';
 import controllers from './controllers'
+import tips from './view/indexBody/tips'
 
 // 连接所有的 层级
 function render() {
     document.body.appendChild(header());
     document.body.appendChild(indexBody());
+    document.body.appendChild(tips());
 }
 
 async function api() {
