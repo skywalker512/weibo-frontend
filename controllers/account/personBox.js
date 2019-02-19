@@ -1,4 +1,4 @@
-import personApi from '../../api/personBox'
+import {personApi, personFavoriteApi} from '../../api/personBox'
 import { config } from '../../config'
 import ajax from '../../utils/ajax'
 
@@ -53,6 +53,28 @@ export default async function (body, personBoxEle, id) {
                 }
                 textarea.focus()
             }
+        })
+    }
+
+    { // 功能区
+        const favorite = personBoxEle.querySelector('.person-favorite')
+        const article = personBoxEle.querySelector('.person-article')
+        const favoriteBottom = personBoxEle.querySelector('.func-content.favorite')
+        const articleBottom = personBoxEle.querySelector('.func-content.article')
+        favoriteBottom.addEventListener('click', ()=> {
+            favoriteBottom.classList.add('active')
+            articleBottom.classList.remove('active')
+
+            article.classList.add('hide')
+            favorite.classList.remove('hide')
+            personFavoriteApi(id) // 在这里不用异步因为后面没有了
+        })
+        articleBottom.addEventListener('click', ()=> {
+            articleBottom.classList.add('active')
+            favoriteBottom.classList.remove('active')
+            
+            favorite.classList.add('hide')
+            article.classList.remove('hide')
         })
     }
 }

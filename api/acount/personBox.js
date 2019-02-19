@@ -20,7 +20,16 @@ export default function (data) {
                 </div>
             </div>
         </div>
+        <div class="function">
+            <div class="func-content favorite">
+                <div>关注</div>
+            </div>
+            <div class="func-content article active">
+                <div>帖子</div>
+            </div>
+        </div>
 
         <div class="person-article"></div>
+        <div class="person-favorite hide"></div>
     `, data));
 };
