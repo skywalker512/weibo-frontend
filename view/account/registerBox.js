@@ -30,6 +30,7 @@ export default function() {
                             <input maxlength="24" name="apassword" id="apassword" type="password" value="" placeholder="重复密码">
                         </div>
                     </div>
+                    <div id="geetest"></div>
                     <div class="button">
                         <a href="/done">
                             <button type="submit">注册</button>

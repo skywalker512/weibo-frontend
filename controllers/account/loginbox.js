@@ -2,6 +2,7 @@ import { config } from "../../config";
 import ajax from '../../utils/ajax'
 import { logined } from '../../view/account/nav'
 import userNav from '../../api/acount/userNav'
+import geetest from './geetest'
 
 export default function loginController(body, loginEle) {
     { // 登陆框关闭
@@ -12,28 +13,10 @@ export default function loginController(body, loginEle) {
     };
 
     // 登陆按钮
-    let isPass = false
+    let status = { isPass: false }
+    geetest(status)
     const buttonEle = document.querySelector('.account .button');
-    import( /* webpackIgnore: true */ 'https://static.geetest.com/static/tools/gt.js').then(()=>{
-        ajax('GET', '/api/geetest/register').then(data=>{
-            initGeetest({
-                gt: data.gt,
-                challenge: data.challenge,
-                offline: !data.success,
-                new_captcha: data.new_captcha,
-                product: 'popup',
-                width: '260px',
-            }, function(captchaObj){
-                captchaObj.appendTo('#geetest')
-                captchaObj.onSuccess(function(){
-                    const geetestRes = captchaObj.getValidate()
-                    ajax('POST', '/api/geetest/validate', geetestRes).then(res=>{
-                        isPass = res.is_pass
-                    })
-                })
-            })
-        })
-    });
+    
     { // 用户登陆信息判断
         const usernameInput = document.querySelector('#username');
         const passwordInput = document.querySelector('#password');
@@ -65,17 +48,17 @@ export default function loginController(body, loginEle) {
                 tipsPassword.parentNode.remove();
             }
 
-            if( !isPass && !tipsPass ) {
+            if( !status.isPass && !tipsPass ) {
                 passEle.insertAdjacentHTML('beforeend', `<div class="tips pass">请完成验证码<span class="icon icon-index-close"></span></div>`);
                 tipsPass = document.querySelector('.account .tips.pass .icon')
                 tipsPass.addEventListener('click', ()=>{
                     tipsPass.parentNode.remove();
                 })
-            } else if ( isPass && tipsPass ) {
+            } else if ( status.isPass && tipsPass ) {
                 tipsPass.parentNode.remove();
             }
 
-            if ( isName && isPassword && isPass) {
+            if ( isName && isPassword && status.isPass) {
                 ajax('POST', '/api/login', { info: usernameInput.value , password: passwordInput.value  }).then(result=>{
                     if( result.code === 200 ){
                         body.removeChild(loginEle);

@@ -2,6 +2,7 @@ import { config } from "../../config";
 import ajax from '../../utils/ajax'
 import { logined } from '../../view/account/nav'
 import userNav from '../../api/acount/userNav'
+import geetest from './geetest'
 
 export default function registerController(body, registerEle) {
     { // 框关闭
@@ -12,18 +13,22 @@ export default function registerController(body, registerEle) {
     };
 
     // 登陆按钮
+    let status = { isPass: false }
+    geetest(status)
     const buttonEle = document.querySelector('.account .button');
     { // 用户登陆信息判断
         const emailInput = document.querySelector('#email');
         const usernameInput = document.querySelector('#username');
         const passwordInput = document.querySelector('#password');
         const apasswordInput = document.querySelector('#apassword');
+        const passEle = document.querySelector('#geetest')
 
         buttonEle.addEventListener('click', () => {
             let tipsEmail = document.querySelector('.account .tips.email .icon')
             let tipsName = document.querySelector('.account .tips.name .icon')
             let tipsPassword = document.querySelector('.account .tips.password .icon')
             let tipsaPassword = document.querySelector('.account .tips.apassword .icon')
+            let tipsPass = document.querySelector('.account .tips.pass .icon')
             const isEmail = config.emailPattern.test(emailInput.value)
             const isName = config.namePattern.test(usernameInput.value)
             const isPassword = config.passwordPattern.test(passwordInput.value)
@@ -68,8 +73,18 @@ export default function registerController(body, registerEle) {
             } else if ( tipsaPassword && isaPassword ) {
                 tipsaPassword.parentNode.remove();
             }
+
+            if( !status.isPass && !tipsPass ) {
+                passEle.insertAdjacentHTML('beforeend', `<div class="tips pass">请完成验证码<span class="icon icon-index-close"></span></div>`);
+                tipsPass = document.querySelector('.account .tips.pass .icon')
+                tipsPass.addEventListener('click', ()=>{
+                    tipsPass.parentNode.remove();
+                })
+            } else if ( status.isPass && tipsPass ) {
+                tipsPass.parentNode.remove();
+            }
             
-            if(isEmail && isName && isPassword && isaPassword) {
+            if(isEmail && isName && isPassword && isaPassword && status.isPass) {
                 ajax('POST', '/api/register', { name: usernameInput.value , password: passwordInput.value, email: emailInput.value }).then(result=>{
                     if( result.code === 200 ){
                         body.removeChild(registerEle)
