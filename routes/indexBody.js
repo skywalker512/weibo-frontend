@@ -13,4 +13,6 @@ export default function(router){
         article(1, req.params._id);
     });
 
+    router.get('/done', function () {});
+
 }
