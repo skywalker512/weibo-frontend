@@ -4,8 +4,11 @@ export default function (data) {
     const ele = document.querySelector('.personbox .box');
     ele.insertAdjacentHTML('beforeend', compile(`
         <div class="content">
+            <input type="file" id="avatar-upload" class="hide" accept="image/*">
             <div class="avatar">
-                <img src={%= agrs[0].avatar %}>
+                <label for="avatar-upload">
+                    <img src={%= agrs[0].avatar %}>
+                </label>
             </div>
             <div class="text">
                 <div class="name">

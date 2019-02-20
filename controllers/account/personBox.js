@@ -1,6 +1,7 @@
 import {personApi, personFavoriteApi} from '../../api/personBox'
 import { config } from '../../config'
 import ajax from '../../utils/ajax'
+import upyun from '../../utils/upyun'
 
 export default async function (body, personBoxEle, id) {
     body.classList.add('body-fixed')
@@ -52,6 +53,21 @@ export default async function (body, personBoxEle, id) {
                     textarea.value = nowBio.innerHTML
                 }
                 textarea.focus()
+            }
+        })
+    }
+
+    { // 编辑头像
+        const uploadBottom = personBoxEle.querySelector('#avatar-upload')
+        uploadBottom.addEventListener('change', ()=>{
+            if(uploadBottom.files[0]) {
+                upyun(uploadBottom, `/avatar/${id}{.suffix}`).then(result=>{
+                    if(result.code === 200) {
+                        const avatar = personBoxEle.querySelector('.avatar img')
+                        avatar.setAttribute('src', result.fullurl)
+                        ajax('PATCH', `/api/user/${id}`, { avatar: result.fullurl })
+                    }
+                })
             }
         })
     }
