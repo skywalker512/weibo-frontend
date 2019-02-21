@@ -19,10 +19,9 @@ export default function article(article, isBegin=true, selector='.article_list')
                     <div class="text-box">
                         <div class="text">{%= agrs[0][i].content %}</div>
                     <div class="img">
-                        <div><img src="{%= agrs[0][i].images[0].url %}"></div>
-                        <div><img src="{%= agrs[0][i].images[1].url %}"></div>
-                        <div><img src="{%= agrs[0][i].images[2].url %}"></div>
-                        <div><img src="{%= agrs[0][i].images[3].url %}"></div>
+                        {% for(let j=0; i < agrs[0][i].images.length; j++) { %}
+                        <div><img src="{%= agrs[0][i].images[j].url %}"></div>
+                        {% } %}
                     </div>
                 {% }else{ %}
                 <a class="a_text" href="/article/{%=agrs[0][i]._id%}">
