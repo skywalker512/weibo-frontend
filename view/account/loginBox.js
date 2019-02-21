@@ -15,11 +15,11 @@ export default function() {
                     <div class="input">
                         <div class="username textarea">
                             <span class="icon icon-account-user"></span>
-                            <input autocomplete="off" maxlength="128" name="username" id="username" spellcheck="false" type="text" value="" placeholder="邮箱/会员帐号">
+                            <input autocomplete="off" maxlength="50" name="username" id="username" spellcheck="false" type="text" value="" placeholder="邮箱/会员帐号">
                         </div>
                         <div class="password textarea">
                             <span class="icon icon-account-key"></span>
-                            <input maxlength="24" name="password" id="password" type="password" value="" placeholder="密码">
+                            <input maxlength="50" name="password" id="password" type="password" value="" placeholder="密码">
                         </div>
                         <div id="geetest"></div>
                         <div class="auto">

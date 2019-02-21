@@ -15,7 +15,7 @@ export default function() {
                     <div class="input">
                         <div class="username textarea">
                             <span class="icon icon-account-user"></span>
-                            <input autocomplete="off" maxlength="20" name="email" id="email" spellcheck="false" type="text" value="" placeholder="邮箱">
+                            <input autocomplete="off" maxlength="50" name="email" id="email" spellcheck="false" type="text" value="" placeholder="邮箱">
                         </div>
                         <div class="username textarea">
                             <span class="icon icon-account-user"></span>
@@ -23,11 +23,11 @@ export default function() {
                         </div>
                         <div class="password textarea">
                             <span class="icon icon-account-key"></span>
-                            <input maxlength="24" name="password" id="password" type="password" value="" placeholder="密码">
+                            <input maxlength="50" name="password" id="password" type="password" value="" placeholder="密码">
                         </div>
                         <div class="password textarea">
                             <span class="icon icon-account-key"></span>
-                            <input maxlength="24" name="apassword" id="apassword" type="password" value="" placeholder="重复密码">
+                            <input maxlength="50" name="apassword" id="apassword" type="password" value="" placeholder="重复密码">
                         </div>
                     </div>
                     <div id="geetest"></div>
