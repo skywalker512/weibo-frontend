@@ -6,6 +6,7 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "webpack",
+        "prodbuild": "webpack --config webpack.prod.js",
         "watch": "webpack --watch",
         "start": "http-server dist"
     },
@@ -26,6 +27,7 @@
         "less": "^3.9.0",
         "less-loader": "^4.1.0",
         "mini-css-extract-plugin": "^0.5.0",
+        "uglifyjs-webpack-plugin": "^2.1.1",
         "url-loader": "^1.1.2",
         "webpack": "^4.29.0",
         "webpack-cli": "^3.2.1",

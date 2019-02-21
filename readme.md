@@ -1,5 +1,7 @@
 ## 红岩前端寒假作业
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9ad1b197-7dde-41fd-96c2-78c3a8470092/deploy-status)](https://app.netlify.com/sites/thirsty-lovelace-fe3bf8/deploys)
+
 使用原生 js，开发一个类似于微博的网站的前端部分
 
 ### 整体思路
