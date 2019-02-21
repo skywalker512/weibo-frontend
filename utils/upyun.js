@@ -12,7 +12,7 @@ export default async function upyun(fileBtn, path) {
     fd.append('policy', res.headSign.policy)
     fd.append('authorization', res.headSign.authorization);
     fd.append('file', fileBtn.files[0])
-    const response = await fetch(`http://v0.api.upyun.com/${res.bucket}`, { method: 'POST', /*headers: { 'Content-Type': 'multipart/form-data'},*/ body: fd });
+    const response = await fetch(`https://v0.api.upyun.com/${res.bucket}`, { method: 'POST', /*headers: { 'Content-Type': 'multipart/form-data'},*/ body: fd });
     const put = res1 => {
         return new Promise((reslove, reject) => {
             if(res1.code){
