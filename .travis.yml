@@ -1,10 +1,8 @@
 sudo: true
 dist: trusty
-language: generic
-addons:
-  apt:
-    packages:
-    - snapd
+language: node_js
+node_js:
+  - "11"
 cache:
   directories:
     - $HOME/.upx.db
@@ -14,7 +12,6 @@ env:
     - UPX_FILENAME=upx-linux-amd64-v${UPX_VERSION}
     - UPX_URL=http://collection.b0.upaiyun.com/softwares/upx/${UPX_FILENAME}
 install:
-  - sudo snap install node --channel=11/stable
   - echo $PATH
   - mkdir -p $HOME/bin; export PATH=$HOME/bin:$PATH
   - wget -O /tmp/${UPX_FILENAME} ${UPX_URL}
