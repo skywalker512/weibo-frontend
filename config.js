@@ -1,5 +1,5 @@
 export const config = {
-    apiUrl: process.env.FE_URL,
+    apiUrl: 'https://api.redrock.atowerlight.cn',
     passwordPattern: /^.*(?=.{4,16})(?=.*\d)(?=.*[A-Z]{2,})(?=.*[a-z]{2,}).*$/,
     emailPattern: /^.*(?=.{1,30})(?=.*[@]).*$/,
     namePattern: /^[\w_-]{6,16}$/,
