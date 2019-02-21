@@ -5,7 +5,7 @@ export default function header(link) {
     ele.insertAdjacentHTML('beforeend', compile(`
     {% for(let i=0; i < agrs[0].length; i++) { %} 
         <li>
-            <a href={%=agrs[0][i].src%}>
+            <a href="/go/{%=agrs[0][i]._id%}">
                 <span class="icon icon-{%=agrs[0][i].icon%}"></span>
                 <span class="text">{%= agrs[0][i].name %}</span>
             </a>
