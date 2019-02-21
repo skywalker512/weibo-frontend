@@ -16,7 +16,7 @@ export default function () {
 
     router.buildRule()
 
-    router.goPath(location.pathname)
+    if(location.pathname!=='/') router.goPath(location.pathname)
 
     const config = { attributes: false, childList: true, subtree: true };
     const callback = records => {
