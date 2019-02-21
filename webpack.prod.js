@@ -3,10 +3,11 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 // const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
+    mode: 'production',
     entry: {
         index: './index.js',
     },
@@ -47,6 +48,9 @@ module.exports = {
             }
         ],
     },
+    optimization: {
+        minimizer: [new TerserPlugin()],
+    },
     plugins: [
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
@@ -60,7 +64,6 @@ module.exports = {
             template: './index.html'
         }),
         new CleanWebpackPlugin(['dist']),
-        new UglifyJSPlugin(),
         // new WorkboxPlugin.GenerateSW({
         //     // 这些选项帮助 ServiceWorkers 快速启用
         //     // 不允许遗留任何“旧的” ServiceWorkers
