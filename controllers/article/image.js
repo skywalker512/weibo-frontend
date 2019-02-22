@@ -1,4 +1,4 @@
-import smms from '../../utils/smms'
+import upyun from '../../utils/upyun'
 import ajax from '../../utils/ajax'
 
 import imageApi from '../../api/article/image'
