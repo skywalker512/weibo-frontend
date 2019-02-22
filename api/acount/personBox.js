@@ -7,7 +7,7 @@ export default function (data) {
             <input type="file" id="avatar-upload" class="hide" accept="image/*">
             <div class="avatar">
                 <label for="avatar-upload">
-                    <img src={%= agrs[0].avatar %}>
+                    <img src="{%= agrs[0].avatar %}!avatar">
                 </label>
             </div>
             <div class="text">
