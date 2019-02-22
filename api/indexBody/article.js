@@ -10,7 +10,7 @@ export default function article(article, isBegin=true, selector='.article_list')
                 {% if( agrs[0][i].images.length === 1){ %}
                 <a class="a_text single-image" href="/article/{%=agrs[0][i]._id%}">
                     <div class="img">
-                        <img src="{%= agrs[0][i].images[0].url %}">
+                        <img src="{%= agrs[0][i].images[0].url %}!indexbody">
                     </div>
                     <div class="text-box">
                         <div class="text">{%= agrs[0][i].content %}</div>
@@ -19,8 +19,8 @@ export default function article(article, isBegin=true, selector='.article_list')
                     <div class="text-box">
                         <div class="text">{%= agrs[0][i].content %}</div>
                     <div class="img">
-                        {% for(let j=0; i < agrs[0][i].images.length; j++) { %}
-                        <div><img src="{%= agrs[0][i].images[j].url %}"></div>
+                        {% for(let j=0; j < 4; j++) { %}
+                            <div><img src="{%= agrs[0][i].images[j].url %}!indexbody"></div>
                         {% } %}
                     </div>
                 {% }else{ %}
@@ -30,7 +30,7 @@ export default function article(article, isBegin=true, selector='.article_list')
                 {% } %}
                         <div class="info">
                             <div class="left">
-                                <div class="avatar"><img src={%= agrs[0][i].authorId.avatar%}></div>
+                                <div class="avatar"><img src="{%= agrs[0][i].authorId.avatar%}!smallavatar"></div>
                                 <div class="name">{%= agrs[0][i].authorId.name %}</div>
                                 {% const time = new Date(agrs[0][i].updatedAt) %}
                                 <div class="time">{%= time.toLocaleString() %}</div>

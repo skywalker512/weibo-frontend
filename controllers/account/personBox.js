@@ -64,7 +64,7 @@ export default async function (body, personBoxEle, id) {
                 upyun(uploadBottom, `/avatar/${id}{.suffix}`).then(result=>{
                     if(result.code === 200) {
                         const avatar = personBoxEle.querySelector('.avatar img')
-                        avatar.setAttribute('src', result.fullurl)
+                        avatar.setAttribute('src', result.fullurl+'!avatar')
                         ajax('PATCH', `/api/user/${id}`, { avatar: result.fullurl })
                     }
                 })

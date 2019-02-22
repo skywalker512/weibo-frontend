@@ -3,6 +3,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 // const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
@@ -61,6 +62,7 @@ module.exports = {
             favicon: './less/favicon/favicon.ico'
         }),
         new CleanWebpackPlugin(['dist']),
+        new OptimizeCSSAssetsPlugin({}),
         // new WorkboxPlugin.GenerateSW({
         //     // 这些选项帮助 ServiceWorkers 快速启用
         //     // 不允许遗留任何“旧的” ServiceWorkers

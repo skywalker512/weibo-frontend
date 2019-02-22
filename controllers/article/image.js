@@ -1,4 +1,4 @@
-import smms from '../../utils/smms'
+import upyun from '../../utils/upyun'
 import ajax from '../../utils/ajax'
 
 import imageApi from '../../api/article/image'
@@ -29,20 +29,18 @@ export default function (imageEle, pic) {
                 const imagesEle = imageEle.querySelector('#upload')
                 const loadingEle = loading()
                 imagesEle.insertAdjacentElement('beforebegin', loadingEle)
-                smms(imgUpload).then(result => {
-                    if (result.code === 'success') {
-                        // pic.url.push(result.data.url)
+                upyun(imgUpload, `/images/{year}/{mon}/{day}/{hour}_{min}_{sec}_{filename}{.suffix}`).then(result=>{
+                    if(result.code === 200) {
                         ajax('POST', '/api/image', {
-                            hash: result.data.hash,
-                            path: result.data.path,
-                            height: result.data.height,
-                            width: result.data.width,
-                            size: result.data.size,
-                            location: 'smms',
+                            path: result['url'],
+                            height: result['image-height'],
+                            width: result['image-width'],
+                            size: result['file_size'],
+                            location: 'upyun',
                         }).then(res => {
                             if (res.code === 200) {
                                 loadingEle.remove()
-                                imageApi(result.data.url)
+                                imageApi(result.fullurl)
                                 pic._id.push(res.data)
                             }
                         })

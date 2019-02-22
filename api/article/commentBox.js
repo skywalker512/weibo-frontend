@@ -7,7 +7,7 @@ export default function (data) {
             <div class="text">{%= agrs[0][i].content %}</div>
             <div class="info">
                 <div class="left">
-                    <span class="avatar"><img src={%= agrs[0][i].authorId.avatar%}></span>
+                    <span class="avatar"><img src="{%= agrs[0][i].authorId.avatar%}!smallavatar"></span>
                     <span class="name">{%= agrs[0][i].authorId.name %}</span>
                     {% const time = new Date(agrs[0][i].updatedAt) %}
                     <span class="time">{%= time.toLocaleString() %}</span>
