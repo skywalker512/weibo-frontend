@@ -50,7 +50,6 @@ export default class Router {
 
     emit() { // 这里传入了所有的连接 对所有的连接都做了处理
         if (this.req.url === location.href) return // 如果当前次的点击与上次相同 结束整个过程
-        if (url.length===0) return
         this.req.url = location.href // 将当此的 url 赋值
         this.req.path = location.pathname
         this.exec() // 对当前的 连接进行配备以及执行相应的函数
