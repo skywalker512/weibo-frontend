@@ -3,6 +3,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 // const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
@@ -15,6 +16,11 @@ module.exports = {
         chunkFilename: '[name].[chunkhash].bundle.js',
         path: path.resolve(__dirname, 'dist'),
         publicPath: '/',
+    },
+    optimization: {
+        minimizer: [
+            new OptimizeCSSAssetsPlugin({})
+        ]
     },
     module: {
         rules: [
