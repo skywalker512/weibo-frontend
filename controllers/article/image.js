@@ -40,7 +40,7 @@ export default function (imageEle, pic) {
                         }).then(res => {
                             if (res.code === 200) {
                                 loadingEle.remove()
-                                imageApi(result.data.url)
+                                imageApi(result.fullurl)
                                 pic._id.push(res.data)
                             }
                         })
