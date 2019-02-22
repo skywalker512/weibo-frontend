@@ -19,7 +19,7 @@ export default function article(article, isBegin=true, selector='.article_list')
                     <div class="text-box">
                         <div class="text">{%= agrs[0][i].content %}</div>
                     <div class="img">
-                        {% for(let j=0; j < agrs[0][i].images.length; j++) { %}
+                        {% for(let j=0; j < 4; j++) { %}
                             <div><img src="{%= agrs[0][i].images[j].url %}!indexbody"></div>
                         {% } %}
                     </div>
