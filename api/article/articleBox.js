@@ -5,7 +5,7 @@ export default function (data) {
     ele.insertAdjacentHTML('beforeend', compile(`
         <div class="content">
             <div class="avatar">
-                <img src={%= agrs[0].article.authorId.avatar%}>
+                <img src="{%= agrs[0].article.authorId.avatar%}!middleavatar">
             </div>
             <div class="text">
                 <div class="name">
