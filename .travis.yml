@@ -17,10 +17,6 @@ install:
   - wget -O /tmp/${UPX_FILENAME} ${UPX_URL}
   - install /tmp/${UPX_FILENAME} $HOME/bin/upx
   - npm install
-  - npm install -g codecov istanbul
-  - npm i mocha
 script:
-  - istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
-  - codecov
   - npm run prodbuild
   - upx --auth $UPX_AUTH sync --delete --strong ./dist
