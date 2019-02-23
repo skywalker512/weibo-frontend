@@ -24,7 +24,7 @@ export default function (data) {
         <div class="pic">
             <div class="big-image"><img src="{%= agrs[0].article.images[0].url %}"></div>
             <div class="small-image">
-                <div class="current"><img src="{%= agrs[0].article.images[0].url %}"></div>
+                <div class="current"><img src="{%= agrs[0].article.images[0].url %}!carousel"></div>
                 {% for(let i=1; i < agrs[0].article.images.length; i++) { %}
                 <div><img src="{%= agrs[0].article.images[i].url %}"></div>
                 {% } %}
