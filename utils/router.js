@@ -43,7 +43,7 @@ export default class Router {
             for (let j = 0, len = route.matchs.length; j < len; j++) {
                 this.req.params[route.matchs[j]] = result[j]
             }
-            history.pushState(null, null, this.req.url)
+            history.pushState({url: this.req.url}, null, this.req.url)
             await this.routes[i].fn.call(this.self, this.req)
         }
     }
@@ -52,7 +52,9 @@ export default class Router {
         if (this.req.url === location.href) return // 如果当前次的点击与上次相同 结束整个过程
         this.req.url = location.href // 将当此的 url 赋值
         this.req.path = location.pathname
-        this.exec() // 对当前的 连接进行配备以及执行相应的函数
+        if (document.body.children.length<5) { // 临时解决 如果有两个框就不执行
+            this.exec() // 对当前的 连接进行配备以及执行相应的函数
+        }
     }
 
     go(url) { // 浏览器变化控制
