@@ -14,47 +14,12 @@
 - [整体结构](docs/architecture/intro.md)
 - [概论](docs/general)
   - [单页](docs/general/spa.md)
-  - [缓存](docs/general/cache.md)
-  - [调试](docs/general/debugging.md)
+  - [路由](docs/general/router.md)
+  - [模板](docs/general/template.md)
   - [部署](docs/general/deployment.md)
   - [开发](docs/general/develop.md)
   - [PWA](docs/general/pwa.md)
-- [样式](docs/styling/intro.md)
-  - [介绍](docs/styling/intro.md)
-  - [Styled-Component](docs/styling/styled-component.md)
-  - [主题](docs/styling/theming.md)
-- [JS](docs/js)
-  - [介绍](docs/js/intro.md)
-  - [GraphQL](docs/js/GrqphQL.md)
-  - [状态管理](docs/js/state-management.md)
-  - [权限机制](docs/js/auth.md)
-  - [异步处理](docs/js/async.md)
-  - [组件通信](docs/js/communication.md)
-  - [I18n](docs/js/i18n.md)
-  - [路由](docs/js/routing.md)
-- [测试](docs/testing)
-  - [单元测试](docs/testing/unit-testing.md)
-  - [端对端测试](docs/testing/e2e-testing.md)
-- [统计分析](docs/analysis)
-  - [Apollo 引擎](docs/analysis/apollo-engine.md)
-  - [错误追踪](docs/analysis/error-tracking.md)
-  - [谷歌分析](docs/analysis/google-analysis.md)
-- [路线图](docs/Roadmap.md)
-- [问答](docs/FAQ.md)
-- [贡献](docs/Contributing.md)
-- [常见错误](docs/Troubleshooting.md)
 
-
-* 使用 webpack 来整合 js,less
-
-* 单页应用 PWA
-
-  使用 workbox-webpack-plugin 来实现（不知是不是叫引用了库）
-
-* 模块化设计
-  由于不能使用框架，并且使用原生操作 dom 实在太繁杂，所以使用 es2015 的模板字符串来放置 html 模板，并将网页分为几块分别放入不同的 js 中，再通过简单的模板解析来生成 html 文件。
-
-* ... ...
 
 
 ### 后端
