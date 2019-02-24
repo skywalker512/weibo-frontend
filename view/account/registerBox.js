@@ -6,7 +6,7 @@ export default function() {
         <div class="outer"></div>
         <div class="inner">
             <div class="container">
-                <div class="close"><a href="/done"><span class="icon icon-index-close"></span></a></div>
+                <div class="close"><a href=""><span class="icon icon-index-close"></span></a></div>
                 <div class="title">
                     <div class="text active">邮箱注册</div>
                     <div class="text">手机注册</div>

@@ -6,7 +6,7 @@ export default function() {
         <div class="outer"></div>
         <div class="inner">
             <div class="container">
-                <div class="close"><a href="/done"><span class="icon icon-index-close"></span></a></div>
+                <div class="close"><a href=""><span class="icon icon-index-close"></span></a></div>
                 <div class="title">有什么新鲜事想告诉大家?</div>
                 <div class="box">
                     <div class="count">已输入<span id="count">0</span>字</div>

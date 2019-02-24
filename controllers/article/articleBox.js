@@ -12,6 +12,7 @@ export default async function (body, articleBoxEle, articleId) {
     { // 框关闭
         const closeEle = articleBoxEle.querySelector('.close')
         closeEle.addEventListener('click', () => {
+            history.back()
             articleBoxEle.remove()
             body.classList.remove('body-fixed')
         });

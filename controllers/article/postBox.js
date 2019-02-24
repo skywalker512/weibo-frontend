@@ -10,6 +10,7 @@ export default async function (body, postBoxEle) {
     { // 框关闭
         const closeEle = postBoxEle.querySelector('.close')
         closeEle.addEventListener('click', () => {
+            history.back()
             postBoxEle.remove();
         });
     }

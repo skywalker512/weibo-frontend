@@ -8,6 +8,7 @@ export default function loginController(body, loginEle) {
     { // 登陆框关闭
         const closeEle = document.querySelector('.account .close')
         closeEle.addEventListener('click', () => {
+            history.back()
             body.removeChild(loginEle);
         });
     };

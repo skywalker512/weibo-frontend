@@ -8,6 +8,7 @@ export default function registerController(body, registerEle) {
     { // 框关闭
         const closeEle = document.querySelector('.account .close')
         closeEle.addEventListener('click', () => {
+            history.back()
             body.removeChild(registerEle);
         });
     };

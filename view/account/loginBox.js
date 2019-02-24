@@ -6,7 +6,7 @@ export default function() {
         <div class="outer"></div>
         <div class="inner">
             <div class="container">
-                <div class="close"><a href="/done"><span class="icon icon-index-close"></span></a></div>
+                <div class="close"><a href=""><span class="icon icon-index-close"></span></a></div>
                 <div class="title">
                     <div class="text active">账号登陆</div>
                     <div class="text">短信登陆</div>

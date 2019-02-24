@@ -5,7 +5,7 @@ export default function() {
     mainEle.insertAdjacentHTML('beforeend', `
         <div class="inner">
             <div class="container">
-                <div class="close"><a href="/"><span class="icon icon-index-close"></span></a></div>
+                <div class="close"><a href=""><span class="icon icon-index-close"></span></a></div>
                 <div class="title">用户详情</div>
                 <div class="box"></div>
             </div>
