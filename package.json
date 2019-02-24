@@ -33,5 +33,7 @@
         "webpack-cli": "^3.2.1",
         "workbox-webpack-plugin": "^3.6.3"
     },
-    "dependencies": {}
+    "dependencies": {
+        "dotenv": "^6.2.0"
+    }
 }
