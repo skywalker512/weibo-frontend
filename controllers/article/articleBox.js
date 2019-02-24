@@ -121,7 +121,7 @@ export default async function (body, articleBoxEle, articleId) {
                     if (prev) {
                         current.classList.toggle('current')
                         prev.classList.toggle('current')
-                        bigImage.firstChild.setAttribute('src', prev.firstChild.getAttribute('src'))
+                        bigImage.firstChild.setAttribute('src', prev.firstChild.getAttribute('src').replace('!carousel', ''))
                     }
                 } else {
                     const current = articleBoxEle.querySelector('.small-image .current')
@@ -129,7 +129,7 @@ export default async function (body, articleBoxEle, articleId) {
                     if (next) {
                         current.classList.toggle('current')
                         next.classList.toggle('current')
-                        bigImage.firstChild.setAttribute('src', next.firstChild.getAttribute('src'))
+                        bigImage.firstChild.setAttribute('src', next.firstChild.getAttribute('src').replace('!carousel', ''))
                     }
                 }
             })
@@ -143,7 +143,7 @@ export default async function (body, articleBoxEle, articleId) {
                     const smallImagesCurrent = articleBoxEle.querySelector('.small-image .current')
                     smallImagesCurrent.classList.toggle('current')
                     this.classList.toggle('current')
-                    bigImage.firstChild.setAttribute('src', this.firstChild.getAttribute('src'))
+                    bigImage.firstChild.setAttribute('src', this.firstChild.getAttribute('src').replace('!carousel', ''))
                 })
             })
         }
