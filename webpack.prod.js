@@ -1,5 +1,3 @@
-require('dotenv').config()
-
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require('webpack');
@@ -66,7 +64,7 @@ module.exports = {
         new CleanWebpackPlugin(['dist']),
         new OptimizeCSSAssetsPlugin({}),
         new webpack.DefinePlugin({
-            BE_URL: process.env.BE_URL
+            BE_URL: JSON.stringify(process.env.BE_URL)
         }),
         // new WorkboxPlugin.GenerateSW({
         //     // 这些选项帮助 ServiceWorkers 快速启用
