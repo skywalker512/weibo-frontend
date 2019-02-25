@@ -67,6 +67,7 @@ export default class Router {
     }
 
     goPath(path) {
+        if(!this.req.path) history.pushState(null,null,'/')
         this.req.path = path
         this.req.url = `${location.protocol}//${location.hostname}${path}`
         this.exec() // 对当前的 连接进行配备以及执行相应的函数
