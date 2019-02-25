@@ -57,7 +57,7 @@ module.exports = {
         }),
         new webpack.HashedModuleIdsPlugin(),
         new HtmlWebpackPlugin({
-            title: BE_TITLE,
+            title: process.env.BE_TITLE,
             template: './index.html',
             favicon: './less/favicon/favicon.ico'
         }),
