@@ -78,13 +78,17 @@ export default async function (body, personBoxEle, id) {
         const article = personBoxEle.querySelector('.person-article')
         const favoriteBottom = personBoxEle.querySelector('.func-content.favorite')
         const articleBottom = personBoxEle.querySelector('.func-content.article')
+        let mark = 0
         favoriteBottom.addEventListener('click', ()=> {
             favoriteBottom.classList.add('active')
             articleBottom.classList.remove('active')
 
             article.classList.add('hide')
             favorite.classList.remove('hide')
-            personFavoriteApi(id) // 在这里不用异步因为后面没有了
+            if (mark===0) {
+                personFavoriteApi(id) // 在这里不用异步因为后面没有了
+                mark = 1
+            }
         })
         articleBottom.addEventListener('click', ()=> {
             articleBottom.classList.add('active')
