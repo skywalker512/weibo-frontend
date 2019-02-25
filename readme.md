@@ -19,6 +19,7 @@
   - [部署](docs/general/deployment.md)
   - [开发](docs/general/develop.md)
   - [PWA](docs/general/pwa.md)
+  - [权限](docs/general/power.md)
 
 
 
