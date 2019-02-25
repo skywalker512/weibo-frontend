@@ -5,11 +5,15 @@ export default function (data) {
     ele.insertAdjacentHTML('beforeend', compile(`
         <div class="content">
             <div class="avatar">
-                <img src="{%= agrs[0].article.authorId.avatar%}!middleavatar">
+                <a href="/user/{%= agrs[0].article.authorId._id %}">
+                    <img src="{%= agrs[0].article.authorId.avatar%}!middleavatar">
+                </a>
             </div>
             <div class="text">
                 <div class="name">
-                    {%= agrs[0].article.authorId.name %}
+                    <a href="/user/{%= agrs[0].article.authorId._id %}">
+                        {%= agrs[0].article.authorId.name %}
+                    </a>
                 </div>
                 {% const time = new Date(agrs[0].article.updatedAt) %}
                 <div class="time">
