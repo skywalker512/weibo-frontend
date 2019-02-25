@@ -59,12 +59,14 @@ module.exports = {
         }),
         new webpack.HashedModuleIdsPlugin(),
         new HtmlWebpackPlugin({
-            title: 'Weibo',
-            template: './index.html'
+            title: BE_TITLE,
+            template: './index.html',
+            favicon: './less/favicon/favicon.ico'
         }),
         new CleanWebpackPlugin(['dist']),
         new webpack.DefinePlugin({
-            BE_URL: JSON.stringify(process.env.BE_URL)
+            BE_URL: JSON.stringify(process.env.BE_URL),
+            BE_TITLE: JSON.stringify(process.env.BE_TITLE),
         }),
         // new WorkboxPlugin.GenerateSW({
         //     // 这些选项帮助 ServiceWorkers 快速启用
