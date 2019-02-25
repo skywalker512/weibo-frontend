@@ -21,6 +21,7 @@ export default function loginController(body, loginEle) {
     { // 用户登陆信息判断
         const usernameInput = document.querySelector('#username');
         const passwordInput = document.querySelector('#password');
+        const isKeepInput = document.querySelector('#login_form_savestate')
         const passEle = document.querySelector('#geetest')
         buttonEle.addEventListener('click', () => {
             let tipsName = document.querySelector('.account .tips.name .icon')
@@ -59,8 +60,9 @@ export default function loginController(body, loginEle) {
                 tipsPass.parentNode.remove();
             }
 
+            const isKeep = isKeepInput.checked ? 1 : 0
             if ( isName && isPassword && status.isPass) {
-                ajax('POST', '/api/login', { info: usernameInput.value , password: passwordInput.value  }).then(result=>{
+                ajax('POST', '/api/login', { info: usernameInput.value , password: passwordInput.value, isKeep }).then(result=>{
                     if( result.code === 200 ){
                         body.removeChild(loginEle);
                         const ele = document.querySelector('.account-list');
