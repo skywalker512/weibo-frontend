@@ -64,41 +64,53 @@ export default async function (body, postBoxEle) {
 
     {// 上传图片的 bottom 的点击发生的事情，引入对应的 js 和 css 文件
         const imgBottom = postBoxEle.querySelector('.icon-article-pic')
+        let mark = 0
         imgBottom.addEventListener('click', () => {
-            import(/* webpackChunkName: "image" */ '../../less/article/image.less');
-            import(/* webpackChunkName: "image" */ '../../view/article/image').then(module => {
-                const image = module.default;
-                const imageEle = image()
-                imgBottom.parentNode.appendChild(imageEle);
-                import(/* webpackChunkName: "image" */ './image').then(module => {
-                    const imageController = module.default;
-                    imageController(imageEle, pic)
+            if (mark === 0) {
+                import(/* webpackChunkName: "image" */ '../../less/article/image.less');
+                import(/* webpackChunkName: "image" */ '../../view/article/image').then(module => {
+                    const image = module.default;
+                    const imageEle = image()
+                    imgBottom.parentNode.appendChild(imageEle);
+                    import(/* webpackChunkName: "image" */ './image').then(module => {
+                        const imageController = module.default;
+                        imageController(imageEle, pic)
+                    });
                 });
-            });
+                mark = 1
+            }
         })
     }
 
     {
         const emojiBottom = postBoxEle.querySelector('.icon-article-emoji')
+        let mark = 0
         emojiBottom.addEventListener('click', ()=>{
-            import(/* webpackChunkName: "emoji" */ '../../less/article/emoji.less');
-            import(/* webpackChunkName: "emoji" */ '../../view/article/emoji').then(module => {
-                const emoji = module.default;
-                const emojiEle = emoji()
-                emojiBottom.parentNode.appendChild(emojiEle);
-                import(/* webpackChunkName: "emoji" */ './emoji').then(module => {
-                    const emojiController = module.default;
-                    emojiController(emojiEle, textarea, textNum)
+            if (mark === 0) {
+                import(/* webpackChunkName: "emoji" */ '../../less/article/emoji.less');
+                import(/* webpackChunkName: "emoji" */ '../../view/article/emoji').then(module => {
+                    const emoji = module.default;
+                    const emojiEle = emoji()
+                    emojiBottom.parentNode.appendChild(emojiEle);
+                    import(/* webpackChunkName: "emoji" */ './emoji').then(module => {
+                        const emojiController = module.default;
+                        emojiController(emojiEle, textarea, textNum)
+                    });
                 });
-            });
+                mark = 1
+            }
         })
     }
 
     { // 选择节点
         const categoryBottom = postBoxEle.querySelector('.icon-aticle-topic')
+        let mark = 0
         categoryBottom.addEventListener('click', async ()=>{
-            await postBox()
-            categoryBox(postBoxEle ,category)
+            if (mark === 0) {
+                await postBox()
+                categoryBox(postBoxEle ,category)
+                mark = 1
+            }
         })
     }
 }
