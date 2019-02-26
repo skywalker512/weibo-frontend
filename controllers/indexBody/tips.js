@@ -8,7 +8,7 @@ export default function () {
     });
 
     setTimeout(()=>{
-        bodyTips.removeChild(now);
+        if(bodyTips.contains(now)) bodyTips.removeChild(now);
     }, 5000)
 
     if (tips.length > 3) {
