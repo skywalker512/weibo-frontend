@@ -5,13 +5,15 @@ export default function(id) {
         ele.forEach((e) => {
             if(e.href.split('//')[1].split('/')[2] === id){
                 const active = document.querySelector('.sidebar a.active')
-                active.classList.toggle('active')
-                e.classList.toggle('active')
+                active.classList.remove('active')
+                e.classList.add('active')
+                document.title = e.textContent + ' - Weibo'
             }
         })
     } else {
         const active = document.querySelector('.sidebar a.active')
-        active.classList.toggle('active')
-        ele[0].classList.toggle('active')
+        active.classList.remove('active')
+        ele[0].classList.add('active')
+        document.title = 'Weibo'
     }
 }

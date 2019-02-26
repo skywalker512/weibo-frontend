@@ -10,8 +10,6 @@ export default async function (page, tag) {
     let isHave
     await ajax('GET', url).then(result=>{
         isHave = result.data.length
-        if (tag) document.title = result.data[0].categoryId.name + ' - Weibo'
-        else document.title = 'Weibo'
         article(result.data, false)
     })
     siderbar(tag)
