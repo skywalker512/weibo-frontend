@@ -14,6 +14,9 @@ export default function (data) {
                     <a href="/user/{%= agrs[0].article.authorId._id %}">
                         {%= agrs[0].article.authorId.name %}
                     </a>
+                    <div class="star">
+                        <span class="icon icon-plus"></span>关注
+                    </div>
                 </div>
                 {% const time = new Date(agrs[0].article.updatedAt) %}
                 <div class="time">
