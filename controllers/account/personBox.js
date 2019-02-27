@@ -2,6 +2,8 @@ import {personApi, personFavoriteApi} from '../../api/personBox'
 import { config } from '../../config'
 import ajax from '../../utils/ajax'
 import upyun from '../../utils/upyun'
+import tipsApi from '../../api/indexBody/tips'
+import tipsController from '../indexBody/tips'
 
 export default async function (body, personBoxEle, id) {
     body.classList.add('body-fixed')
@@ -42,6 +44,8 @@ export default async function (body, personBoxEle, id) {
                             })
                         } else {
                             editBio.innerHTML = prev // 如果不匹配使用原来文本
+                            tipsApi('请输入5到20个字符的个人介绍', 'error')
+                            tipsController()
                         }
                     }
                 }
