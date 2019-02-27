@@ -14,15 +14,17 @@ export default function registerController(body, registerEle) {
     };
 
     // 登陆按钮
-    let status = { isPass: false }
+    let status = { isPass: false, captchaObj: {} }
     geetest(status)
     const buttonEle = document.querySelector('.account .button');
+    let wait=60 // 邮箱验证码倒计时，用于重置
     { // 用户登陆信息判断
         const emailInput = document.querySelector('#email');
         const usernameInput = document.querySelector('#username');
         const passwordInput = document.querySelector('#password');
         const apasswordInput = document.querySelector('#apassword');
         const passEle = document.querySelector('#geetest')
+        const testInput = document.querySelector('#testemail')
 
         buttonEle.addEventListener('click', () => {
             let tipsEmail = document.querySelector('.account .tips.email .icon')
@@ -30,10 +32,12 @@ export default function registerController(body, registerEle) {
             let tipsPassword = document.querySelector('.account .tips.password .icon')
             let tipsaPassword = document.querySelector('.account .tips.apassword .icon')
             let tipsPass = document.querySelector('.account .tips.pass .icon')
+            let tipsTest = document.querySelector('.account .tips.test .icon')
             const isEmail = config.emailPattern.test(emailInput.value)
             const isName = config.namePattern.test(usernameInput.value)
             const isPassword = config.passwordPattern.test(passwordInput.value)
             const isaPassword = passwordInput.value === apasswordInput.value
+            const isTest = config.testPattern.test(testInput.value)
 
             if ( !isEmail && !tipsEmail ) {
                 emailInput.insertAdjacentHTML('beforebegin', `<div class="tips email">请输入正确的邮箱地址<span class="icon icon-index-close"></span></div>`);
@@ -43,6 +47,16 @@ export default function registerController(body, registerEle) {
                 })
             } else if (isEmail && tipsEmail) {
                 tipsEmail.parentNode.remove();
+            }
+
+            if ( !isTest && !tipsTest ) {
+                testInput.insertAdjacentHTML('beforebegin', `<div class="tips test">请输入6位验证码<span class="icon icon-index-close"></span></div>`);
+                tipsTest = document.querySelector('.account .tips.test .icon')
+                tipsTest.addEventListener('click', ()=>{
+                    tipsTest.parentNode.remove();
+                })
+            } else if (isTest && tipsTest) {
+                tipsTest.parentNode.remove();
             }
 
             if( !isName && !tipsName ) {
@@ -85,17 +99,61 @@ export default function registerController(body, registerEle) {
                 tipsPass.parentNode.remove();
             }
             
-            if(isEmail && isName && isPassword && isaPassword && status.isPass) {
-                ajax('POST', '/api/register', { name: usernameInput.value , password: passwordInput.value, email: emailInput.value }).then(result=>{
+            if(isEmail && isName && isPassword && isaPassword && status.isPass && isTest) {
+                ajax('POST', '/api/register', { name: usernameInput.value , password: passwordInput.value, email: emailInput.value, code: testInput.value }).then(result=>{
                     if( result.code === 200 ){
                         body.removeChild(registerEle)
                         const ele = document.querySelector('.account-list');
                         ele.innerHTML=''
                         ele.appendChild(logined())
                         userNav(result.data)
+                    } else {
+                        wait = 0
+                        status.captchaObj.reset()
                     }
                 })
             };
         });
     };
+    { // 邮箱验证码
+        const testButton = registerEle.querySelector('#testemailbutton')  
+        function time(ele) {
+            if (wait === 0) {
+                ele.innerText='获取验证码'
+                wait = 60
+            } else {
+                ele.innerText=`${wait} 秒`
+                wait--
+                setTimeout(function() {
+                    time(testButton)
+                },
+                1000)
+            }
+        }
+        testButton.addEventListener('click', ()=>{
+            if (wait === 60) {
+                const emailInput = document.querySelector('#email')
+                let tipsEmail = document.querySelector('.account .tips.email .icon')
+                const isEmail = config.emailPattern.test(emailInput.value)
+                if ( !isEmail && !tipsEmail ) {
+                    emailInput.insertAdjacentHTML('beforebegin', `<div class="tips email">请输入正确的邮箱地址<span class="icon icon-index-close"></span></div>`);
+                    tipsEmail = document.querySelector('.account .tips.email .icon')
+                    tipsEmail.addEventListener('click', ()=>{
+                        tipsEmail.parentNode.remove();
+                    })
+                } else if (isEmail && tipsEmail) {
+                    tipsEmail.parentNode.remove();
+                }
+                if (isEmail) {
+                    time(testButton)
+                    ajax('POST', '/api/user/verifyemail', {email: emailInput.value}).then(res=>{
+                        if(res.code !== 200) {
+                            wait = 0
+                        }
+                    })
+                }
+            }
+
+        })
+    }
 }

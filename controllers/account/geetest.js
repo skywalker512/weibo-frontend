@@ -18,6 +18,7 @@ export default function (status) {
                         status.isPass = res.is_pass
                     })
                 })
+                status.captchaObj = captchaObj
             })
         })
     });

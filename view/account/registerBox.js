@@ -13,9 +13,15 @@ export default function() {
                 </div>
                 <div class="controller">
                     <div class="input">
-                        <div class="username textarea">
-                            <span class="icon icon-account-user"></span>
+                        <div class="email textarea">
+                            <span class="icon icon-account-mail"></span>
                             <input autocomplete="off" maxlength="50" name="email" id="email" spellcheck="false" type="text" value="" placeholder="邮箱">
+                        </div>
+                        <div class="test">
+                            <div id="testemailbutton">获取验证码</div>
+                            <div class="testemail textarea">
+                                <input autocomplete="off" maxlength="50" name="testemail" id="testemail" spellcheck="false" type="text" value="" placeholder="验证码">
+                            </div>
                         </div>
                         <div class="username textarea">
                             <span class="icon icon-account-user"></span>
