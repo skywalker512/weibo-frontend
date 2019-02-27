@@ -8,11 +8,11 @@ export default function() {
             <div class="container">
                 <div class="close"><a href=""><span class="icon icon-index-close"></span></a></div>
                 <div class="title">
-                    <div class="text active">账号登陆</div>
-                    <div class="text">短信登陆</div>
+                    <div class="text active" name="email">账号登陆</div>
+                    <div class="text" name="phone">短信登陆</div>
                 </div>
                 <div class="controller">
-                    <div class="input">
+                    <div class="input" id="loginbyemail">
                         <div class="username textarea">
                             <span class="icon icon-account-user"></span>
                             <input autocomplete="off" maxlength="50" name="username" id="username" spellcheck="false" type="text" value="" placeholder="邮箱/会员帐号">
@@ -28,6 +28,22 @@ export default function() {
                                 <span class="forget">
                                     忘记密码
                                 </span>
+                        </div>
+                    </div>
+                    <div class="input hide" id="loginbyphone">
+                        <div class="phone textarea">
+                            <span class="icon icon-phone-square"></span>
+                            <input autocomplete="off" maxlength="50" name="phone" id="phone" spellcheck="false" type="text" value="" placeholder="手机号码">
+                        </div>
+                        <div class="test">
+                            <div id="testephonebutton">获取验证码</div>
+                            <div class="testephone textarea">
+                                <input autocomplete="off" maxlength="50" name="testphone" id="testphone" spellcheck="false" type="text" value="" placeholder="验证码">
+                            </div>
+                        </div>
+                        <div class="auto">
+                                <input type="checkbox" tabindex="5" id="login_form_savestate" node-type="savestate">
+                                <label for="login_form_savestate" class="S_txt2">下次自动登录</label>
                         </div>
                     </div>
                     <div class="button">

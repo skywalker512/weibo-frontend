@@ -4,7 +4,7 @@ import tipsController from '../controllers/indexBody/tips'
 
 const putTips = res => {
     return new Promise((reslove, reject) => {
-        if(res.msg){
+        if (res.msg) {
             let status = 'success'
             if (res.code === 200) status = 'success'
             if (res.code === 400) status = 'error'

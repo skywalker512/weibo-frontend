@@ -6,4 +6,5 @@ export const config = {
     articlePattern: /^[\u4e00-\u9fa5_a-zA-Z0-9]|[\u2190-\u21FF]|[\u2600-\u26FF]|[\u2700-\u27BF]|[\u3000-\u303F]|[\u1F300-\u1F64F]|[\u1F680-\u1F6FF]{10,140}$/,
     profilePattern: /^[\u4e00-\u9fa5_a-zA-Z0-9]{5,20}$/,
     testPattern: /^[0-9]{6,6}$/,
+    phonePattern: /^[0-9]{11,11}$/,
 }
