@@ -14,13 +14,15 @@ export default function (data) {
                     <a href="/user/{%= agrs[0].article.authorId._id %}">
                         {%= agrs[0].article.authorId.name %}
                     </a>
-                    <div class="star" user-data="{%= agrs[0].article.authorId._id %}">
-                    {% if( Number(agrs[0].status.isStar) === 0){ %}
-                        <span class="icon icon-plus"></span>关注
-                    {% }else{ %}
-                        已关注
+                    {% if( Number(agrs[0].status.isMe) === 0){ %}
+                        <div class="star" user-data="{%= agrs[0].article.authorId._id %}">
+                        {% if( Number(agrs[0].status.isStar) === 0){ %}
+                            <span class="icon icon-plus"></span>关注
+                        {% }else{ %}
+                            已关注
+                        {% } %}
+                        </div>
                     {% } %}
-                    </div>
                 </div>
                 {% const time = new Date(agrs[0].article.updatedAt) %}
                 <div class="time">
