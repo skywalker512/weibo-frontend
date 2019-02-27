@@ -26,6 +26,9 @@ export default function (data) {
                     <span id="eidt-profile" class="{% if( agrs[0].isMe ){ %}editable{% } %}">一句话介绍一下自己吧，让别人更了解你</span>
                 {% } %}
                 </div>
+                <div class="star">
+                    粉丝: {%= agrs[0].starMeNum %} | 关注: {%= agrs[0].starOtherNum %}
+                </div>
             </div>
         </div>
         <div class="function">
