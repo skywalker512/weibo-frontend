@@ -13,13 +13,13 @@ export default function registerController(body, registerEle) {
         });
     };
 
-    // 登陆按钮
-    let status = { isPass: false, captchaObj: {} }
-    geetest(status)
-    const buttonEle = document.querySelector('.account .button');
     let wait = 60 // 邮箱验证码倒计时，用于重置
 
-    { // 用户登陆信息判断
+    {   // 用户登陆信息判断
+        // 登陆按钮
+        let status = { isPass: false, captchaObj: {} }
+        geetest(status)
+        const buttonEle = document.querySelector('#emailbutton');
         const emailInput = document.querySelector('#email');
         const usernameInput = document.querySelector('#username');
         const passwordInput = document.querySelector('#password');
@@ -208,5 +208,54 @@ export default function registerController(body, registerEle) {
                 }
             }
         })
+    }
+
+    { // 手机注册
+        const buttonEle = document.querySelector('#phonebutton')
+        const phoneInput = document.querySelector('#phone');
+        const usernameInput = document.querySelector('#phone-username');
+        const testInput = document.querySelector('#testphone')
+
+        buttonEle.addEventListener('click', () => {
+            let tipsName = document.querySelector('.account .tips.name .icon')
+            let tipsTest = document.querySelector('.account .tips.test .icon')
+            const isName = config.namePattern.test(usernameInput.value)
+            const isTest = config.testPattern.test(testInput.value)
+
+            if (!isName && !tipsName) {
+                usernameInput.insertAdjacentHTML('beforebegin', `<div class="tips name">用户名必须大于4个字符小于16个字符<span class="icon icon-index-close"></span></div>`);
+                tipsName = document.querySelector('.account .tips.name .icon')
+                tipsName.addEventListener('click', () => {
+                    tipsName.parentNode.remove();
+                })
+            } else if (isName && tipsName) {
+                tipsName.parentNode.remove();
+            }
+
+            if (!isTest && !tipsTest) {
+                testInput.insertAdjacentHTML('beforebegin', `<div class="tips test">请输入6位验证码<span class="icon icon-index-close"></span></div>`);
+                tipsTest = document.querySelector('.account .tips.test .icon')
+                tipsTest.addEventListener('click', () => {
+                    tipsTest.parentNode.remove();
+                })
+            } else if (isTest && tipsTest) {
+                tipsTest.parentNode.remove();
+            }
+
+
+            if (isName && isTest) {
+                ajax('POST', '/api/registerbyphone', { name: usernameInput.value, phone: phoneInput.value, code: testInput.value }).then(result => {
+                    if (result.code === 200) {
+                        body.removeChild(registerEle)
+                        const ele = document.querySelector('.account-list');
+                        ele.innerHTML = ''
+                        ele.appendChild(logined())
+                        userNav(result.data)
+                    } else {
+                        wait = 0
+                    }
+                })
+            };
+        });
     }
 }

@@ -29,6 +29,11 @@ export default function() {
                                     忘记密码
                                 </span>
                         </div>
+                        <div class="button" id="emailbutton">
+                            <a href="/done">
+                                <button type="submit">登陆</button>
+                            </a>
+                        </div>
                     </div>
                     <div class="input hide" id="loginbyphone">
                         <div class="phone textarea">
@@ -45,11 +50,11 @@ export default function() {
                                 <input type="checkbox" tabindex="5" id="login_form_savestate" node-type="savestate">
                                 <label for="login_form_savestate" class="S_txt2">下次自动登录</label>
                         </div>
-                    </div>
-                    <div class="button">
-                        <a href="/done">
-                            <button type="submit">登陆</button>
-                        </a>
+                        <div class="button" id="phonebutton">
+                            <a href="/done">
+                                <button type="submit">登陆</button>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

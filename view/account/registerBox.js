@@ -36,11 +36,16 @@ export default function() {
                             <input maxlength="50" name="apassword" id="apassword" type="password" value="" placeholder="重复密码">
                         </div>
                         <div id="geetest"></div>
+                        <div class="button" id="emailbutton">
+                            <a href="/done">
+                                <button type="submit">注册</button>
+                            </a>
+                        </div>
                     </div>
                     <div class="input hide" id="loginbyphone">
                         <div class="username textarea">
                             <span class="icon icon-account-user"></span>
-                            <input autocomplete="off" maxlength="20" name="username" id="username" spellcheck="false" type="text" value="" placeholder="用户名">
+                            <input autocomplete="off" maxlength="20" name="phone-username" id="phone-username" spellcheck="false" type="text" value="" placeholder="用户名">
                         </div>
                         <div class="phone textarea">
                             <span class="icon icon-phone-square"></span>
@@ -52,11 +57,11 @@ export default function() {
                                 <input autocomplete="off" maxlength="50" name="testphone" id="testphone" spellcheck="false" type="text" value="" placeholder="验证码">
                             </div>
                         </div>
-                    </div>
-                    <div class="button">
-                        <a href="/done">
-                            <button type="submit">注册</button>
-                        </a>
+                        <div class="button" id="phonebutton">
+                            <a href="/done">
+                                <button type="submit">注册</button>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
