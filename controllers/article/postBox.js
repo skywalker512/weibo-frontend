@@ -64,9 +64,8 @@ export default async function (body, postBoxEle) {
 
     {// 上传图片的 bottom 的点击发生的事情，引入对应的 js 和 css 文件
         const imgBottom = postBoxEle.querySelector('.icon-article-pic')
-        let mark = 0
         imgBottom.addEventListener('click', () => {
-            if (mark === 0) {
+            if (!postBoxEle.querySelector('.image-close')) {
                 import(/* webpackChunkName: "image" */ '../../less/article/image.less');
                 import(/* webpackChunkName: "image" */ '../../view/article/image').then(module => {
                     const image = module.default;
@@ -77,16 +76,14 @@ export default async function (body, postBoxEle) {
                         imageController(imageEle, pic)
                     });
                 });
-                mark = 1
             }
         })
     }
 
     {
         const emojiBottom = postBoxEle.querySelector('.icon-article-emoji')
-        let mark = 0
         emojiBottom.addEventListener('click', ()=>{
-            if (mark === 0) {
+            if (!postBoxEle.querySelector('.emoji-close')) {
                 import(/* webpackChunkName: "emoji" */ '../../less/article/emoji.less');
                 import(/* webpackChunkName: "emoji" */ '../../view/article/emoji').then(module => {
                     const emoji = module.default;
@@ -97,19 +94,16 @@ export default async function (body, postBoxEle) {
                         emojiController(emojiEle, textarea, textNum)
                     });
                 });
-                mark = 1
             }
         })
     }
 
     { // 选择节点
         const categoryBottom = postBoxEle.querySelector('.icon-aticle-topic')
-        let mark = 0
         categoryBottom.addEventListener('click', async ()=>{
-            if (mark === 0) {
+            if (!postBoxEle.querySelector('.category-close')) {
                 await postBox()
                 categoryBox(postBoxEle ,category)
-                mark = 1
             }
         })
     }
