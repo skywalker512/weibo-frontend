@@ -1,6 +1,6 @@
-export default function() {
+export default function(className) {
     const mainEle = document.createElement('div');
-    mainEle.classList.add('pre-image');
+    mainEle.classList.add(className);
 
     mainEle.insertAdjacentHTML('beforeend', `
         <div class="sk-fading-circle">

@@ -23,15 +23,15 @@ export default function (imageEle, pic) {
 
     {
         pic._id = []
-        const imgUpload = imageEle.querySelector('#upload')
+        const imgUpload = imageEle.querySelector('#img-upload')
         const addBotton = imageEle.querySelector('.add-image')
         imgUpload.addEventListener('change', () => {
             if (imgUpload.files[0]) {
-                const imagesEle = imageEle.querySelector('#upload')
-                const loadingEle = loading()
+                const imagesEle = imageEle.querySelector('#img-upload')
+                const loadingEle = loading('pre-image')
                 imagesEle.insertAdjacentElement('beforebegin', loadingEle)
                 if (pic._id.length === 8) addBotton.classList.add('hide')
-                upyun(imgUpload, `/images/{year}/{mon}/{day}/{hour}_{min}_{sec}_{filename}{.suffix}`).then(result=>{
+                upyun(imgUpload, encodeURIComponent(`/images/{year}/{mon}/{day}/{hour}_{min}_{sec}_{filename}{.suffix}`)).then(result=>{
                     if(result.code === 200) {
                         ajax('POST', '/api/image', {
                             path: result['url'],

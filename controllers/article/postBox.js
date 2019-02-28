@@ -6,6 +6,9 @@ import {router} from '../../routes/index'
 
 import categoryBox from './categoryBox'
 
+import tipsApi from '../../api/indexBody/tips'
+import tipsController from '../indexBody/tips'
+
 export default async function (body, postBoxEle) {
     { // 框关闭
         const closeEle = postBoxEle.querySelector('.close')
@@ -17,6 +20,7 @@ export default async function (body, postBoxEle) {
 
     const pic = { _id: [] }
     const category = { _id: [] }
+    const videoArry = { _id: [] }
 
     const textarea = postBoxEle.querySelector('textarea')
     { // 发布 以及 一些检查
@@ -46,7 +50,7 @@ export default async function (body, postBoxEle) {
             }
 
             if (isText && isCategory) {
-                ajax('POST', '/api/article', { content: textarea.value, categoryId: category._id, images: pic._id }).then(result => {
+                ajax('POST', '/api/article', { content: textarea.value, categoryId: category._id, images: pic._id, videos: videoArry._id }).then(result => {
                     if (result.code === 200) {
                         postBoxEle.remove()
                         router.goPath('/')
@@ -65,17 +69,46 @@ export default async function (body, postBoxEle) {
     {// 上传图片的 bottom 的点击发生的事情，引入对应的 js 和 css 文件
         const imgBottom = postBoxEle.querySelector('.icon-article-pic')
         imgBottom.addEventListener('click', () => {
-            if (!postBoxEle.querySelector('.image-close')) {
-                import(/* webpackChunkName: "image" */ '../../less/article/image.less');
-                import(/* webpackChunkName: "image" */ '../../view/article/image').then(module => {
-                    const image = module.default;
-                    const imageEle = image()
-                    imgBottom.parentNode.appendChild(imageEle);
-                    import(/* webpackChunkName: "image" */ './image').then(module => {
-                        const imageController = module.default;
-                        imageController(imageEle, pic)
+            if (videoArry._id.length === 0) {
+                if (!postBoxEle.querySelector('.image-close')) {
+                    import(/* webpackChunkName: "image" */ '../../less/article/image.less');
+                    import(/* webpackChunkName: "image" */ '../../view/article/image').then(module => {
+                        const image = module.default;
+                        const imageEle = image()
+                        imgBottom.parentNode.appendChild(imageEle);
+                        import(/* webpackChunkName: "image" */ './image').then(module => {
+                            const imageController = module.default;
+                            imageController(imageEle, pic)
+                        });
                     });
-                });
+                }
+            } else {
+                tipsApi('你不能上传视频的同时上传图片', 'error')
+                tipsController()
+            }
+        })
+    }
+    
+
+    {// 上传视频
+        const vidBottom = postBoxEle.querySelector('.icon-article-video')
+        vidBottom.addEventListener('click', () => {
+            if (pic._id.length === 0) {
+                if (!postBoxEle.querySelector('.video-close')) {
+                    import(/* webpackChunkName: "video" */ '../../less/article/video.less');
+                    import(/* webpackChunkName: "video" */ '../../view/article/video').then(module => {
+                        const video = module.default;
+                        const videoEle = video()
+                        vidBottom.parentNode.appendChild(videoEle);
+                        import(/* webpackChunkName: "video" */ './video').then(module => {
+                            const videoController = module.default;
+                            videoController(videoEle, videoArry)
+                        });
+                    });
+                }
+            } else {
+                tipsApi('你不能上传图片的同时上传视频', 'error')
+                tipsController()
             }
         })
     }
