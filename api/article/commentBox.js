@@ -12,10 +12,10 @@ export default function (data) {
                     {% const time = new Date(agrs[0][i].updatedAt) %}
                     <span class="time">{%= time.toLocaleString() %}</span>
                 </div>
-                {% if( Number(agrs[0][i].isPraise) === 0){ %}
-                <div class="right" data-index="{%= agrs[0][i]._id %}">
+                {% if( Number(agrs[0][i].isPraise) === 1 ){ %}
+                <div class="right isStatus" data-index="{%= agrs[0][i]._id %}">
                 {% }else{ %}
-                <div class="right isStatus" data-index="{%= agrs[0][i]._id %}">                     
+                <div class="right" data-index="{%= agrs[0][i]._id %}">                     
                 {% } %}
                     <span class="icon icon-zan"></span>
                     <span class="text zan">{%= agrs[0][i].praiseNum %}</span>
