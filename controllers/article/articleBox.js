@@ -152,15 +152,17 @@ export default async function (body, articleBoxEle, articleId) {
 
     { // 关注用户
         const startBottom = articleBoxEle.querySelector('.star')
-        startBottom.addEventListener('click', ()=>{
-            const userId = startBottom.getAttribute('user-data')
-            ajax('GET', `/api/user/${userId}/star`).then(res=>{
-                if(res.msg === '取消关注成功') {
-                    startBottom.innerHTML = '<span class="icon icon-plus"></span>关注'
-                } else if (res.msg === '关注成功') {
-                    startBottom.innerHTML = '已关注'
-                }
+        if (startBottom) {
+            startBottom.addEventListener('click', ()=>{
+                const userId = startBottom.getAttribute('user-data')
+                ajax('GET', `/api/user/${userId}/star`).then(res=>{
+                    if(res.msg === '取消关注成功') {
+                        startBottom.innerHTML = '<span class="icon icon-plus"></span>关注'
+                    } else if (res.msg === '关注成功') {
+                        startBottom.innerHTML = '已关注'
+                    }
+                })
             })
-        })
+        }
     }
 }
