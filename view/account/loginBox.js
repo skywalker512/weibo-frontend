@@ -59,6 +59,9 @@ export default function() {
                     <div class="button oauth" data-name="github">
                         <button type="submit">使用 Github 登录</button>
                     </div>
+                    <div class="button oauth" data-name="weibo">
+                        <button type="submit">使用新浪微博登录</button>
+                    </div>
                 </div>
             </div>
         </div>
