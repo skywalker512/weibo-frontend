@@ -1,0 +1,31 @@
+.hot-box {
+    background: #f2f2f5;
+    padding: 20px;
+    border-top: 1px solid #fa2f2f;
+    height: auto;
+    .hot-title {
+        font-size: 18px;
+        margin-bottom: 16px;
+        font-weight: 700;
+    }
+    .hot-article {
+        .single-article {
+            margin-bottom: 20px;
+        }
+        a {
+            display: flex;
+            .img {
+                margin-right: 12px;
+            }
+            .text {
+                display: -webkit-box !important;  
+                overflow: hidden;  
+                text-overflow: ellipsis;  
+                word-break: break-all;  
+                -webkit-box-orient: vertical;  
+                -webkit-line-clamp: 2;
+            }
+        }
+
+    }
+}

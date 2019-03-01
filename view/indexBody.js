@@ -2,6 +2,7 @@ import sidebar from './indexBody/sidebar'
 import article from './indexBody/article'
 import loading from './indexBody/loading'
 import noMore from './indexBody/noMore'
+import hot from './indexBody/hot'
 
 function right() {
     const right = document.createElement('div');
@@ -20,6 +21,7 @@ export default function indexBody() {
 
     indexBody.appendChild(sidebar());
     indexBody.appendChild(right());
+    indexBody.appendChild(hot())
 
     return indexBody;
 }
