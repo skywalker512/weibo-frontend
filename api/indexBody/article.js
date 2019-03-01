@@ -37,7 +37,7 @@ export default function article(article, isBegin=true, selector='.article_list')
                 {% } %}
                         <div class="info">
                             <div class="left">
-                                <div class="avatar"><img src="{%= agrs[0][i].authorId.avatar%}!smallavatar"></div>
+                                <div class="avatar"><img src="{%= agrs[0][i].authorId.avatar%}"></div>
                                 <div class="name">{%= agrs[0][i].authorId.name %}</div>
                                 {% const time = new Date(agrs[0][i].createdAt) %}
                                 <div class="time">{%= time.toLocaleString() %}</div>

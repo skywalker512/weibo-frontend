@@ -6,7 +6,7 @@ export default function (data) {
         <div class="content">
             <input type="file" id="avatar-upload" class="hide" accept="image/*">
             <div class="avatar">
-                <img src="{%= agrs[0].avatar %}!avatar">
+                <img src="{%= agrs[0].avatar %}">
                 {% if( agrs[0].isMe ){ %}
                 <label for="avatar-upload">
                     <div class="mask">

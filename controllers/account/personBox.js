@@ -72,7 +72,7 @@ export default async function (body, personBoxEle, id) {
                     if(result.code === 200) {
                         const avatar = personBoxEle.querySelector('.avatar img')
                         avatar.setAttribute('src', result.fullurl+'!avatar')
-                        ajax('PATCH', `/api/user/${id}`, { avatar: result.fullurl })
+                        ajax('PATCH', `/api/user/${id}`, { avatar: result.fullurl+'!avatar' })
                     }
                 })
             }

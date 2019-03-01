@@ -6,7 +6,7 @@ export default function (data) {
         <div class="content">
             <div class="avatar">
                 <a href="/user/{%= agrs[0].article.authorId._id %}">
-                    <img src="{%= agrs[0].article.authorId.avatar%}!middleavatar">
+                    <img src="{%= agrs[0].article.authorId.avatar%}">
                 </a>
             </div>
             <div class="text">
