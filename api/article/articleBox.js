@@ -24,7 +24,7 @@ export default function (data) {
                         </div>
                     {% } %}
                 </div>
-                {% const time = new Date(agrs[0].article.updatedAt) %}
+                {% const time = new Date(agrs[0].article.createdAt) %}
                 <div class="time">
                     {%= time.toLocaleString() %}
                 </div>
