@@ -31,6 +31,11 @@ export default function (data) {
                 <div class="text-content">
                     {%= agrs[0].article.content %}
                 </div>
+                {% if( agrs[0].article.videos.length === 1){ %}
+                <video src="{%= agrs[0].article.videos[0].url %}" style="width: 500px; height: 282px;" controls="true" preload="metadata">
+                    您的浏览器不支持HTML5
+                </video>
+                {% } %}
             </div>
         </div>
         {% if( agrs[0].article.images.length !== 0){ %}

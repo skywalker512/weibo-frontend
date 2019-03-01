@@ -40,7 +40,7 @@ export default function (data) {
             </div>
         </div>
 
-        <div class="person-article"></div>
-        <div class="person-favorite hide"></div>
+        <div class="person-article article_list"></div>
+        <div class="person-favorite article_list hide"></div>
     `, data));
 };

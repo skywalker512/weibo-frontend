@@ -21,6 +21,9 @@ export default function () {
     const config = { attributes: false, childList: true, subtree: true };
     const callback = records => {
         router.proxyLinks(records[0].target.querySelectorAll('a')) // 记录第一个，以防触到浏览器限制
+        document.querySelectorAll('video').forEach(value=>{
+            value.pause()
+        })
     }
     const observer = new MutationObserver(callback)
     observer.observe(document.querySelector('body'), config);

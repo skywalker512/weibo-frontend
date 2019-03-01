@@ -8,7 +8,7 @@ export default function() {
                 <div class="close"><a href=""><span class="icon icon-index-close"></span></a></div>
                 <div class="title">搜索结果</div>
                 <div class="box">
-                    <div class="search-article"></div>
+                    <div class="search-article article_list"></div>
                 </div>
             </div>
         </div>
