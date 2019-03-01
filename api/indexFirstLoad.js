@@ -9,6 +9,9 @@ export default async function() {
         nav(result.data.link);
         siderbar(result.data.category);
         article(result.data.article);
-        user(result.data.user)
     });
+
+    await ajax('GET', '/api/user').then(result =>{
+        user(result.data)
+    })
 }
