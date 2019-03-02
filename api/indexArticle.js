@@ -7,10 +7,9 @@ export default async function (page, tag) {
     if (tag) {
         url = '/api/category/' + tag + '?page=' + page;
     }
-    let isHave
-    await ajax('GET', url).then(result=>{
-        isHave = result.data.length
+    let isHave = await ajax('GET', url).then(result=>{
         article(result.data, false)
+        return result.data.length
     })
     siderbar(tag)
     return isHave

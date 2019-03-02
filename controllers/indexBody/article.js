@@ -1,26 +1,20 @@
 import article from '../../api/indexArticle'
 import throttle from '../../utils/throttle'
 
-let isHave = 1
-let page = 1
+const status = { isHave: 1, page: 1 }
 export default function () {
-
-    window.addEventListener('load', ()=>{
-        isHave = 1
-        page = 1
-    })
-
     window.addEventListener('scroll', throttle(async function () {
-        console.log(isHave, page)
+        console.log(status.isHave, status.page)
         if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight)) {
-            if( isHave !== 0 ){
+            if( status.isHave !== 0 ){
                 const loading = document.querySelector('.article_tips')
                 loading.classList.remove('hide');
-                page++;
+                status.page++
+                console.log(status.page)
                 if (document.location.pathname.indexOf('category') !== -1) {
-                    isHave = await article(page, document.location.pathname.split('/')[2]);
+                    status.isHave = await article(status.page, document.location.pathname.split('/')[2]);
                 } else {
-                    isHave = await article(page);
+                    status.isHave = await article(status.page);
                 }
                 loading.classList.add('hide');
             } else {
@@ -28,9 +22,7 @@ export default function () {
                 noMore.classList.remove('hide');
             }
         }
-    }, 500, 1000), false);
-
-
+    }, 500, 500), false);
 }
 
-export { isHave, page }
+export { status }
