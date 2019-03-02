@@ -34,6 +34,6 @@ export function logoutBottomController() {
         const ele = document.querySelector('.account-list');
         ele.innerHTML = ''
         ele.appendChild(notLogin())
-        history.pushState(null, null,'./')
+        history.back()
     })
 }

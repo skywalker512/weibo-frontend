@@ -14,7 +14,7 @@ export default function (ele) {
             if (openWin.closed) {
                 clearInterval(timer)
                 document.body.removeChild(ele);
-                history.pushState(null, null, '/done')
+                history.back()
                 ajax('GET', '/api/user').then(result =>{
                     user(result.data)
                 })
