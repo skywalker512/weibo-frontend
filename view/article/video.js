@@ -1,6 +1,6 @@
 export default function() {
     const mainEle = document.createElement('div');
-    mainEle.classList.add('video');
+    mainEle.classList.add('video-push');
 
     mainEle.insertAdjacentHTML('beforeend', `
         <div class="vid-container">

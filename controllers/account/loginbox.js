@@ -1,6 +1,5 @@
 import { config } from "../../config";
 import ajax from '../../utils/ajax'
-import { logined } from '../../view/account/nav'
 import user from '../../api/indexBody/user'
 import geetest from './geetest'
 import oauth from './oauth'
@@ -15,7 +14,7 @@ export default function loginController(body, loginEle) {
     };
     const isKeepInput = document.querySelector('#login_form_savestate')
     { // 用户登陆信息判断
-        let status = { isPass: false }
+        let status = { isPass: false, captchaObj: {} }
         geetest(status)
         const buttonEle = document.querySelector('#emailbutton');
         const usernameInput = document.querySelector('#username');
@@ -25,7 +24,7 @@ export default function loginController(body, loginEle) {
             let tipsName = document.querySelector('.account .tips.name .icon')
             let tipsPassword = document.querySelector('.account .tips.password .icon')
             let tipsPass = document.querySelector('.account .tips.pass .icon')
-            const isName = config.namePattern.test(usernameInput.value)
+            const isName = config.namePattern.test(usernameInput.value) || config.emailPattern.test(usernameInput.value)
             const isPassword = config.passwordPattern.test(passwordInput.value)
 
             if (!isName && !tipsName) {
@@ -63,6 +62,9 @@ export default function loginController(body, loginEle) {
                     if (result.code === 200) {
                         body.removeChild(loginEle);
                         user(result.data)
+                    } else {
+                        wait = 0
+                        status.captchaObj.reset()
                     }
                 })
             };
@@ -154,12 +156,10 @@ export default function loginController(body, loginEle) {
                 ajax('POST', '/api/loginbyphone', { phone: phoneInput.value, code: testInput.value, isKeep }).then(result => {
                     if (result.code === 200) {
                         body.removeChild(loginEle);
-                        const ele = document.querySelector('.account-list');
-                        ele.innerHTML = ''
-                        ele.appendChild(logined())
-                        userNav(result.data)
+                        user(result.data)
                     } else {
                         wait = 0
+                        status.captchaObj.reset()
                     }
                 })
             };
