@@ -22,7 +22,7 @@ export default function () {
                 noMore.classList.remove('hide');
             }
         }
-    }, 500, 500), false);
+    }, 100, 200), false);
 }
 
 export { status }
