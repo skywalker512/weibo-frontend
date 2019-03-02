@@ -9,9 +9,10 @@ export default async function (searchBoxEle, value) {
     { // 框关闭
         const closeEle = searchBoxEle.querySelector('.close')
         closeEle.addEventListener('click', () => {
-            history.back()
             searchBoxEle.remove()
             document.body.classList.remove('body-fixed')
+            const input = document.querySelector('.header .search input')
+            input.value = ''
         });
     }
 
@@ -21,6 +22,8 @@ export default async function (searchBoxEle, value) {
             const values = tests[i].textContent.split(value)
             tests[i].innerHTML = values.join('<span class="search-light">' + value + '</span>');
         }
-
+        if (tests.length === 0) {
+            searchBoxEle.querySelector('.search-article.article_list').innerHTML = '<div class="no-article">没有结果，请换一个关键词</div>'
+        }
     }
 }
