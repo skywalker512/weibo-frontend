@@ -61,6 +61,7 @@ export default function loginController(body, loginEle) {
                 ajax('POST', '/api/login', { info: usernameInput.value, password: passwordInput.value, isKeep }).then(result => {
                     if (result.code === 200) {
                         body.removeChild(loginEle);
+                        history.back()
                         user(result.data)
                     } else {
                         wait = 0
@@ -156,6 +157,7 @@ export default function loginController(body, loginEle) {
                 ajax('POST', '/api/loginbyphone', { phone: phoneInput.value, code: testInput.value, isKeep }).then(result => {
                     if (result.code === 200) {
                         body.removeChild(loginEle);
+                        history.back()
                         user(result.data)
                     } else {
                         wait = 0

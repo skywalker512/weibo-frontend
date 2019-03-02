@@ -1,7 +1,6 @@
 import { config } from "../../config";
 import ajax from '../../utils/ajax'
-import { logined } from '../../view/account/nav'
-import userNav from '../../api/acount/userNav'
+import user from '../../api/indexBody/user'
 import geetest from './geetest'
 
 export default function registerController(body, registerEle) {
@@ -104,10 +103,8 @@ export default function registerController(body, registerEle) {
                 ajax('POST', '/api/register', { name: usernameInput.value, password: passwordInput.value, email: emailInput.value, code: testInput.value }).then(result => {
                     if (result.code === 200) {
                         body.removeChild(registerEle)
-                        const ele = document.querySelector('.account-list');
-                        ele.innerHTML = ''
-                        ele.appendChild(logined())
-                        userNav(result.data)
+                        history.back()
+                        user(result.data)
                     } else {
                         wait = 0
                         status.captchaObj.reset()
@@ -247,10 +244,8 @@ export default function registerController(body, registerEle) {
                 ajax('POST', '/api/registerbyphone', { name: usernameInput.value, phone: phoneInput.value, code: testInput.value }).then(result => {
                     if (result.code === 200) {
                         body.removeChild(registerEle)
-                        const ele = document.querySelector('.account-list');
-                        ele.innerHTML = ''
-                        ele.appendChild(logined())
-                        userNav(result.data)
+                        history.back()
+                        user(result.data)
                     } else {
                         wait = 0
                     }

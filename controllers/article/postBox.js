@@ -1,9 +1,6 @@
 import { config } from '../../config'
 import ajax from '../../utils/ajax'
 import postBox from '../../api/postBox'
-
-import {router} from '../../routes/index'
-
 import categoryBox from './categoryBox'
 
 import tipsApi from '../../api/indexBody/tips'
@@ -53,7 +50,7 @@ export default async function (body, postBoxEle) {
                 ajax('POST', '/api/article', { content: textarea.value, categoryId: category._id, images: pic._id, videos: videoArry._id }).then(result => {
                     if (result.code === 200) {
                         postBoxEle.remove()
-                        router.goPath('/')
+                        history.back()
                     }
                 })
             }

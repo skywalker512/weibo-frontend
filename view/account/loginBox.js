@@ -30,7 +30,7 @@ export default function() {
                                 </span>
                         </div>
                         <div class="button" id="emailbutton">
-                            <a href="/done">
+                            <a href="">
                                 <button type="submit">登陆</button>
                             </a>
                         </div>
@@ -51,7 +51,7 @@ export default function() {
                                 <label for="login_form_savestate" class="S_txt2">下次自动登录</label>
                         </div>
                         <div class="button" id="phonebutton">
-                            <a href="/done">
+                            <a href="">
                                 <button type="submit">登陆</button>
                             </a>
                         </div>

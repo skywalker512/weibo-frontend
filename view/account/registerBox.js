@@ -37,7 +37,7 @@ export default function() {
                         </div>
                         <div id="geetest"></div>
                         <div class="button" id="emailbutton">
-                            <a href="/done">
+                            <a href="">
                                 <button type="submit">注册</button>
                             </a>
                         </div>
@@ -58,7 +58,7 @@ export default function() {
                             </div>
                         </div>
                         <div class="button" id="phonebutton">
-                            <a href="/done">
+                            <a href="">
                                 <button type="submit">注册</button>
                             </a>
                         </div>

@@ -23,7 +23,7 @@ export default function() {
                             <div class="categorytext">请选择一个节点</div>
                             <div class="icon icon-aticle-topic"></div>
                             <div class="category"></div>
-                            <a href="/done">
+                            <a href="">
                                 <button type="submit">发布</button>
                             </a>
                         </div>
