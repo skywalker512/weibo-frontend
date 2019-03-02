@@ -1,8 +1,9 @@
 import compile from '../../utils/compile';
 
 export default function (data) {
-    const ele = document.querySelector('.articlebox .box');
-    ele.insertAdjacentHTML('beforeend', compile(`
+    const ele = document.querySelectorAll('.articlebox .box');
+    const inEle = ele[ele.length - 1]
+    inEle.insertAdjacentHTML('beforeend', compile(`
         <div class="content">
             <div class="avatar">
                 <a href="/user/{%= agrs[0].article.authorId._id %}">
