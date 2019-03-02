@@ -7,11 +7,14 @@ import route from './routes/index';
 import controllers from './controllers'
 import tips from './view/indexBody/tips'
 
+
 // 连接所有的 层级
 function render() {
-    document.body.appendChild(header());
-    document.body.appendChild(indexBody());
-    document.body.appendChild(tips());
+    const fragment = document.createDocumentFragment();
+    fragment.appendChild(header());
+    fragment.appendChild(indexBody());
+    fragment.appendChild(tips());
+    document.body.appendChild(fragment)
 }
 
 async function api() {
