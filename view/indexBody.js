@@ -3,6 +3,7 @@ import article from './indexBody/article'
 import loading from './indexBody/loading'
 import noMore from './indexBody/noMore'
 import hot from './indexBody/hot'
+import refresh from './indexBody/refresh'
 
 function right() {
     const right = document.createElement('div');
@@ -22,6 +23,7 @@ export default function indexBody() {
     indexBody.appendChild(sidebar());
     indexBody.appendChild(right());
     indexBody.appendChild(hot())
+    indexBody.appendChild(refresh())
 
     return indexBody;
 }
