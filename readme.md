@@ -1,7 +1,5 @@
 ## 红岩前端寒假作业
 
-![Brand](./docs/img/Snipaste_2019-02-23_22-31-35.png)]
-
 -----------
 [![Build Status](https://travis-ci.com/skywalker512/weibo-frontend.svg?branch=master)](https://travis-ci.com/skywalker512/weibo-frontend)
 [![CodeFactor](https://www.codefactor.io/repository/github/skywalker512/weibo-frontend/badge)](https://www.codefactor.io/repository/github/skywalker512/weibo-frontend)
@@ -18,7 +16,7 @@
   - [模板](docs/general/template.md)
   - [部署](docs/general/deployment.md)
   - [开发](docs/general/develop.md)
-  - [PWA](docs/general/pwa.md)
+  - ~~[PWA](docs/general/pwa.md)~~
   - [权限](docs/general/power.md)
 
 
