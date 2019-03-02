@@ -1,7 +1,6 @@
 import article from '../api/indexArticle';
 import { status } from '../controllers/indexBody/article'
 function tips () {
-    console.log(244)
     document.querySelector('.article_nomore').classList.add('hide')
     status.isHave =1
     status.page=1
