@@ -41,7 +41,7 @@ https://github.com/skywalker512/weibo-backend
 
 - 主页
 
-  - [ ] 搜索
+  - [x] 搜索
   - [x] 信息分类
   - [x] 关注
   - [x] 收藏
@@ -58,7 +58,7 @@ https://github.com/skywalker512/weibo-backend
 
 - 个人信息页
 
-  - [ ] ~~关注、粉丝数~~
+  - [x] 关注、粉丝数
   - [x] 发微博 / 显示已发微博
   - [x] 能够上传头像
   - [ ] ~~修改昵称~~
@@ -67,9 +67,9 @@ https://github.com/skywalker512/weibo-backend
 加分项：
 
 - [x] 发送带图片的微博
-- [ ] 发送带视频的微博
-- [ ] 微博热门
-- [ ] 微博热搜
+- [x] 发送带视频的微博
+- [x] 微博热门
+- [ ] ~~微博热搜~~
 - [ ] ~~后台管理~~
 - [x] 使用https
 - [ ] 考虑安全性(比如xss、sql注入、csrf)
