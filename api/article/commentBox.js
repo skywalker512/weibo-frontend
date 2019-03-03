@@ -1,8 +1,9 @@
 import compile from '../../utils/compile';
 
 export default function (data) {
-    const ele = document.querySelector('.articlebox .comment-list');
-    ele.insertAdjacentHTML('afterbegin', compile(`
+    const ele = document.querySelectorAll('.articlebox .comment-list');
+    const inEle = ele[ele.length - 1]
+    inEle.insertAdjacentHTML('afterbegin', compile(`
         {% for(let i=0; i < agrs[0].length; i++) { %} 
             <div class="text">{%= agrs[0][i].content %}</div>
             <div class="info">
