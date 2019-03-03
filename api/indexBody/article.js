@@ -1,9 +1,10 @@
 import compile from '../../utils/compile';
 
 export default function article(article, isBegin=true, selector='.article_list') {
-    const ele = document.querySelector(selector)
+    const ele = document.querySelectorAll(selector)
+    const inEle = ele[ele.length - 1]
     const order = isBegin ? 'afterbegin' : 'beforeend'
-    ele.insertAdjacentHTML(order, 
+    inEle.insertAdjacentHTML(order, 
     compile(`
         {% for(let i=0; i < agrs[0].length; i++) { %} 
             <div class="single-article">
