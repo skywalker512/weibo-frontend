@@ -1,8 +1,9 @@
 import compile from '../../utils/compile';
 
 export default function (data) {
-    const ele = document.querySelector('.personbox .box');
-    ele.insertAdjacentHTML('beforeend', compile(`
+    const ele = document.querySelectorAll('.personbox .box');
+    const inEle = ele[ele.length - 1]
+    inEle.insertAdjacentHTML('beforeend', compile(`
         <div class="content">
             <input type="file" id="avatar-upload" class="hide" accept="image/*">
             <div class="avatar">
