@@ -3,7 +3,7 @@ export default function compile(template, ...agrs) {
     const expr = /{%([\s\S]+?)%}/g;
 
     template = template
-        .replace(evalExpr, '`); \n  echo( $1 ); \n  echo(`')
+        .replace(evalExpr, '`); \n  renderHtml( $1 ); \n  echo(`')
         .replace(expr, '`); \n $1 \n  echo(`');
 
     template = 'echo(`' + template + '`);';
@@ -15,14 +15,18 @@ export default function compile(template, ...agrs) {
       function echo(html){
         output += html;
       }
+
+      funtion renderHtml(str){
+        const str = parse(agrs); 
+        let elt = document.createElement('span'); 
+        elt.textContent = str;
+        output += elt.innerHTML
+      }
   
       ${ template }
   
       return output;
     })`;
     const parse = eval(script);
-    const str = parse(agrs); 
-    let elt = document.createElement('span'); 
-    elt.textContent = str; // textContent 自动转义
-    return elt.innerHTML;
+    return parse(agrs);
 }
