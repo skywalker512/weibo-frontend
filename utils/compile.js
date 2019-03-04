@@ -21,5 +21,8 @@ export default function compile(template, ...agrs) {
       return output;
     })`;
     const parse = eval(script);
-    return parse(agrs);
+    const str = parse(agrs); 
+    let elt = document.createElement('span'); 
+    elt.textContent = str; // textContent 自动转义
+    return elt.innerHTML;
 }
