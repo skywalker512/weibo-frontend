@@ -19,7 +19,8 @@ export default async function (searchBoxEle, value) {
     { // 高亮关键词
         const tests = searchBoxEle.querySelectorAll('.text-box .text')
         for(let i=0; i < tests.length; i++) {
-            const values = tests[i].textContent.split(value)
+            const regex = new RegExp(value, 'i');
+            const values = tests[i].textContent.split(regex)
             tests[i].innerHTML = values.join('<span class="search-light">' + value + '</span>');
         }
         if (tests.length === 0) {
