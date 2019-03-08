@@ -16,11 +16,10 @@ export default function compile(template, ...agrs) {
         output += html;
       }
 
-      funtion renderHtml(str){
-        const str = parse(agrs); 
+      function renderHtml(html){
         let elt = document.createElement('span'); 
-        elt.textContent = str;
-        output += elt.innerHTML
+        elt.textContent = html;
+        output += elt.innerHTML;
       }
   
       ${ template }
